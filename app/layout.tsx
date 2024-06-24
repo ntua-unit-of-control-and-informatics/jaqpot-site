@@ -7,10 +7,10 @@ import { Suspense } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "Jaqpot - Building blocks for your Next.js project",
+  title: "Jaqpot - Create, Upload, and Deploy Machine Learning Models",
   description:
-    "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
-  metadataBase: new URL("https://precedent.dev"),
+    "Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python or R. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at app.jaqpot.org.",
+  metadataBase: new URL("https://jaqpot.org"),
 };
 
 export default async function RootLayout({

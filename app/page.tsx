@@ -6,6 +6,7 @@ import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
 import {ArrowUpTrayIcon, RocketLaunchIcon} from "@heroicons/react/24/solid";
+import {DemoVideo} from "@/components/home/demo-video";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -79,6 +80,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+
         {features.map(({ title, description, demo, large }) => (
           <Card
             key={title}
@@ -92,62 +94,65 @@ export default async function Home() {
     </>
   );
 }
-
 const features = [
   {
-    title: "Empower Your Machine Learning Journey",
+    title: "Empower your Machine Learning journey",
     description:
-      "At Jaqpot, we simplify the process of building, training, and deploying machine learning models. " +
-        "Our intuitive platform allows you to focus on your data and algorithms, while we handle the rest. " +
-        "Create powerful models with Python or R, upload them to Jaqpot, and make them accessible online and through our API.",
+        "Build, train, and deploy machine learning models effortlessly with Python or R. Jaqpot handles the rest.",
     large: true,
+      demo: <DemoVideo />
   },
   {
-    title: "Flexible Access and Permissions",
+    title: "Flexible access and permissions",
     description:
-      "Manage who can see and use your models with our flexible permissions system. Keep your models private, share them with specific organizations, or make them public for the world to see. With Jaqpot, you have full control over your intellectual property.",
-    demo: <WebVitals />,
+        "Control who can see and use your models. Keep them private, share with organizations, or make them public.",
+    demo: <Image
+        src="/lock-icon.png"
+        alt="Flexible Access and Permissions"
+        width={120}
+        height={30}
+    />,
   },
   {
-    title: "Seamless Integration and Deployment",
+    title: "Seamless integration and deployment",
     description:
-      "Deploy your models effortlessly with Jaqpot’s user-friendly interface. Our platform integrates seamlessly into your workflow, allowing you to interact with your models programmatically. Whether you’re building a new application or enhancing an existing one, Jaqpot provides the tools you need to succeed",
+        "Deploy models with a user-friendly interface and access them programmatically via API.",
     demo: (
-      <a href={DEPLOY_URL}>
-        <Image
-          src="https://vercel.com/button"
-          alt="Deploy with Vercel"
-          width={120}
-          height={30}
-          unoptimized
-        />
-      </a>
+        <a
+            className="group flex max-w-fit items-center justify-center space-x-2 rounded-md border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
+            href={DEPLOY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <RocketLaunchIcon className="w-4 h-4 group-hover:text-black"/>
+            <p>Deploy your model</p>
+        </a>
     ),
   },
+    {
+        title: "Always up-to-date and blazing fast",
+        description:
+            "We ensure our platform and models are always up-to-date with the latest libraries and technologies, including Torch, scikit-learn, and R, providing you with blazing fast performance.",
+        demo: (
+            <div className="flex flex-wrap items-center justify-center justify-items-center gap-5 p-5">
+                <Image alt="Pytorch logo" src="/pytorch-logo.png" width={100} height={25}/>
+                <Image alt="Scikit learn logo" src="/scikit-learn-logo.svg" width={100} height={53}/>
+                <Image alt="R logo" src="/R-logo.svg" width={65} height={50}/>
+            </div>
+        ),
+    },
   {
-    title: "Built-in Auth + Database",
+    title: "Advanced Preprocessing and Featurization",
     description:
-      "Precedent comes with authentication and database via [Auth.js](https://authjs.dev/) + [Prisma](https://prisma.io/)",
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="Auth.js logo" src="/authjs.webp" width={50} height={50} />
-        <Image alt="Prisma logo" src="/prisma.svg" width={50} height={50} />
-      </div>
-    ),
-  },
-  {
-    title: "Hooks, utilities, and more",
-    description:
-      "Precedent offers a collection of hooks, utilities, and `@vercel/og`",
-    demo: (
-      <div className="grid grid-flow-col grid-rows-3 gap-10 p-10">
-        <span className="font-mono font-semibold">useIntersectionObserver</span>
-        <span className="font-mono font-semibold">useLocalStorage</span>
-        <span className="font-mono font-semibold">useScroll</span>
-        <span className="font-mono font-semibold">nFormatter</span>
-        <span className="font-mono font-semibold">capitalize</span>
-        <span className="font-mono font-semibold">truncate</span>
-      </div>
+        "Jaqpotpy provides robust preprocessing pipelines and various featurizers to enhance your machine learning models. Transform your data and gain deeper insights with ease.",
+      demo: (
+        <div className="grid grid-flow-col grid-rows-2 gap-10 p-10">
+          <span className="font-mono font-semibold">Molecular featurizer</span>
+          <span className="font-mono font-semibold">Preprocessing</span>
+          <span className="font-mono font-semibold">Preprocessing</span>
+          <span className="font-mono font-semibold">Molecular featurizer</span>
+        </div>
     ),
   },
 ];
+
