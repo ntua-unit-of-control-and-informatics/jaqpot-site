@@ -14,11 +14,13 @@ export default function Card({
 }) {
   return (
     <div
-      className={`relative flex flex-col col-span-1 p-5 min-h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md ${
+      className={`min-h-96 relative col-span-1 flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-md ${
         large ? "md:col-span-2" : ""
       }`}
     >
-      <div className="flex flex-1 items-center justify-center">{demo}</div>
+      <div className="flex flex-1 items-center justify-center pb-10 sm:p-2">
+        {demo}
+      </div>
       <div className="mx-auto max-w-lg text-center">
         <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent [text-wrap:balance] md:text-3xl md:font-normal">
           {title}
