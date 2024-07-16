@@ -8,10 +8,10 @@ import Image from "next/image";
 import { Session } from "next-auth";
 
 export default function UserDropdown({ session }: { session: Session }) {
-  const { email, image } = session?.user || {};
+  const { name, image } = session?.user || {};
   const [openPopover, setOpenPopover] = useState(false);
 
-  if (!email) return null;
+  if (!name) return null;
 
   return (
     <div className="relative inline-block text-left">
@@ -37,7 +37,22 @@ export default function UserDropdown({ session }: { session: Session }) {
             </button>
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              onClick={() => signOut()}
+              onClick={async () => {
+                await signOut();
+                const logoutUrl = new URL(
+                  `${process.env.NEXT_PUBLIC_AUTH_KEYCLOAK_ISSUER}/protocol/openid-connect/logout`,
+                );
+
+                logoutUrl.searchParams.set(
+                  "client_id",
+                  process.env.NEXT_PUBLIC_AUTH_KEYCLOAK_ID!,
+                );
+                logoutUrl.searchParams.set(
+                  "post_logout_redirect_uri",
+                  window.location.href,
+                );
+                window.location.href = logoutUrl.href;
+              }}
             >
               <LogOut className="h-4 w-4" />
               <p className="text-sm">Logout</p>
@@ -53,8 +68,14 @@ export default function UserDropdown({ session }: { session: Session }) {
           className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-gray-300 transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9"
         >
           <Image
-            alt={email}
-            src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
+            alt={name}
+            src={
+              image ||
+              `https://api.dicebear.com/9.x/pixel-art/jpg?seed=${name.replace(
+                " ",
+                "",
+              )}`
+            }
             width={40}
             height={40}
           />
