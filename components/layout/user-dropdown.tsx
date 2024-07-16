@@ -71,7 +71,7 @@ export default function UserDropdown({ session }: { session: Session }) {
             alt={name}
             src={
               image ||
-              `https://api.dicebear.com/9.x/pixel-art/jpg?seed=${name.replace(
+              `https://api.dicebear.com/9.x/bottts/jpg?seed=${name.replace(
                 " ",
                 "",
               )}`
