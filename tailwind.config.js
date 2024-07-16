@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
+const { nextui } = require("@nextui-org/react");
 
 module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -66,6 +71,45 @@ module.exports = {
     plugin(({ addVariant }) => {
       addVariant("radix-side-top", '&[data-side="top"]');
       addVariant("radix-side-bottom", '&[data-side="bottom"]');
+    }),
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            background: "#FFFFFF", // or DEFAULT
+            foreground: "#000000", // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: "#FFFFFF",
+              DEFAULT: "#4F46E5",
+            },
+            // ... rest of the colors
+          },
+        },
+        dark: {
+          colors: {
+            background: "#94A3B8", // or DEFAULT
+            foreground: "#FFFFFF", // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: "#FFFFFF",
+              DEFAULT: "#006FEE",
+            },
+          },
+          // ... rest of the colors
+        },
+        mytheme: {
+          // custom theme
+          extend: "dark",
+          colors: {
+            primary: {
+              DEFAULT: "#BEF264",
+              foreground: "#000000",
+            },
+            focus: "#BEF264",
+          },
+        },
+      },
     }),
   ],
 };

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
+    "@nextui-org/react": "^2.4.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-tooltip": "^1.0.7",
@@ -23,7 +24,7 @@
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "focus-trap-react": "^10.2.2",
-    "framer-motion": "^8.5.5",
+    "framer-motion": "^11.3.4",
     "jwt-decode": "^4.0.0",
     "lucide-react": "0.105.0-alpha.4",
     "ms": "^2.1.3",
