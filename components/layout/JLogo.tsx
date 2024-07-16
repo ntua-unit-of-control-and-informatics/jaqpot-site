@@ -3,8 +3,8 @@ export default function JLogo() {
     <div className="size-12 rounded-full">
       <svg
         version="1.1"
-        width="60"
-        height="50"
+        width="50"
+        height="40"
         viewBox="0 0 16.0 16.0"
         className="fill-indigo-400"
         xmlns="http://www.w3.org/2000/svg"
