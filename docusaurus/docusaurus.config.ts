@@ -3,8 +3,8 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "Jaqpot",
+  tagline: "Build. Train. Deploy.",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -51,12 +51,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/opengraph-image.png",
     navbar: {
-      title: "My Site",
+      title: "Jaqpot docs",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
+        alt: "Jaqpot Logo",
+        src: "img/jaqpot-j-logo.svg",
       },
       items: [
         {
@@ -66,7 +66,7 @@ const config: Config = {
           label: "Tutorial",
         },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy",
           label: "GitHub",
           position: "right",
         },
@@ -89,7 +89,7 @@ const config: Config = {
           items: [
             {
               label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              href: "https://stackoverflow.com/questions/tagged/jaqpot",
             },
             {
               label: "Discord",
@@ -97,7 +97,7 @@ const config: Config = {
             },
             {
               label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              href: "https://x.com/upci_ntua",
             },
           ],
         },
@@ -106,12 +106,12 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Jaqpot, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
