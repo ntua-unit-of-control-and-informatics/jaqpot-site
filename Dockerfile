@@ -24,6 +24,7 @@ RUN \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/docusaurus/node_modules ./docusaurus/node_modules
 COPY . .
 # This trick will deploy the correct .env file based on the DEPLOYMENT_ENV build argument
 COPY .env.${DEPLOYMENT_ENV} .env.production
