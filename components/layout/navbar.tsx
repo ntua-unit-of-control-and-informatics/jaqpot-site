@@ -1,13 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import useScroll from "@/lib/hooks/use-scroll";
-import { useSignInModal } from "./sign-in-modal";
-import UserDropdown from "./user-dropdown";
+import { Link as NextUILink } from "@nextui-org/link";
 import { Session } from "next-auth";
 import JLogo from "@/components/layout/JLogo";
-import { signIn } from "next-auth/react";
 import {
   Navbar,
   NavbarBrand,
@@ -26,24 +22,30 @@ export default function NavBar({ session }: { session: Session | null }) {
         </NavbarBrand>
         <NavbarContent className="hidden gap-4 sm:flex" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="getting-started">
+            <NextUILink color="foreground" href="/docs/getting-started">
               Getting started
-            </Link>
+            </NextUILink>
           </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="docs" aria-current="page">
+          <NavbarItem>
+            <NextUILink
+              isExternal
+              showAnchorIcon
+              color="foreground"
+              href="/docs"
+              aria-current="page"
+            >
               Docs
-            </Link>
+            </NextUILink>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="blog">
+            <NextUILink color="foreground" href="/blog">
               Blog
-            </Link>
+            </NextUILink>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="contact">
+            <NextUILink color="foreground" href="/contact">
               Contact
-            </Link>
+            </NextUILink>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">

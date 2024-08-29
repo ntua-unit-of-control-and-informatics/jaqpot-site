@@ -32,6 +32,7 @@ COPY .env.${DEPLOYMENT_ENV} .env.production
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
+  cd docusaurus && npm run build && cd .. && \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
