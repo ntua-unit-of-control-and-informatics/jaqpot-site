@@ -1,13 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import useScroll from "@/lib/hooks/use-scroll";
-import { useSignInModal } from "./sign-in-modal";
-import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
 import JLogo from "@/components/layout/JLogo";
-import { signIn } from "next-auth/react";
 import {
   Navbar,
   NavbarBrand,
@@ -26,22 +21,22 @@ export default function NavBar({ session }: { session: Session | null }) {
         </NavbarBrand>
         <NavbarContent className="hidden gap-4 sm:flex" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="getting-started">
+            <Link color="foreground" href="/getting-started">
               Getting started
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link href="docs" aria-current="page">
+            <Link href="/docs" aria-current="page">
               Docs
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="blog">
+            <Link color="foreground" href="/blog">
               Blog
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="contact">
+            <Link color="foreground" href="/contact">
               Contact
             </Link>
           </NavbarItem>
