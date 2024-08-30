@@ -9,48 +9,99 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import UserAvatar from "@/components/layout/UserAvatar";
+import { useState } from "react";
 
 export default function NavBar({ session }: { session: Session | null }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navbarLinks = [
+    {
+      href: "/getting-started",
+      text: "Getting started",
+    },
+    {
+      href: "/docs",
+      text: "Docs",
+      isExternal: true,
+      showAnchorIcon: true,
+    },
+    {
+      href: "/blog",
+      text: "Blog",
+    },
+    {
+      href: "/contact",
+      text: "Contact",
+    },
+    {
+      href: "/api",
+      text: "API",
+    },
+  ];
+
   return (
     <>
-      <Navbar>
-        <NavbarBrand as={Link} href="/">
-          <JLogo />
-        </NavbarBrand>
-        <NavbarContent className="hidden gap-4 sm:flex" justify="center">
-          <NavbarItem>
-            <NextUILink color="foreground" href="/docs/getting-started">
-              Getting started
-            </NextUILink>
-          </NavbarItem>
-          <NavbarItem>
-            <NextUILink
-              isExternal
-              showAnchorIcon
-              color="foreground"
-              href="/docs"
-              aria-current="page"
-            >
-              Docs
-            </NextUILink>
-          </NavbarItem>
-          <NavbarItem>
-            <NextUILink color="foreground" href="/blog">
-              Blog
-            </NextUILink>
-          </NavbarItem>
-          <NavbarItem>
-            <NextUILink color="foreground" href="/contact">
-              Contact
-            </NextUILink>
-          </NavbarItem>
+      <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+        <NavbarContent className="sm:hidden" justify="start">
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          />
         </NavbarContent>
+
+        <NavbarContent className="pr-3 sm:hidden" justify="center">
+          <NavbarBrand as={Link} href="/">
+            <JLogo />
+          </NavbarBrand>
+        </NavbarContent>
+
+        <NavbarContent className="hidden sm:flex" justify="start">
+          <NavbarBrand as={Link} href="/">
+            <JLogo />
+          </NavbarBrand>
+        </NavbarContent>
+
+        <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+          {navbarLinks.map((link, index) => (
+            <NavbarItem key={index}>
+              <NextUILink
+                isExternal={link.isExternal}
+                showAnchorIcon={link.showAnchorIcon}
+                color="foreground"
+                href={link.href}
+                aria-current="page"
+              >
+                {link.text}
+              </NextUILink>
+            </NavbarItem>
+          ))}
+        </NavbarContent>
+
         <NavbarContent justify="end">
           <UserAvatar session={session} />
         </NavbarContent>
+
+        <NavbarMenu>
+          {navbarLinks.map((link, index) => (
+            <NavbarMenuItem key={index}>
+              <NextUILink
+                className="w-full"
+                color="foreground"
+                href={link.href}
+                size="lg"
+                isExternal={link.isExternal}
+                showAnchorIcon={link.showAnchorIcon}
+              >
+                {link.text}
+              </NextUILink>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
       </Navbar>
       {/*<div*/}
       {/*  className={`fixed top-0 flex w-full justify-center ${*/}
