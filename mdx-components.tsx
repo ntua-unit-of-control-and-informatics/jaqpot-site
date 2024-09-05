@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "@nextui-org/react";
-import { Image, ImageProps } from "next/image";
+import Image from "next/image"
+import { ImageProps } from "next/image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
