@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Contact() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center from-white to-blue-50 p-6">
@@ -6,12 +8,12 @@ export default function Contact() {
         We’d love to hear from you! Whether you have a question, feedback, or
         just want to chat, feel free to reach out at any time.
       </p>
-      <a
+      <Link
         href="mailto:upci.ntua@gmail.com"
         className="text-blue-600 underline transition hover:text-blue-800"
       >
         📧 upci.ntua [at] gmail.com
-      </a>
+      </Link>
     </div>
   );
 }
