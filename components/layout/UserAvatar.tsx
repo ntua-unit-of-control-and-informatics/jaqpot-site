@@ -34,14 +34,10 @@ export default function UserAvatar({ session }: { session: Session | null }) {
 
   const authenticatedMenuItems: MenuItem[] = [
     {
-      key: "account",
-      href: "/account",
-      label: "Account",
-    },
-    {
-      key: "settings",
-      href: "/settings",
-      label: "Settings",
+      key: "dashboard",
+      href: `${process.env.NEXT_PUBLIC_APP_URL} + /dashboard`,
+      label: "Dashboard",
+      external: true,
     },
     {
       key: "signout",
