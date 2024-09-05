@@ -22,7 +22,7 @@ const nextConfig = {
             source: "/docs",
             destination: "/docs/index.html",
         },
-    ],
+    ]
 };
 
 const withMDX = createMDX({

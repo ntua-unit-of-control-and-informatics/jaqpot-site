@@ -5,6 +5,7 @@ export interface Post {
   slug: string;
   title: string;
   publishDate: string;
+  textPreview: string;
   imageUrl: string;
   categories: Category[];
 }
