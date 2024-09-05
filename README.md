@@ -1,5 +1,5 @@
 
-# Jaqpot - Developer Guide
+# Jaqpot Site - Developer Guide
 
 Welcome to the Jaqpot project! Below you'll find information on how to set up, run, and contribute to the development of this project.
 
