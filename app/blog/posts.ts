@@ -1,5 +1,6 @@
 import { readdir } from "fs/promises";
 import { type Category } from "./categories";
+import * as path from "node:path";
 
 export interface Post {
   slug: string;
@@ -14,9 +15,11 @@ export const postsPerPage = 3 as const;
 
 export async function getPosts(): Promise<Post[]> {
   // Retrieve slugs from post routes
-  const slugs = (
-    await readdir("./app/blog/(posts)", { withFileTypes: true })
-  ).filter((dirent) => dirent.isDirectory());
+  const postsPath = path.resolve(process.cwd(), "app/blog/(posts)");
+
+  const slugs = (await readdir(postsPath, { withFileTypes: true })).filter(
+    (dirent) => dirent.isDirectory(),
+  );
 
   // Retrieve metadata from MDX files
   const posts = await Promise.all(
