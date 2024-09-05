@@ -21,13 +21,13 @@ export default function Blog({ posts }: { posts: Post[] }) {
               >
                 <CardHeader className="flex flex-col gap-3">
                   <div className="flex w-full items-center gap-1">
-                    <Image
-                      alt="nextui logo"
-                      height={40}
-                      radius="sm"
-                      src={imageUrl || "/jaqpot-j-logo.svg"}
-                      width={40}
-                    />
+                    {/*<Image*/}
+                    {/*  alt="nextui logo"*/}
+                    {/*  height={100}*/}
+                    {/*  radius="sm"*/}
+                    {/*  src={imageUrl || "/jaqpot-j-logo.svg"}*/}
+                    {/*  width={100}*/}
+                    {/*/>*/}
                     <h2
                       color="foreground"
                       className="text-3xl font-bold sm:text-3xl sm:tracking-tight"
