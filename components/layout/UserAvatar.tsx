@@ -35,7 +35,7 @@ export default function UserAvatar({ session }: { session: Session | null }) {
   const authenticatedMenuItems: MenuItem[] = [
     {
       key: "dashboard",
-      href: `${process.env.NEXT_PUBLIC_APP_URL} + /dashboard`,
+      href: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
       label: "Dashboard",
       external: true,
     },
