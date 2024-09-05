@@ -1,11 +1,13 @@
 import MdxLayout from "../../components/mdx-layout";
+import Image from "next/image";
+
 export const metadata = {
     title: 'The Evolution of Machine Learning: From Theory to Application',
     publishDate: '2024-09-05T00:00:00Z',
     textPreview: 'Machine learning, once a niche topic confined to academia, has rapidly evolved into one of the most transformative technologies of our time. It has revolutionized industries, from healthcare and finance to entertainment and logistics, fundamentally changing how businesses operate and how we interact with the world around us. But this journey from theory to real-world application has been anything but straightforward. In this post, we dive deep into the evolution of machine learning, exploring its roots, the milestones that marked its growth, and the challenges that lie ahead as we continue to push the boundaries of what’s possible.'
 };
 
-# The Evolution of Machine Learning: From Theory to Application
+<img src="/ml.webp" alt="Image alt"/>
 
 Machine learning, once a niche topic confined to academia, has rapidly evolved into one of the most transformative technologies of our time. It has revolutionized industries, from healthcare and finance to entertainment and logistics, fundamentally changing how businesses operate and how we interact with the world around us. But this journey from theory to real-world application has been anything but straightforward. In this post, we dive deep into the evolution of machine learning, exploring its roots, the milestones that marked its growth, and the challenges that lie ahead as we continue to push the boundaries of what’s possible.
 
@@ -22,5 +24,5 @@ Despite these challenges, the future of machine learning looks incredibly promis
 In conclusion, the evolution of machine learning is a testament to human ingenuity and the relentless pursuit of innovation. From its humble beginnings as a theoretical concept to its current status as a driving force behind some of the most cutting-edge technologies of our time, machine learning has come a long way. Yet, we are only just scratching the surface of what’s possible. As we continue to develop new algorithms, harness more data, and deploy more powerful computing resources, the potential for machine learning to reshape our world is limitless. The journey has been remarkable, but the best is yet to come.
 
 export default function MDXPage({children}) {
-    return <MdxLayout>{children}</MdxLayout>
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
 }

@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "@nextui-org/react";
+import { Image, ImageProps } from "next/image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -8,6 +9,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <Link href={props.href} isExternal>
           {props.children}
         </Link>
+      );
+    },
+    img(props: any) {
+      return (
+        <div
+          style={{ position: "relative", width: "100px", maxHeight: "200px" }}
+        >
+          <Image
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
+            {...(props as ImageProps)}
+          />
+        </div>
       );
     },
     p({ children }) {

@@ -24,8 +24,8 @@ export default async function Home() {
     .catch((e) => console.log(e));
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="z-10 w-full max-w-2xl px-5 xl:px-0">
+    <div className="flex w-full flex-col items-center justify-center">
+      <div className="z-10 max-w-2xl px-5 xl:px-0">
         <a
           // TODO fix url when posted twitter status about release
           href="https://x.com/upci_ntua"
