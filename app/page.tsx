@@ -58,7 +58,7 @@ export default async function Home() {
         >
           <Link
             className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
-            href={DEPLOY_URL}
+            href={`${process.env.NEXT_PUBLIC_APP_URL}/dashboard/new/model`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -121,7 +121,7 @@ const features = [
     demo: (
       <Link
         className="group flex max-w-fit items-center justify-center space-x-2 rounded-md border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
-        href={DEPLOY_URL}
+        href={`${process.env.NEXT_PUBLIC_APP_URL}/dashboard/new/model`}
         target="_blank"
         rel="noopener noreferrer"
       >

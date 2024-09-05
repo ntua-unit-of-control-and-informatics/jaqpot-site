@@ -9,8 +9,7 @@ import { Providers } from "@/providers";
 
 export const metadata = {
   title: "Jaqpot - Create, upload, and deploy Machine Learning models",
-  description:
-    "Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at app.jaqpot.org.",
+  description: `Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at ${process.env.NEXT_PUBLIC_APP_URL}.`,
   metadataBase: new URL("https://jaqpot.org"),
 };
 

@@ -22,7 +22,7 @@ export default function NavBar({ session }: { session: Session | null }) {
 
   const navbarLinks = [
     {
-      href: "/docs/getting-started",
+      href: "/docs/category/getting-started",
       text: "Getting started",
     },
     {
@@ -40,7 +40,7 @@ export default function NavBar({ session }: { session: Session | null }) {
       text: "Contact",
     },
     {
-      href: "https://api.jaqpot.org",
+      href: process.env.NEXT_PUBLIC_API_URL,
       text: "API",
       isExternal: true,
       showAnchorIcon: true,

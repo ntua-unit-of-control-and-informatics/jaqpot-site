@@ -24,7 +24,6 @@ export async function getPosts(): Promise<Post[]> {
   // Retrieve metadata from MDX files
   const posts = await Promise.all(
     slugs.map(async ({ name }) => {
-      console.log(`./blog/(posts)/${name}/page.mdx`);
       const { metadata } = await import(`./(posts)/${name}/page.mdx`);
       return { slug: name, ...metadata };
     }),

@@ -66,6 +66,12 @@ const config: Config = {
           label: "Tutorial",
         },
         {
+          href: "https://appv2.jaqpot.org",
+          label: "Home",
+          position: "right",
+          target: "_self",
+        },
+        {
           href: "https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy",
           label: "GitHub",
           position: "right",
