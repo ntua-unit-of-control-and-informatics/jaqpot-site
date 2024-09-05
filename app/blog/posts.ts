@@ -42,7 +42,7 @@ export async function getPostsByCategory({
 
   // Filter posts by specified category
   const posts = allPosts.filter(
-    (post) => post.categories.indexOf(category) !== -1,
+    (post) => post.categories?.indexOf(category) !== -1,
   );
 
   return posts;

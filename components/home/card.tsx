@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 export default function Card({
   title,
@@ -14,7 +15,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`min-h-96 relative col-span-1 flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-md ${
+      className={`relative col-span-1 flex min-h-96 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-md ${
         large ? "md:col-span-2" : ""
       }`}
     >
@@ -29,8 +30,9 @@ export default function Card({
           <ReactMarkdown
             components={{
               a: ({ node, ...props }) => (
-                <a
+                <Link
                   target="_blank"
+                  href={props.href as any}
                   {...props}
                   className="font-medium text-gray-800 underline transition-colors"
                 />
