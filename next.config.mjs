@@ -19,7 +19,7 @@ const nextConfig = {
     },
     rewrites: async () => [
         {
-            source: "/docs",
+            source: "/docs/:slug*",
             destination: "/docs/index.html",
         },
     ]

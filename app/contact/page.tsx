@@ -1,0 +1,17 @@
+export default function Contact() {
+  return (
+    <div className="flex min-h-screen w-full flex-col items-center from-white to-blue-50 p-6">
+      <h1 className="mb-6 text-4xl font-bold text-gray-800">Get in touch</h1>
+      <p className="mb-8 max-w-md text-center text-lg text-gray-600">
+        We’d love to hear from you! Whether you have a question, feedback, or
+        just want to chat, feel free to reach out at any time.
+      </p>
+      <a
+        href="mailto:upci.ntua@gmail.com"
+        className="text-blue-600 underline transition hover:text-blue-800"
+      >
+        📧 upci.ntua [at] gmail.com
+      </a>
+    </div>
+  );
+}
