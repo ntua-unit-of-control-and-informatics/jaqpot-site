@@ -3,7 +3,7 @@ import { DEPLOY_URL } from "@/lib/constants";
 import { Github, Twitter } from "@/components/shared/icons";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
-import { ArrowUpTrayIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
+import { RocketLaunchIcon } from "@heroicons/react/24/solid";
 import { DemoVideo } from "@/components/home/demo-video";
 
 export default async function Home() {
@@ -24,7 +24,7 @@ export default async function Home() {
     .catch((e) => console.log(e));
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center">
       <div className="z-10 w-full max-w-2xl px-5 xl:px-0">
         <a
           // TODO fix url when posted twitter status about release
@@ -89,7 +89,7 @@ export default async function Home() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 const features = [

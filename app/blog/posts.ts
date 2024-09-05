@@ -5,20 +5,22 @@ export interface Post {
   slug: string;
   title: string;
   publishDate: string;
+  imageUrl: string;
   categories: Category[];
 }
 
 export const postsPerPage = 3 as const;
 
 export async function getPosts(): Promise<Post[]> {
-  // Retreive slugs from post routes
-  const slugs = (await readdir("./(posts)", { withFileTypes: true })).filter(
-    (dirent) => dirent.isDirectory(),
-  );
+  // Retrieve slugs from post routes
+  const slugs = (
+    await readdir("./app/blog/(posts)", { withFileTypes: true })
+  ).filter((dirent) => dirent.isDirectory());
 
   // Retrieve metadata from MDX files
   const posts = await Promise.all(
     slugs.map(async ({ name }) => {
+      console.log(`./blog/(posts)/${name}/page.mdx`);
       const { metadata } = await import(`./(posts)/${name}/page.mdx`);
       return { slug: name, ...metadata };
     }),

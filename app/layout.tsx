@@ -34,9 +34,7 @@ export default async function RootLayout({
           <Nav />
         </Suspense>
         <Providers>
-          <main className="flex min-h-screen w-full flex-col items-center justify-center py-16">
-            {children}
-          </main>
+          <main className="flex min-h-screen w-full py-16">{children}</main>
         </Providers>
         <Footer />
       </body>

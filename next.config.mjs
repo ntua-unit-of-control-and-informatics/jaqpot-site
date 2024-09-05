@@ -5,7 +5,7 @@ import createMDX from '@next/mdx'
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     reactStrictMode: true,
-    swcMinify: true,
+    // swcMinify: true,
     output: "standalone",
     images: {
         remotePatterns: [
