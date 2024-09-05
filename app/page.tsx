@@ -3,7 +3,7 @@ import { DEPLOY_URL } from "@/lib/constants";
 import { Github, Twitter } from "@/components/shared/icons";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
-import { ArrowUpTrayIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
+import { RocketLaunchIcon } from "@heroicons/react/24/solid";
 import { DemoVideo } from "@/components/home/demo-video";
 
 export default async function Home() {
@@ -24,8 +24,8 @@ export default async function Home() {
     .catch((e) => console.log(e));
 
   return (
-    <>
-      <div className="z-10 w-full max-w-2xl px-5 xl:px-0">
+    <div className="flex w-full flex-col items-center justify-center">
+      <div className="z-10 max-w-2xl px-5 xl:px-0">
         <a
           // TODO fix url when posted twitter status about release
           href="https://x.com/upci_ntua"
@@ -49,7 +49,7 @@ export default async function Home() {
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Jaqpot empowers data scientists and developers to seamlessly create,
-          upload, and manage machine learning models using Python or R.
+          upload, and manage machine learning models using Python.
         </p>
         <div
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
@@ -89,14 +89,14 @@ export default async function Home() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 const features = [
   {
     title: "Empower your Machine Learning journey",
     description:
-      "Build, train, and deploy machine learning models effortlessly with Python or R. Jaqpot handles the rest.",
+      "Build, train, and deploy machine learning models effortlessly with Python. Jaqpot handles the rest.",
     large: true,
     demo: <DemoVideo />,
   },
@@ -132,7 +132,7 @@ const features = [
   {
     title: "Always up-to-date and blazing fast",
     description:
-      "We ensure our platform and models are always up-to-date with the latest libraries and technologies, including Torch, scikit-learn, and R, providing you with blazing fast performance.",
+      "We ensure our platform and models are always up-to-date with the latest libraries and technologies, including Torch, scikit-learn, and ONNX runtime, providing you with blazing fast performance.",
     demo: (
       <div className="flex flex-wrap items-center justify-center justify-items-center gap-5 p-5">
         <Image
@@ -147,7 +147,12 @@ const features = [
           width={100}
           height={53}
         />
-        <Image alt="R logo" src="/R-logo.svg" width={65} height={50} />
+        <Image
+          alt="ONNX logo"
+          src="/ONNX_Runtime_logo_dark.png"
+          width={130}
+          height={50}
+        />
       </div>
     ),
   },

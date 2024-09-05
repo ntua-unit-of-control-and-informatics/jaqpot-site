@@ -8,9 +8,9 @@ import GoogleAnalytics from "@/components/shared/GoogleAnalytics";
 import { Providers } from "@/providers";
 
 export const metadata = {
-  title: "Jaqpot - Create, Upload, and Deploy Machine Learning Models",
+  title: "Jaqpot - Create, upload, and deploy Machine Learning models",
   description:
-    "Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python or R. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at app.jaqpot.org.",
+    "Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at app.jaqpot.org.",
   metadataBase: new URL("https://jaqpot.org"),
 };
 
@@ -34,9 +34,7 @@ export default async function RootLayout({
           <Nav />
         </Suspense>
         <Providers>
-          <main className="flex min-h-screen w-full flex-col items-center justify-center py-16">
-            {children}
-          </main>
+          <main className="flex min-h-screen w-full py-16">{children}</main>
         </Providers>
         <Footer />
       </body>
