@@ -1,0 +1,40 @@
+import MdxLayout from "../../components/mdx-layout";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Hello world!',
+    publishDate: '2024-09-05T00:00:00Z',
+    textPreview: 'Welcome to our very first blog post! We are excited to finally share our story, our mission, and the journey that led to the creation of Jaqpot. Whether you\'re a machine learning enthusiast, a researcher, or just curious about who we are, this post will give you a peek behind the scenes.'
+};
+
+![ML image](/ml.webp)
+
+
+Welcome to our very first blog post! We are excited to finally share our story, our mission, and the journey that led to the creation of Jaqpot. Whether you're a machine learning enthusiast, a researcher, or just curious about who we are, this post will give you a peek behind the scenes.
+
+## Who We Are
+
+We are the Jaqpot team, a passionate group of scientists, developers, and innovators dedicated to simplifying and democratizing the use of machine learning models in chemical and environmental sciences. Jaqpot is part of the Unit of Process Control & Informatics (UPCI) at the National Technical University of Athens (NTUA), one of Greece's leading academic institutions. Our team combines expertise in software development, data science, and chemical engineering, all driven by a shared vision of making complex models accessible to everyone.
+
+## Our Journey: The Beginning in 2015
+
+Jaqpot started in 2015 as a small research project with a big ambition—to bridge the gap between complex machine learning models and real-world applications in science. At that time, machine learning was rapidly evolving, but there were few platforms that allowed non-experts to easily utilize these powerful tools. We aimed to fill that gap by creating a platform that was not just for data scientists, but also for researchers in chemical and environmental sciences who needed a user-friendly way to apply machine learning to their work.
+
+The initial version of Jaqpot was developed as a web application that enabled users to upload datasets, train models, and make predictions with minimal effort. It was a labor of love, fueled by long hours, countless iterations, and a strong belief that we could make a difference.
+
+## 2024: A New Beginning
+
+Fast forward to 2024, and Jaqpot has undergone a complete transformation. We rewrote the platform from the ground up, leveraging the latest technologies to provide a faster, more intuitive, and more powerful user experience. This new version is built with modern web frameworks like Next.js and Spring Boot, ensuring that our platform is not only robust but also scalable and secure.
+
+Our new tech stack allows us to integrate advanced features like real-time collaboration, fine-grained access control, and seamless integration with popular machine learning frameworks like PyTorch and Scikit-learn. We're not just keeping up with the times; we're pushing the boundaries of what’s possible in machine learning for scientific research.
+
+## Our Vision Moving Forward
+
+As we continue to grow, our mission remains clear: to empower researchers and developers by providing them with the tools they need to harness the full potential of machine learning. We are committed to expanding our platform's capabilities, adding new features, and continuously improving the user experience.
+
+We're excited about the future and look forward to sharing more updates, insights, and stories with you through this blog. Stay tuned as we continue to evolve, and thank you for being a part of the Jaqpot journey!
+
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}

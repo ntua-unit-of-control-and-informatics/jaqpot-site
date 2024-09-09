@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "@nextui-org/react";
-import Image from "next/image"
+import Image from "next/image";
 import { ImageProps } from "next/image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -14,12 +14,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     img(props: any) {
       return (
-        <div
-          style={{ position: "relative", width: "100px", maxHeight: "200px" }}
-        >
+        <div style={{ position: "relative", width: "100%", height: "500px" }}>
           <Image
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
+            sizes="300px"
+            fill
+            style={{
+              objectFit: "contain",
+            }}
             {...(props as ImageProps)}
           />
         </div>
@@ -32,21 +33,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     h1({ children }) {
       return (
-        <h1 className="mb-5 text-3xl font-bold sm:text-3xl sm:tracking-tight">
+        <h1
+          className="text-3xl font-bold sm:text-3xl sm:tracking-tight"
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
           {children}
         </h1>
       );
     },
     h2({ children }) {
       return (
-        <h2 className="mb-5 text-2xl font-bold sm:text-3xl sm:tracking-tight">
+        <h2
+          className="mb-5 text-2xl font-bold sm:text-3xl sm:tracking-tight"
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
           {children}
         </h2>
       );
     },
     h3({ children }) {
       return (
-        <h3 className="mb-5 text-xl font-bold sm:text-3xl sm:tracking-tight">
+        <h3
+          className="mb-5 text-xl font-bold sm:text-3xl sm:tracking-tight"
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
           {children}
         </h3>
       );
