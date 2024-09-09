@@ -40,7 +40,7 @@ export default async function Home() {
           </p>
         </Link>
         <h1
-          className="mg-auto animate-fade-up bg-gradient-to-r from-indigo-500 from-30% via-purple-500 via-35% to-pink-500 to-75% bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
+          className="mg-auto animate-fade-up bg-gradient-to-r from-indigo-500 from-30% via-purple-500 via-35% to-pink-500 to-75% bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           Build. Train. Deploy

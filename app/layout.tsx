@@ -1,17 +1,24 @@
 import "./globals.css";
 import cx from "classnames";
-import { sfPro, inter } from "./fonts";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 import GoogleAnalytics from "@/components/shared/GoogleAnalytics";
 import { Providers } from "@/providers";
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 
 export const metadata = {
   title: "Jaqpot - Create, upload, and deploy Machine Learning models",
   description: `Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at ${process.env.NEXT_PUBLIC_APP_URL}.`,
   metadataBase: new URL("https://jaqpot.org"),
 };
+
+const inter = Inter({ subsets: ["latin"] });
+const sfPro = localFont({
+  src: "./fonts/SF-Pro-Display-Medium.otf",
+  variable: "--font-sf",
+});
 
 export default async function RootLayout({
   children,
@@ -23,8 +30,8 @@ export default async function RootLayout({
       <GoogleAnalytics />
       <body
         className={cx(
-          sfPro.variable,
           inter.variable,
+          sfPro.variable,
           "bg-gradient-to-br from-indigo-50 via-white to-cyan-100",
         )}
       >
@@ -33,7 +40,9 @@ export default async function RootLayout({
           <Nav />
         </Suspense>
         <Providers>
-          <main className="flex min-h-screen w-full py-16">{children}</main>
+          <main className={`flex min-h-screen w-full py-16 ${inter.className}`}>
+            {children}
+          </main>
         </Providers>
         <Footer />
       </body>
