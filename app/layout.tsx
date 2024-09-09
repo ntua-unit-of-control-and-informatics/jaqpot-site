@@ -29,18 +29,14 @@ export default async function RootLayout({
     <html lang="en">
       <GoogleAnalytics />
       <body
-        className={cx(
-          inter.variable,
-          sfPro.variable,
-          "bg-gradient-to-br from-indigo-50 via-white to-cyan-100",
-        )}
+        className={`bg-gradient-to-br from-indigo-50 via-white to-cyan-100  ${inter.className}`}
       >
         {/*<div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />*/}
         <Suspense fallback="...">
           <Nav />
         </Suspense>
         <Providers>
-          <main className={`flex min-h-screen w-full py-16 ${inter.className}`}>
+          <main className={`flex min-h-screen w-full px-3 py-8 sm:py-16`}>
             {children}
           </main>
         </Providers>
