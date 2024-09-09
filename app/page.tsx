@@ -49,8 +49,8 @@ export default async function Home() {
           className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Jaqpot empowers data scientists and developers to seamlessly create,
-          upload, and manage machine learning models using Python.
+          Upload, manage and deploy your machine learning model or use
+          open-source models, all accessible through our inference api
         </p>
         <div
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
@@ -160,13 +160,13 @@ const features = [
   {
     title: "Advanced Preprocessing and Featurization",
     description:
-      "Jaqpotpy provides robust preprocessing pipelines and various featurizers to enhance your machine learning models. Transform your data and gain deeper insights with ease.",
+      "Jaqpotpy provides robust preprocessing pipelines and various featurizers to enhance your machine learning models. Transform your data and gain deeper insights with ease deployed in the cloud.",
     demo: (
       <div className="grid grid-flow-col grid-rows-2 gap-10 p-10">
-        <span className="font-mono font-semibold">Molecular featurizer</span>
+        <span className="font-mono font-semibold">Featurizers</span>
         <span className="font-mono font-semibold">Preprocessing</span>
-        <span className="font-mono font-semibold">Preprocessing</span>
-        <span className="font-mono font-semibold">Molecular featurizer</span>
+        <span className="font-mono font-semibold">Model Insights</span>
+        <span className="font-mono font-semibold">Cloud Deployment</span>
       </div>
     ),
   },
