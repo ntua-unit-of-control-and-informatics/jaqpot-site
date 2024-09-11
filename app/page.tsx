@@ -6,6 +6,13 @@ import { nFormatter } from "@/lib/utils";
 import { RocketLaunchIcon } from "@heroicons/react/24/solid";
 import { DemoVideo } from "@/components/home/demo-video";
 import Link from "next/link";
+import { generateSharedMetadata } from "@/app/shared.metadata";
+import { Metadata } from "next";
+
+export const metadata: Metadata = generateSharedMetadata(
+  "Home",
+  "A presentation of Jaqpot features",
+);
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(

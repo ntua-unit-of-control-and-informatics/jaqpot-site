@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { Metadata } from "next";
+import { generateSharedMetadata } from "@/app/shared.metadata";
+
+export const metadata: Metadata = generateSharedMetadata(
+  "Blog",
+  "Blog posts about Jaqpot and its features",
+);
 
 export default function Contact() {
   return (
