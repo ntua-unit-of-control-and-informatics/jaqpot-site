@@ -16,6 +16,8 @@ export const generateSharedMetadata = (
     }${jaqpotAppDescription}`,
     openGraph: {
       title: `${pageTitle} | Jaqpot`,
+      url: process.env.NEXT_PUBLIC_SITE_URL!,
+      type: "website",
       description: `${
         pageDescription ? pageDescription + ". " : ""
       }${jaqpotAppDescription}`,
