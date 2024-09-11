@@ -1,5 +1,4 @@
 import "./globals.css";
-import cx from "classnames";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
@@ -11,7 +10,6 @@ import { Inter } from "next/font/google";
 export const metadata = {
   title: "Jaqpot - Create, upload, and deploy Machine Learning models",
   description: `Jaqpot is a versatile platform for creating, uploading, and deploying machine learning models using Python. Manage model permissions and access them through an intuitive interface or programmatically via API. Discover the power of Jaqpot at ${process.env.NEXT_PUBLIC_APP_URL}.`,
-  metadataBase: new URL("https://jaqpot.org"),
 };
 
 const inter = Inter({ subsets: ["latin"] });
