@@ -79,7 +79,7 @@ export default function NavBar({ session }: { session: Session | null }) {
                 color="foreground"
                 href={link.href}
                 aria-current="page"
-                className="text-lg"
+                className="text-base"
               >
                 {link.text}
               </NextUILink>

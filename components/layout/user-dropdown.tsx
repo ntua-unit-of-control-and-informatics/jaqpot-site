@@ -71,11 +71,12 @@ export default function UserDropdown({ session }: { session: Session }) {
             alt={name}
             src={
               image ||
-              `https://api.dicebear.com/9.x/bottts/jpg?seed=${name.replace(
+              `https://api.dicebear.com/9.x/bottts/svg?seed=${name.replace(
                 " ",
                 "",
               )}`
             }
+            unoptimized
             width={40}
             height={40}
           />

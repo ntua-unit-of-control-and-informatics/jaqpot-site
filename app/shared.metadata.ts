@@ -9,7 +9,7 @@ export const generateSharedMetadata = (
   pageDescription: string = "",
 ): Metadata => {
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
     title: `${pageTitle} | Jaqpot`,
     description: `${
       pageDescription ? pageDescription + ". " : ""
