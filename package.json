@@ -8,7 +8,8 @@
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:schema": "npx openapi-typescript ../jaqpot-api-v2/src/main/resources/openapi.yaml -o ./src/app/api.schema.d.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
@@ -36,8 +37,10 @@
     "next-auth": "5.0.0-beta.19",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "react-markdown": "^8.0.7",
     "sharp": "^0.33.4",
+    "swr": "^2.2.5",
     "tailwind-merge": "^1.14.0",
     "use-debounce": "^9.0.4",
     "vaul": "^0.6.8"

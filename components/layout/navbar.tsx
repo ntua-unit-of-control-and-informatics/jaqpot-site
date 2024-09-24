@@ -34,6 +34,10 @@ export default function NavBar({ session }: { session: Session | null }) {
       showAnchorIcon: true,
     },
     {
+      href: "/pricing",
+      text: "Pricing",
+    },
+    {
       href: "/blog",
       text: "Blog",
     },

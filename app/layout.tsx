@@ -6,6 +6,8 @@ import GoogleAnalytics from "@/components/shared/GoogleAnalytics";
 import { Providers } from "@/providers";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "Jaqpot - Create, upload, and deploy Machine Learning models",
@@ -23,6 +25,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await auth();
+
   return (
     <html lang="en">
       <GoogleAnalytics />
@@ -34,9 +38,11 @@ export default async function RootLayout({
           <Nav />
         </Suspense>
         <Providers>
-          <main className={`flex min-h-screen w-full px-3 py-8 sm:py-16`}>
-            {children}
-          </main>
+          <SessionProvider session={session}>
+            <main className={`flex min-h-screen w-full px-3 py-8 sm:py-16`}>
+              {children}
+            </main>
+          </SessionProvider>
         </Providers>
         <Footer />
       </body>
