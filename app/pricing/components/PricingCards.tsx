@@ -2,24 +2,24 @@ export default function PricingCards() {
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
       <div className="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
-        <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 ">
           Designed for business teams like yours
         </h2>
-        <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+        <p className="mb-5 font-light text-gray-500 sm:text-xl ">
           Here at Flowbite we focus on markets where technology, innovation, and
           capital can unlock long-term value and drive economic growth.
         </p>
       </div>
       <div className="space-y-8 sm:gap-6 lg:grid lg:grid-cols-3 lg:space-y-0 xl:gap-10">
-        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8">
           <h3 className="mb-4 text-2xl font-semibold">Free</h3>
-          <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+          <p className="font-light text-gray-500 sm:text-lg ">
             Best option for personal use & for your next project.
           </p>
           <ul role="list" className="my-8 space-y-4 text-left">
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,24 +101,24 @@ export default function PricingCards() {
           </ul>
           <a
             href="#"
-            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 dark:text-white  dark:focus:ring-primary-900"
+            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200"
           >
             Get started
           </a>
         </div>
-        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8">
           <h3 className="mb-4 text-2xl font-semibold">Company</h3>
-          <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+          <p className="font-light text-gray-500 sm:text-lg">
             Relevant for multiple users, extended & premium support.
           </p>
           <div className="my-8 flex items-baseline justify-center">
             <span className="mr-2 text-5xl font-extrabold">$99</span>
-            <span className="text-gray-500 dark:text-gray-400">/month</span>
+            <span className="text-gray-500">/month</span>
           </div>
           <ul role="list" className="mb-8 space-y-4 text-left">
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,13 +177,13 @@ export default function PricingCards() {
                 ></path>
               </svg>
               <span>
-                Premium support:{" "}
+                Premium support:{' '}
                 <span className="font-semibold">24 months</span>
               </span>
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -201,24 +201,24 @@ export default function PricingCards() {
           </ul>
           <a
             href="#"
-            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 dark:text-white  dark:focus:ring-primary-900"
+            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 "
           >
             Get started
           </a>
         </div>
-        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+        <div className="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow xl:p-8">
           <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
-          <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+          <p className="font-light text-gray-500 sm:text-lg">
             Best for large scale uses and extended redistribution rights.
           </p>
           <div className="my-8 flex items-baseline justify-center">
             <span className="mr-2 text-5xl font-extrabold">$499</span>
-            <span className="text-gray-500 dark:text-gray-400">/month</span>
+            <span className="text-gray-500">/month</span>
           </div>
           <ul role="list" className="mb-8 space-y-4 text-left">
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +233,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +248,7 @@ export default function PricingCards() {
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -260,13 +260,13 @@ export default function PricingCards() {
                 ></path>
               </svg>
               <span>
-                Team size:{" "}
+                Team size:{' '}
                 <span className="font-semibold">100+ developers</span>
               </span>
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -278,13 +278,13 @@ export default function PricingCards() {
                 ></path>
               </svg>
               <span>
-                Premium support:{" "}
+                Premium support:{' '}
                 <span className="font-semibold">36 months</span>
               </span>
             </li>
             <li className="flex items-center space-x-3">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+                className="h-5 w-5 flex-shrink-0 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +302,7 @@ export default function PricingCards() {
           </ul>
           <a
             href="#"
-            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 dark:text-white  dark:focus:ring-primary-900"
+            className="rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 "
           >
             Get started
           </a>

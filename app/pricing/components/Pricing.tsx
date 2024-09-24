@@ -36,13 +36,13 @@ export default function Pricing() {
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center from-white to-blue-50">
-      <section className="rounded p-2 text-center dark:bg-gray-900">
+      <section className="rounded p-2 text-center ">
         {/*<PricingCards />*/}
         <h4 className="mb-4 text-indigo-600">Early access</h4>
         <h1 className="my-4 text-5xl font-extrabold leading-[3.5rem] tracking-tight text-slate-900">
           Want full access to Jaqpot?
         </h1>
-        <p className="m-auto my-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+        <p className="m-auto my-8 max-w-2xl text-lg text-gray-600">
           We are still in beta, therefore our API is rate limited to 5
           predictions per minute, but if you want full, unrestricted access,
           click the button below. We&apos;ll send you an email with everything
@@ -63,7 +63,7 @@ export default function Pricing() {
 
         {!isAuthenticated(session) && (
           <div>
-            <p className="mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+            <p className="mb-8 max-w-2xl text-lg text-gray-600 ">
               Please log in or create an account to request for early access.
             </p>
             <Button
