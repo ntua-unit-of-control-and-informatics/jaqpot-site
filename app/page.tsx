@@ -10,7 +10,7 @@ import { generateSharedMetadata } from '@/app/shared.metadata';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = generateSharedMetadata(
-  'Jaqpot: Deploy Models, Get Predictions via API',
+  'Jaqpot: Deploy models, get predictions via API',
   'A presentation of Jaqpot features',
 );
 
