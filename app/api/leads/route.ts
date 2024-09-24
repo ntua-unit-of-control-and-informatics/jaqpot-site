@@ -7,7 +7,6 @@ export async function POST(
   request: Request,
 ): Promise<NextResponse<ApiResponse>> {
   const session = await auth();
-  console.log("ohhai");
   if (!isAuthenticated(session)) {
     return errorResponse(
       "You need to be authenticated to access this endpoint",
