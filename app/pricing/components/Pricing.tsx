@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/button';
 import { signIn, useSession } from 'next-auth/react';
 import { isAuthenticated } from '@/lib/utils';
 import toast from 'react-hot-toast';
-import { ApiResponse } from '@/lib/response';
+import { ApiResponse } from '@/app/util/response';
 import { useCallback, useState } from 'react';
 
 export default function Pricing() {
