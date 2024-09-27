@@ -17,12 +17,15 @@ export async function GET(
       401,
     );
   }
-  const res = await fetch(`${process.env.API_URL}/v1/auth/validate`, {
-    headers: {
-      Authorization: `Bearer ${session!.token}`,
-      'Content-Type': 'application/json',
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/validate`,
+    {
+      headers: {
+        Authorization: `Bearer ${session!.token}`,
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   return handleApiResponse(res);
 }
