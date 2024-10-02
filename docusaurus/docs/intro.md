@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Intro
 
-Welcome to **Jaqpot**, your platform for deploying machine learning models for predictive toxicology and cheminformatics. Jaqpot allows researchers to upload, manage, and make predictions using machine learning models, ensuring easy access and seamless integration with various tools and services.
+Welcome to **Jaqpot**, your platform for deploying machine learning models. Jaqpot allows researchers to upload, manage, and make predictions using machine learning models, ensuring easy access and seamless integration with various tools and services.
 
 This documentation will help you understand how to get started, use the Python client `jaqpotpy`, and interact with the **Jaqpot API**.
 
