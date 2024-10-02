@@ -6,13 +6,13 @@ sidebar_position: 1
 
 API keys are used to authenticate requests to the **Jaqpot API**. You can create an API key for your account and use it to access Jaqpot programmatically by visiting the [API Key dashboard page](https://app.jaqpot.org/dashboard/api-keys).
 
-Once an API key is created, you will receive a **client ID** and a **client secret**. 
+Once an API key is created, you will receive a **client key** and a **client secret**. 
 
 **Keep these credentials secure and do not share them with anyone.**
 
 ## How to use the API Key
 
-To authenticate API requests, include the **client ID** as the username and the **client secret** as the password in the headers `X-Api-Key` and `X-Api-Secret` of your requests.
+To authenticate API requests, include the **client key** as the username and the **client secret** as the password in the headers `X-Api-Key` and `X-Api-Secret` of your requests.
 
 ### Example Request
 
