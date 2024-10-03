@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { Metadata } from "next";
-import { generateSharedMetadata } from "@/app/shared.metadata";
+import Link from 'next/link';
+import { Metadata } from 'next';
+import { generateSharedMetadata } from '@/app/shared.metadata';
 
 export const metadata: Metadata = generateSharedMetadata(
-  "Blog",
-  "Blog posts about Jaqpot and its features",
+  'Contact',
+  "Get in touch with the Jaqpot team for inquiries, support, or collaboration opportunities. We're here to help with any questions about our machine learning platform.",
 );
 
 export default function Contact() {
