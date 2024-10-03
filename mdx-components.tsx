@@ -1,7 +1,7 @@
-import type { MDXComponents } from "mdx/types";
-import { Link } from "@nextui-org/react";
-import Image from "next/image";
-import { ImageProps } from "next/image";
+import type { MDXComponents } from 'mdx/types';
+import { Link } from '@nextui-org/react';
+import Image from 'next/image';
+import { ImageProps } from 'next/image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -14,12 +14,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     img(props: any) {
       return (
-        <div style={{ position: "relative", width: "100%", height: "500px" }}>
+        <div style={{ position: 'relative', width: '100%', height: '300px' }}>
           <Image
             sizes="300px"
             fill
             style={{
-              objectFit: "contain",
+              objectFit: 'contain',
             }}
             {...(props as ImageProps)}
           />
@@ -28,14 +28,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     p({ children }) {
       return (
-        <p style={{ marginTop: "1rem", marginBottom: "1rem" }}>{children}</p>
+        <p style={{ marginTop: '1rem', marginBottom: '1rem' }}>{children}</p>
       );
     },
     h1({ children }) {
       return (
         <h1
           className="text-3xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{ marginTop: '1rem', marginBottom: '1rem' }}
         >
           {children}
         </h1>
@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h2
           className="mb-5 text-2xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{ marginTop: '1rem', marginBottom: '1rem' }}
         >
           {children}
         </h2>
@@ -55,7 +55,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h3
           className="mb-5 text-xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{ marginTop: '1rem', marginBottom: '1rem' }}
         >
           {children}
         </h3>
