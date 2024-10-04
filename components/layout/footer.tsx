@@ -91,7 +91,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://discord.gg/tVpCjYQqSV/"
+                    href="https://discord.gg/tVpCjYQqSV"
                     className="hover:underline"
                   >
                     Discord
