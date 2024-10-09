@@ -57,7 +57,8 @@ export default async function Home() {
           style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
         >
           Upload, manage and deploy your machine learning model or use
-          open-source models, all accessible through our inference api
+          open-source models, all accessible through our open-source inference
+          API.
         </p>
         <div
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
