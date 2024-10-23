@@ -43,10 +43,10 @@ export default function Pricing() {
           Want full access to Jaqpot?
         </h1>
         <p className="m-auto my-8 max-w-2xl text-lg text-gray-600">
-          We are still in beta, therefore our API is rate limited to 5
-          predictions per minute, but if you want full, unrestricted access,
-          click the button below. We&apos;ll send you an email with everything
-          you need to get started.
+          We are still in beta, therefore our API is rate limited to 5.000
+          predictions per day, but if you want full, unrestricted access, click
+          the button below. We&apos;ll send you an email with everything you
+          need to get started.
         </p>
 
         {isAuthenticated(session) && (
