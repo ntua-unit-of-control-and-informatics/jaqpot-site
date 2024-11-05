@@ -24,7 +24,6 @@ Examples
 >>> featurizer = jp.descriptors.molecular.MACCSKeysFingerprint()
 >>> features = featurizer.featurize([smiles])
 >>> type(features[0])
-<class ‘numpy.ndarray’>
 >>> features[0].shape
 (167,)
 References
@@ -74,7 +73,6 @@ Examples
 >>> featurizer = jt.descriptors.MordredDescriptors(ignore_3D=True)
 >>> features = featurizer.featurize(smiles)
 >>> type(features[0])
-<class ‘numpy.ndarray’>
 >>> features[0].shape
 (1613,)
 
@@ -106,7 +104,6 @@ Examples
 >>> featurizer = dc.feat.RDKitDescriptors()
 >>> features = featurizer.featurize(smiles)
 >>> type(features[0])
-<class ‘numpy.ndarray’>
 >>> features[0].shape
 (208,)
 
@@ -149,7 +146,6 @@ Examples
 >>> featurizer = jt.descriptors.TopologicalFingerprint(size=2048, radius=4)
 >>> features = featurizer.featurize(smiles)
 >>> type(features[0])
-<class ‘numpy.ndarray’>
 >>> features[0].shape
 (2048,)
 >>> # Example 2: (size = 2048, radius = 4, sparse = True, smiles = True)
@@ -157,6 +153,5 @@ Examples
 …                                          sparse=True, smiles=True)
 >>> features = featurizer.featurize(smiles)
 >>> type(features[0]) # dict containing fingerprints
-<class ‘dict’>
 
 ## Module contents

@@ -1725,7 +1725,6 @@ array([[-4.49401501,  4.00950034, -1.81814867,  7.29718677],   # random
        [ 0.39924804,  4.68456316,  4.99394529,  4.84057254]])  # random
 ```
 
-#### random_integers(low, high=None, size=None, dtype=<class 'int'>)
 
 randint(low, high=None, size=None, dtype=int)
 
