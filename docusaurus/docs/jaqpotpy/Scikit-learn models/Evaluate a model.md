@@ -18,31 +18,16 @@ We start by creating a sample dataset with molecular structures represented as S
 # Create sample data
 data = pd.DataFrame(
     {
-        "smiles": [
-            "CC",
-            "CCO",
-            "CCC",
-            "CCCl",
-            "CCBr",
-            "COC",
-            "CCOCC",
-            "CCCO",
-            "CCCC",
-            "CCCCCC",
-        ],
+        "smiles": ["CC", "CCO", "CCC", "CCCl",
+        "CCBr", "COC", "CCOCC", "CCCO",
+        "CCCC", "CCCCCC",
+    ],
+
         "temperature": np.random.randint(20, 37, size=10),
-        "activity": [
-            80,
-            81,
-            81,
-            84,
-            83.5,
-            83,
-            89,
-            90,
-            91,
-            97,
-        ],
+        
+        "activity": [80, 81, 81, 84, 83.5,
+        83, 89, 90, 91, 97,
+    ],
     }
 )
 ```
