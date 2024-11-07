@@ -55,7 +55,7 @@ test_dataset = JaqpotpyDataset(
 )
 ```
 
-Finally, we use the trained model to check if the test data are in or out of the domain of applicability. The `predict_doa` method also evaluates the domain of applicability for the predictions.
+Finally, we use the trained model to check if the test data are in or out of the domain of applicability, using `predict_doa` method.
 
 ```python
 doa_predictions = jaqpot_model.predict_doa(test_dataset)
