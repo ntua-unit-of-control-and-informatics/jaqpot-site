@@ -62,7 +62,7 @@ const config: Config = {
         specs: [
           {
             spec: 'https://raw.githubusercontent.com/ntua-unit-of-control-and-informatics/jaqpot-api/refs/heads/main/src/main/resources/openapi.yaml',
-            route: '/jaqpot-api/documentation/full-api-reference/',
+            route: '/jaqpot-api/documentation/full-api-reference',
           },
         ],
         // Theme Options for modifying how redoc renders them
