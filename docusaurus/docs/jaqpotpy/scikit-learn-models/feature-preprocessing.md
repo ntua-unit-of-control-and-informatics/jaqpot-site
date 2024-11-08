@@ -1,3 +1,8 @@
+---
+title: Feature Preprocessing
+sidebar_position: 4
+---
+
 ## Using Multiple Featurizers
 
 In the first script, we initialize two molecular descriptor calculators from JaqpotPy:

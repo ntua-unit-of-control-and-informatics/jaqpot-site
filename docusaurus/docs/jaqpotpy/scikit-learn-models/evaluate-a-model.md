@@ -1,4 +1,8 @@
-# Evaluating a Model's Robustness
+---
+sidebar_position: 5
+---
+
+# Evaluate a Model
 
 In this example, we will demonstrate how to evaluate the robustness of a model using `jaqpotpy`. We will use a RandomForestRegressor model and perform various evaluations including cross-validation, external evaluation, and a randomization test.
 

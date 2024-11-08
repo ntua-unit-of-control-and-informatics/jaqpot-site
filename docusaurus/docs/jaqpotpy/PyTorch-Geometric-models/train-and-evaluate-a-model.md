@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Train and evaluate a model
 
 In this section, we continue building on the previous example by defining the optimizer, loss function, and training procedure for our graph neural network (GNN) model using `jaqpotpy`. We utilize PyTorch-based components to configure the training process.

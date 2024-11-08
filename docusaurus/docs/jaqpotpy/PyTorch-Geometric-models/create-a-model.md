@@ -1,4 +1,8 @@
-# Creating a Model
+---
+sidebar_position: 2
+---
+
+# Create a Model
 This document demonstrates how to create a Graph Neural Network model using JaqpotPy with a specific architecture. The example assumes you have already preprocessed your data and have a dataset ready to use.
 
 ## Import Required Libraries

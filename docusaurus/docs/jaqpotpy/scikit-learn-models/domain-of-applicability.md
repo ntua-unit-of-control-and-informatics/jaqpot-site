@@ -1,3 +1,7 @@
+---
+title: Domain of Applicability
+---
+
 To demonstrate how to use the domain of applicability (DOA) with Jaqpotpy models, we will create a regression model using scikit-learn's Linear Regression and evaluate the DOA using Jaqpotpy's Leverage, BoundingBox, and MeanVar methods.
 
 First, we generate a small regression dataset with 100 samples, each having 4 features and some noise. We then create a DataFrame with the features stored in columns "X1", "X2", "X3", "X4" and the target in column "y".

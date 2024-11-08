@@ -1,4 +1,8 @@
-# Creating a Model
+---
+sidebar_position: 2
+---
+
+# Create a Model
 
 This example demonstrates how to create a model using `jaqpotpy` with a scikit-learn model. The following code will guide you through generating a dataset, training a logistic regression model, and making predictions.
 

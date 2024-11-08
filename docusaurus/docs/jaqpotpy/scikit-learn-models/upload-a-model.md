@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Upload a Model on Jaqpot
 
 This example demonstrates how to upload a trained model on Jaqpot using the `jaqpotpy` library. The code below shows the complete process, from generating a dataset to deploying the model on Jaqpot.

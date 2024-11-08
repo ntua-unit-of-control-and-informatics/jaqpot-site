@@ -1,4 +1,8 @@
-# Creating a Dataset
+---
+sidebar_position: 1
+---
+
+# Create a Dataset
 
 This guide demonstrates how to create and work with datasets using `jaqpotpy`. The `JaqpotpyDataset` class is versatile and can handle various types of data, including molecular representations (SMILES) and their descriptors.
 
