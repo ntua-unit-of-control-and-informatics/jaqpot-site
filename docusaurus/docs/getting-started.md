@@ -18,36 +18,42 @@ pip install jaqpotpy
 
 ```python
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.datasets import make_regression
+from sklearn.linear_model import LogisticRegression
 from jaqpotpy.datasets import JaqpotpyDataset
 from jaqpotpy.models import SklearnModel
-from sklearn.datasets import make_regression
-from jaqpotpy.descriptors import RDKitDescriptors
+from jaqpotpy import Jaqpot
 
-X, y = make_regression(n_samples=10, n_features=2, noise=0.2, random_state=42)
-df = pd.DataFrame(X, columns=["X1", "X2"])
-df["target"] = y
-df["smiles"] = [ "CC", "CCO", "CCC", "CCCl", "CCBr", "COC", "CCOCC", "CCCO", "CCCC", "CCCCCC",]
+# Sample data
+data = pd.DataFrame({
+    'feature1': [1, 2, 3, 4, 5],
+    'feature2': [2.1, 3.2, 4.3, 5.4, 6.5],
+    'target': [0, 1, 0, 1, 0]
+})
 
-
-# Create a dataset with molecular descriptors
+# Create dataset for binary classification
 dataset = JaqpotpyDataset(
-    df=df,
-    x_cols=['X1', 'X2'],
-    y_cols=['target'],
-    smiles_cols=['smiles'],
-    task='regression',
-    featurizer=RDKitDescriptors()
+    df=data,
+    x_cols=['feature1', 'feature2'],  # Feature columns
+    y_cols=['target'],                # Target column
+    task='binary_classification'      # Specify the task type
 )
 
 # Τrain a model
 model = SklearnModel(
-    model =RandomForestRegressor(),
+    model =LogisticRegression(),
     dataset = dataset
 )
 model.fit()
 
+# Upload Model on Jaqpot
+jaqpot = Jaqpot()
+jaqpot.login()
+jaqpot_model.deploy_on_jaqpot(
+    jaqpot=jaqpot,
+    name="My first Jaqpot Model",
+    description="This is my first attempt to train and upload a Jaqpot model.",
+    visibility="PRIVATE",
+)
 ```
 
 ## Success!
