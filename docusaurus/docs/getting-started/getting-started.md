@@ -41,7 +41,7 @@ dataset = JaqpotpyDataset(
     featurizer=RDKitDescriptors()
 )
 
-# Initialize and train a model
+# Τrain a model
 model = SklearnModel(
     model =RandomForestRegressor(),
     dataset = dataset
@@ -49,7 +49,6 @@ model = SklearnModel(
 model.fit(dataset)
 
 # Deploy to Jaqpot platform
-# Upload locally
 jaqpot = Jaqpot()
 jaqpot.login()
 model.deploy_on_jaqpot(
@@ -63,7 +62,7 @@ model.deploy_on_jaqpot(
 
 ## Web Interface and API Access
 
-Once deployed, your model will be available at [https://app.jaqpot.org] (https://app.jaqpot.org) with:
+Once deployed, your model will be available at [https://app.jaqpot.org](https://app.jaqpot.org) with:
 
 - Deployed models with goodness-of-fit metrics
 - Interactive web interface for predictions
