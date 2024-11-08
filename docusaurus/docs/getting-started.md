@@ -28,7 +28,6 @@ dataset = JaqpotpyDataset(
     df=your_data,
     x_cols=['x1', 'x2', 'x3'],
     y_cols=['target'],
-    smiles_cols=['smiles'],
     task='regression',
 )
 
