@@ -24,6 +24,7 @@ ONNX allows users to convert models into a single, standardized format, providin
 - **Compatibility across libraries**: ONNX allows Jaqpot to handle multiple model types by standardizing them into one format.
 - **Ease of use**: Once a model is converted to ONNX, users experience minimal hassle, as ONNX abstracts many library-specific differences.
 - **Scikit-Learn as first-class citizen**: Jaqpot fully supports Scikit-Learn models with ONNX, making it the preferred library for seamless integration.
+- **Backward compatibility**: ONNX ensures that models remain compatible with Jaqpot’s API, even as the platform evolves. Even if Jaqpot or scikit-learn updates its API, ONNX models will remain compatible.
 
 ### Cons
 - **Dependency on ONNX features**: Jaqpot’s capabilities are limited to the functions ONNX currently supports. If ONNX doesn’t support a specific function from a library, Jaqpot may not be able to support it either.
