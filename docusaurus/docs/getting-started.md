@@ -14,7 +14,7 @@ You can install JaqpotPy using pip:
 pip install jaqpotpy
 ```
 
-## Quick start example
+## Deploy your first model
 
 ```python
 import pandas as pd
