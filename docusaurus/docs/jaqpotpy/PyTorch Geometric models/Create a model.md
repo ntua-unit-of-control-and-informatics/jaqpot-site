@@ -51,7 +51,7 @@ Graph Attention and Graph Transformer architectures can proccess both node and e
 
 ```python
 node_features = featurizer.get_num_node_features()
-activation = torch.nn.ReLU()
+edge_features = featurizer.get_edge_features()
 model = GraphAttentionNetwork(
     input_dim=node_features,
     hidden_layers=1, 
@@ -66,6 +66,11 @@ model = GraphAttentionNetwork(
     heads = 2 
 )
 ```
+
+Extra arguments:
+
+- edge_dim: Number of edge features or None
+- heads: Attention heads for each neuron in hidden layers
 
 
 
