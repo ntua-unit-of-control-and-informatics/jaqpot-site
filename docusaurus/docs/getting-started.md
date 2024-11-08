@@ -17,36 +17,36 @@ pip install jaqpotpy
 ## Quick start example
 
 ```python
+import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.datasets import make_regression
 from jaqpotpy.datasets import JaqpotpyDataset
 from jaqpotpy.models import SklearnModel
+from sklearn.datasets import make_regression
 from jaqpotpy.descriptors import RDKitDescriptors
 
+X, y = make_regression(n_samples=10, n_features=2, noise=0.2, random_state=42)
+df = pd.DataFrame(X, columns=["X1", "X2"])
+df["target"] = y
+df["smiles"] = [ "CC", "CCO", "CCC", "CCCl", "CCBr", "COC", "CCOCC", "CCCO", "CCCC", "CCCCCC",]
 
-# Create a dataset
+
+# Create a dataset with molecular descriptors
 dataset = JaqpotpyDataset(
-    df=your_data,
-    x_cols=['x1', 'x2', 'x3'],
+    df=df,
+    x_cols=['X1', 'X2'],
     y_cols=['target'],
+    smiles_cols=['smiles'],
     task='regression',
+    featurizer=RDKitDescriptors()
 )
 
-# Initialize and train a model
+# Τrain a model
 model = SklearnModel(
     model =RandomForestRegressor(),
     dataset = dataset
 )
-model.fit(dataset)
-
-# Deploy to Jaqpot platform
-jaqpot = Jaqpot()
-jaqpot.login()
-model.deploy_on_jaqpot(
-    jaqpot=jaqpot,
-    name="Demo model",
-    description="This is my first Jaqpot model",
-    visibility="PRIVATE",
-)
+model.fit()
 
 ```
 
