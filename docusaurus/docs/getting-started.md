@@ -53,3 +53,8 @@ model.deploy_on_jaqpot(
 
 ```
 
+## Success!
+
+Voila! Your first model is now online on Jaqpot! Kudos to you, awesome modeler, for taking the first step toward your modeling journey! 🚀🌟
+
+
