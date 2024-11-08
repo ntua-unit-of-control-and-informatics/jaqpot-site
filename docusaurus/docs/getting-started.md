@@ -14,7 +14,7 @@ You can install JaqpotPy using pip:
 pip install jaqpotpy
 ```
 
-## Quick Start Example
+## Quick start example
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
@@ -23,14 +23,13 @@ from jaqpotpy.models import SklearnModel
 from jaqpotpy.descriptors import RDKitDescriptors
 
 
-# Create a dataset with molecular descriptors
+# Create a dataset
 dataset = JaqpotpyDataset(
     df=your_data,
-    x_cols=['additional_features'],
+    x_cols=['x1', 'x2', 'x3'],
     y_cols=['target'],
     smiles_cols=['smiles'],
     task='regression',
-    featurizer=RDKitDescriptors()
 )
 
 # Initialize and train a model
@@ -41,7 +40,6 @@ model = SklearnModel(
 model.fit(dataset)
 
 # Deploy to Jaqpot platform
-# Upload locally
 jaqpot = Jaqpot()
 jaqpot.login()
 model.deploy_on_jaqpot(
