@@ -36,7 +36,7 @@ dataset = JaqpotpyDataset(
 
 ## Creating a Dataset with SMILES and Molecular Descriptors
 
-When working with molecular data:
+When working with molecular data, the column containing the SMILES, as well as the featurizer should be:
 
 ```python
 # Sample data with SMILES
@@ -120,4 +120,4 @@ multi_dataset = JaqpotpyDataset(
 4. Feature columns (`x_cols`) can include both molecular and non-molecular features.
 5. Target columns (`y_cols`) specify the variable(s) to be predicted.
 
-This dataset object can then be used with various Jaqpotpy model classes for training and prediction tasks.
+This dataset object can then be used with the `Sklearn()` Jaqpotpy model classes for training and prediction tasks.
