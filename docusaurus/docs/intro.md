@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Intro
 
-Welcome to **Jaqpot**, your platform for deploying machine learning models. Jaqpot allows researchers to upload, manage, and make predictions using machine learning models, ensuring easy access and seamless integration with various tools and services.
+Welcome to **Jaqpot**, your platform for deploying machine learning models. Jaqpot allows machine learning modellers to upload, manage, and make predictions using machine learning models, ensuring easy access and seamless integration with various tools and services.
 
 This documentation will help you understand how to get started, use the Python client `jaqpotpy`, and interact with the **Jaqpot API**.
 
@@ -22,3 +22,4 @@ If you prefer working in Python, you'll love **Jaqpotpy**, our Python client for
 For those who want more control, the **Jaqpot API** provides programmatic access to the platform. This is perfect for integrating Jaqpot functionality into your own applications or pipelines.
 
 Explore the docs to learn how to interact with the API, authenticate requests, and manage your models and data.
+
