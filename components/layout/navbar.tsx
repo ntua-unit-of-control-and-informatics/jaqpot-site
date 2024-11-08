@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Link as NextUILink } from "@nextui-org/link";
-import { Session } from "next-auth";
-import JLogo from "@/components/layout/JLogo";
+import Link from 'next/link';
+import { Link as NextUILink } from '@nextui-org/link';
+import { Session } from 'next-auth';
+import JLogo from '@/components/layout/JLogo';
 import {
   Navbar,
   NavbarBrand,
@@ -12,11 +12,11 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import UserAvatar from "@/components/layout/UserAvatar";
-import { useState } from "react";
-import { usePathname } from "next/navigation";
+} from '@nextui-org/navbar';
+import { Button } from '@nextui-org/button';
+import UserAvatar from '@/components/layout/UserAvatar';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function NavBar({ session }: { session: Session | null }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,30 +24,30 @@ export default function NavBar({ session }: { session: Session | null }) {
 
   const navbarLinks = [
     {
-      href: "/docs/category/getting-started",
-      text: "Getting started",
+      href: '/docs/category/getting-started',
+      text: 'Getting started',
     },
     {
-      href: "/docs",
-      text: "Docs",
+      href: '/docs',
+      text: 'Docs',
       isExternal: true,
       showAnchorIcon: true,
     },
     {
-      href: "/pricing",
-      text: "Pricing",
+      href: '/pricing',
+      text: 'Pricing',
     },
     {
-      href: "/blog",
-      text: "Blog",
+      href: '/blog',
+      text: 'Blog',
     },
     {
-      href: "/contact",
-      text: "Contact",
+      href: '/contact',
+      text: 'Contact',
     },
     {
-      href: process.env.NEXT_PUBLIC_API_URL,
-      text: "API",
+      href: `${process.env.NEXT_PUBLIC_SITE_URL}/docs/jaqpot-api`,
+      text: 'API',
       isExternal: true,
       showAnchorIcon: true,
     },
@@ -58,7 +58,7 @@ export default function NavBar({ session }: { session: Session | null }) {
       <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           />
         </NavbarContent>
 
