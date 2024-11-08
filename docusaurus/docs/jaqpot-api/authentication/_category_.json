@@ -1,6 +1,6 @@
 {
-  "label": "API keys",
-  "position": 2,
+  "label": "Authentication",
+  "position": 1,
   "link": {
     "type": "generated-index",
     "description": "Learn how to interact programmatically with the API using API keys."
