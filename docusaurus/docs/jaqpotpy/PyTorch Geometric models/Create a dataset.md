@@ -1,4 +1,4 @@
-# Creating a Molecular Graph Dataset with JaqpotPy
+# Creating a dataset
 
 This example demonstrates how to create a Molecular Graph Neural Network dataset with `jaqpotpy`. We utilize a dataset containing SMILES representations of molecules and their associated activity values to predict molecular activity.
 
@@ -13,7 +13,7 @@ from jaqpotpy.datasets import SmilesGraphDataset
 ```
 
 ## Load the Data
-We load a sample dataset containing SMILES strings and their corresponding target values. This example uses a regression task dataset.
+We create a sample dataset containing SMILES strings and their corresponding target values. This example uses a regression task dataset.
 
 ```python
 smiles_list = [
