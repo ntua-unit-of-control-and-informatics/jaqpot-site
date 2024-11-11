@@ -38,5 +38,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     - run: npm ci
+    - run: cd docusaurus && npm ci
     - run: npm run build --if-present
 
