@@ -5,11 +5,33 @@ sidebar_position: 4
 
 ## Using Multiple Featurizers
 
-In the first script, we initialize two molecular descriptor calculators from JaqpotPy:
+This guide is about using multiple featurizers and performing feature selection.
+
+First, we import necessary libraries.
+
+```python
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+from sklearn.feature_selection import VarianceThreshold
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, StandardScaler
+from sklearn.ensemble import RandomForestRegressor
+from jaqpotpy.models import SklearnModel
+from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.descriptors import RDKitDescriptors, MACCSKeysFingerprint
+```
+
+Create a dataframe with SMILES strings, a categorical variable, temperature, and activity values
+
+```python
+data = pd.read_csv("https://github.com/ntua-unit-of-control-and-informatics/jaqpot-google-colab-examples/raw/doc/JAQPOT-425/Sklearn_jupyter_examples/datasets/regression_smiles_categorical.csv")
+```
+
+Define a list of desired featurizers.
 
 ```python
 from jaqpotpy.descriptors import RDKitDescriptors, MACCSKeysFingerprint
-
 featurizers = [RDKitDescriptors(), MACCSKeysFingerprint()]
 ```
 
@@ -48,6 +70,7 @@ Alternatively, you can directly select specific columns by name using the `Selec
 ```python
 myList = [
     "temperature",
+    "cat_col",
     "MaxAbsEStateIndex",
     "MaxEStateIndex",
     "MinAbsEStateIndex",
@@ -91,10 +114,11 @@ We then pass these preprocessing pipelines to the `SklearnModel` object:
 ```python
 jaqpot_model = SklearnModel(
     dataset=train_dataset,
-    model=model,
+    model=RandomForestRegressor(random_state=42),
     preprocess_x=double_preprocessing,
     preprocess_y=single_preprocessing,
 )
+jaqpot_model.fit()
 ```
 
 This ensures that the feature and target variables are properly preprocessed before being used to train the machine learning model.
