@@ -53,7 +53,7 @@ jaqpot = JaqpotApiClient()
 To retrieve a model by its ID, you can use the `get_model_by_id` method. Here is an example:
 
 ```python
-model = jaqpot.get_model_by_id(model_id=1860)
+model = jaqpot.get_model_by_id(model_id=1886)
 print(model)
 ```
 
@@ -72,7 +72,7 @@ To take a synchronous prediction with a model, you can use the `predict_sync` me
 
 ```python
 input_data = [{"SMILES": "CC", "X1": 1, "X2": 2, "Cat_col": "CAT_1"}]
-prediction = jaqpot.predict_sync(model_id=1853, dataset=input_data)
+prediction = jaqpot.predict_sync(model_id=1886, dataset=input_data)
 print(prediction)
 ```
 
@@ -83,8 +83,8 @@ In this case, the program will wait until predict_sync returns the prediction re
 To take an asynchronous prediction with a model, you can use the `predict_async` method. In asynchronous prediction, the http call doesn’t wait for the prediction to finish, allowing it to continue running other tasks. This is useful for longer predictions or when handling multiple requests. Use the predict_async method as follows:
 
 ```python
-input_data = [{"SMILES": "CC", "X1": 1, "X2": 2}]
-prediction_dataset_id = jaqpot.predict_async(model_id=1812, dataset=input_data)
+input_data = [{"SMILES": "CC", "X1": 1, "X2": 2, "Cat_col": "CAT_1"}]
+prediction_dataset_id = jaqpot.predict_async(model_id=1886, dataset=input_data)
 ```
 
 ## Get a dataset by ID
@@ -102,6 +102,6 @@ To take a prediction with a model using a CSV file, you can use the `predict_wit
 
 ```python
 csv_path = "ADD_A_CSV_PATH.csv"
-prediction = jaqpot.predict_with_csv_sync(model_id=1812, csv_path=csv_path)
+prediction = jaqpot.predict_with_csv_sync(model_id=1886, csv_path=csv_path)
 print(prediction)
 ```
