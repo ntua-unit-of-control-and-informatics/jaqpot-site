@@ -3,6 +3,12 @@ title: Python SDK
 sidebar_position: 1
 ---
 
+The jaqpotpy Python SDK provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
+
+The first step is to crate environment variables with the personal API keys and then initialize the Jaqpot client, which will allow you to access the API services. To take the api keys you should log in to app.jaqpot.org and click on top right corner at the icon of account and then select API keys from the dropdown menu.
+
+![Jaqpot API Keys](https://example.com/path/to/your/image.png)
+
 ```python
 from jaqpotpy.api.jaqpot_api_client import JaqpotApiClient
 jaqpot = JaqpotApiClient()
