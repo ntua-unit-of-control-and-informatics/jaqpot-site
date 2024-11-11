@@ -5,20 +5,19 @@ sidebar_position: 2
 # Create a Model
 This document demonstrates how to create a Graph Neural Network model using JaqpotPy with a specific architecture. The example assumes you have already preprocessed your data and have a dataset ready to use.
 
-## Import Required Libraries
+## Basic Setup
 
 We first import the necessary libraries:
 
 ```python
 import torch
-from torch_geometric.loader import DataLoader
 from jaqpotpy.descriptors.graph import SmilesGraphFeaturizer
 from jaqpotpy.datasets import SmilesGraphDataset
 from jaqpotpy.models.torch_geometric_models.graph_neural_network import GraphSageNetwork, GraphAttentionNetwork
 ```
 
 ## Define the Graph Neural Network Architecture
-In this example, we use a GraphSageNetwork architecture. The network takes node features from a featurizer and creates a model with specified input dimensions, hidden layers, and output dimensions. Currently Jaqpotpy library support the following architectures:
+In this example, we use a GraphSageNetwork architecture. The network takes node features from a featurizer and creates a model with specified input dimensions, hidden layers, and output dimensions. Currently Jaqpotpy library supports the following architectures:
 
 - GraphConvolutionNetork
 - GraphSageNetwork
@@ -45,7 +44,7 @@ model = GraphSageNetwork(
 - input_dim: Number of input neurons, determined by the number of node features.
 - hidden_layers: Number of hidden layers in the network.
 - hidden_dim: Number of neurons in each hidden layer.
-- output_dim: Number of output neurons (default set to 1 for binary classification).
+- output_dim: Number of output neurons (default set to 1 for binary classification or regression).
 - activation: Activation function, specified using PyTorch (e.g., ReLU).
 - pooling: Graph pooling method (options: mean, add, max).
 - dropout_proba: Dropout probability for regularization.
