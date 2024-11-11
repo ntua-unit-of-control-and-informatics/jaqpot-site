@@ -15,15 +15,21 @@ Before using the SDK, you'll need to obtain API credentials from Jaqpot. To get 
 
 **The API keys are valid for 6 months from their generation date. Please store these keys securely, as they cannot be retrieved from Jaqpot after initial generation. If your keys are lost or expired, you will need to generate new ones by following the same steps above.**
 
-There are two ways to set up your API credentials as environment variables for Jaqpotpy. Using these methods, your API credentials will be automatically loaded and set as HTTP headers (`X-Api-Key` and `X-Api-Secret`) required for authentication with the Jaqpot service.
+There are multiple ways to set up your API credentials as environment variables for Jaqpotpy. Here are presented 2 common methods. Using these methods, your API credentials will be automatically loaded and set as HTTP headers (`X-Api-Key` and `X-Api-Secret`) required for authentication with the Jaqpot service.
 
-### Method 1: Direct Python Setup
-The most straightforward way is to set the environment variables directly in your Python code:
+### Method 1: Using Environment Variables Directly
+You can set environment variables before running your script:
 
 ```python
-import os 
-os.environ['JAQPOT_API_KEY] = 'your_api_key_here'
-os.environ['JAQPOT_API_SECRET] = 'your_api_secret_here'
+# Linux/MacOS
+export JAQPOT_API_KEY='your_api_key_here'
+export JAQPOT_API_SECRET='your_api_secret_here'
+python your_script.py
+
+# Windows (Command Prompt)
+set JAQPOT_API_KEY=your_api_key_here
+set JAQPOT_API_SECRET=your_api_secret_here
+python your_script.py
 ```
 
 ### Method 2: Using a .env file
@@ -39,7 +45,10 @@ Then load these variables in your Python code:
 from dotenv import load_dotenv
 load_dotenv(".env") # Returns True if successful
 ```
-Note: If `load_dotenv()` returns False, verify that your `.env` file is properly formatted and in the correct location.
+**Note 1**: If `load_dotenv()` returns False, verify that your `.env` file is properly formatted and in the correct location.
+
+**Note 2**: Remember to add `.env` to your .gitignore file to keep your credentials secure.
+
 
 ### Initializing the Client
 
