@@ -13,6 +13,8 @@ Before using the SDK, you'll need to obtain API credentials from Jaqpot. To get 
 2. Click on the account icon in the top right corner
 3. Select "API keys" from the dropdown menu
 
+**The API keys are valid for 6 months from their generation date. Please store these keys securely, as they cannot be retrieved from Jaqpot after initial generation. If your keys are lost or expired, you will need to generate new ones by following the same steps above.**
+
 There are two methods to set up your API credentials as environment variables:
 
 ### Method 1: Direct Python Setup
