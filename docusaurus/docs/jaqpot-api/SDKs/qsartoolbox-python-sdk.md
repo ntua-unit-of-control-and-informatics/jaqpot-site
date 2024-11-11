@@ -1,5 +1,5 @@
 ---
-title: QSAR Toolox Python SDK
+title: QSAR Toolbox Python SDK
 sidebar_position: 2
 ---
 
@@ -11,7 +11,7 @@ The jaqpotpy SDK provides seamless access to QSAR Toolbox, a comprehensive softw
 
 This integration allows users to programmatically access QSAR Toolbox functionalities, perform calculations, make predictions, and analyze chemical structures directly from their Python environment. All components are accessible through simple API calls, requiring only SMILES notation as input for predictions.
 
-## QSAR Toolox
+## QSAR Toolbox
 
 To retrieve a component (model, profiler or calculator) of QsarToolBox, you can retrieve a model by its ID using the `get_model_by_id` method. Here is an example:
 
@@ -27,7 +27,7 @@ profilers = jaqpot.get_model_by_id(model_id=1842)
 
 ```
 
-### QSAR Toolox Calculator
+### QSAR Toolbox Calculator
 
 To take a prediction with any QsarToolBox calculator, you can use the `qsartoolbox_calculator_predict_sync` method. Here is an example:
 
@@ -39,7 +39,7 @@ prediction = jaqpot.qsartoolbox_calculator_predict_sync(
 print(prediction)
 ```
 
-### QSAR Toolox Model
+### QSAR Toolbox Model
 
 To take a prediction with any QsarToolBox model, you can use the `qsartoolbox_qsar_model_predict_sync` method as:
 
@@ -51,7 +51,7 @@ prediction = jaqpot.qsartoolbox_qsar_model_predict_sync(
 print(prediction)
 ```
 
-### QSAR Toolox Profiler
+### QSAR Toolbox Profiler
 
 To take a prediction with any QsarToolBox profiler, you can use the `qsartoolbox_profiler_predict_sync` method. Here is an example:
 
