@@ -22,4 +22,4 @@ curl -X GET "https://api.jaqpot.org/v1/models" \
   -H "X-Api-Secret: <client_secret>"
 ```
 
-or use the [Python SDK](../SDKs/python-sdk/install-the-sdk.md) 
+or use one of the [SDKs](https://jaqpot.org/docs/category/sdks) 
