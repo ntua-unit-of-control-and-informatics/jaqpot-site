@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# Train and evaluate a model
+# Train and Evaluate a Model
 
 In this section, we continue building on the previous example by defining the optimizer, loss function, and training procedure for our graph neural network (GNN) model using `jaqpotpy`. We utilize PyTorch-based components to configure the training process.
 
@@ -16,7 +16,7 @@ from torch_geometric.loader import DataLoader
 from jaqpotpy.descriptors.graph import SmilesGraphFeaturizer
 from jaqpotpy.datasets import SmilesGraphDataset
 from jaqpotpy.models.torch_geometric_models.graph_neural_network import GraphSageNetwork, GraphAttentionNetwork
-from jaqpotpy.models.trainers.graph_trainers import BinaryGraphModelTrainer, RegressionModelTrainer
+from jaqpotpy.models.trainers.graph_trainers import BinaryGraphModelTrainer, RegressionGraphModelTrainer
 ```
 
 ## Binary Classification
