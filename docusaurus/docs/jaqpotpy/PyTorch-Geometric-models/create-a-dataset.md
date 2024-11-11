@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Create a Dataset
 
-This example demonstrates how to create a Molecular Graph Neural Network dataset with `jaqpotpy`. We utilize a dataset containing SMILES representations of molecules and their associated activity values to predict molecular activity.
+This example demonstrates how to create a Molecular Graph Neural Network dataset with `jaqpotpy`. `SmilesGraphFeaturizer` is used to create graph based features on SMILES input, while `SmilesGraphDataset` is the dataset class for Graph Neural Networks training.
 
-## Import Required Libraries
+## Basic Setup
 
 We first import the necessary libraries:
 
@@ -16,8 +16,8 @@ from jaqpotpy.descriptors.graph import SmilesGraphFeaturizer
 from jaqpotpy.datasets import SmilesGraphDataset
 ```
 
-## Load the Data
-We create a sample dataset containing SMILES strings and their corresponding target values. This example uses a regression task dataset.
+## Demo Data
+We create a small dataset for demonstration purposes with SMILES strings and their corresponding target values. This example uses a classification target.
 
 ```python
 smiles_list = [
@@ -27,7 +27,7 @@ smiles_list = [
     "CC(C)CCCC(C)C1CCC2C1(CCC3C2CCC4=C3CC=C4)O",  # Cholesterol
     "OC[C@H]1OC(=O)C(O)=C1O"  # Vitamin C (Ascorbic acid)
 ]
-y = [0, 1, 0, 1, 1]
+y = [0, 1, 0, 1, 1] # Binary Activity
 ```
 
 ## Featurization
@@ -47,6 +47,7 @@ Names of features and their RDKit functions can be obtained with:
 featurizer.SUPPORTED_ATOM_FEATURES()
 featurizer.SUPPORTED_BOND_FEATURES()
 ```
+Example of custom graph features
 ```python
 featurizer = SmilesGraphFeaturizer(include_edge_features=True)
 # First argument is the feature name
@@ -58,7 +59,7 @@ featurizer.add_atom_feature("formal_charge")
 ```
 
 ## Dataset Preparation
-We create datasets for training, validation, and testing using the featurizer. The datasets include the SMILES strings, target values, and the configured featurizer.
+We can create datasets for training, validation, and testing using the featurizer. The datasets include the SMILES strings, target values, and the configured featurizer.
 
 ```python
 dataset = SmilesGraphDataset(
