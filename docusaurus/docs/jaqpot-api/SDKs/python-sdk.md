@@ -5,9 +5,43 @@ sidebar_position: 1
 
 The jaqpotpy Python SDK provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
 
-The first step is to crate environment variables with the personal API keys and then initialize the Jaqpot client, which will allow you to access the API services. To take the api keys you should log in to app.jaqpot.org and click on top right corner at the icon of account and then select API keys from the dropdown menu.
+## Authentication
 
-![Jaqpot API Keys](https://example.com/path/to/your/image.png)
+Before using the SDK, you'll need to obtain API credentials from Jaqpot. To get your API keys:
+
+1. Log in to app.jaqpot.org
+2. Click on the account icon in the top right corner
+3. Select "API keys" from the dropdown menu
+
+There are two methods to set up your API credentials as environment variables:
+
+### Method 1: Direct Python Setup
+The most straightforward way is to set the environment variables directly in your Python code:
+
+```python
+import os 
+os.environ['JAQPOT_API_KEY] = 'your_api_key_here'
+os.environ['JAQPOT_API_SECRET] = 'your_api_secret_here'
+```
+
+### Method 2: Using a .env file
+
+Alternatively, you can create a `.env` file in your project directory with the following content:
+```
+JAQPOT_API_KEY='your_api_key_here'
+JAQPOT_API_SECRET='your_api_secret_here'
+```
+Then load these variables in your Python code:
+
+```python
+from dotenv import load_dotenv
+load_dotenv(".env") # Returns True if successful
+```
+Note: If `load_dotenv()` returns False, verify that your `.env` file is properly formatted and in the correct location.
+
+### Initializing the Client
+
+After setting up your environment variables, initialize the Jaqpot client:
 
 ```python
 from jaqpotpy.api.jaqpot_api_client import JaqpotApiClient
