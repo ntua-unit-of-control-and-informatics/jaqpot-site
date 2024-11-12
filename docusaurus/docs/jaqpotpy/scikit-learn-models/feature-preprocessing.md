@@ -22,7 +22,7 @@ from jaqpotpy.datasets import JaqpotpyDataset
 from jaqpotpy.descriptors import RDKitDescriptors, MACCSKeysFingerprint
 ```
 
-Create a dataframe with SMILES strings, a categorical variable, temperature, and activity values
+Create a dataframe with SMILES strings, a categorical variable, temperature, and activity values. SMILES is a unified method to represent chemical structures in the form of a line notation. For more info about SMILES check [this Wikipedia page](https://en.wikipedia.org/wiki/Simplified_Molecular_Input_Line_Entry_System).
 
 ```python
 data = pd.read_csv("https://github.com/ntua-unit-of-control-and-informatics/jaqpot-google-colab-examples/raw/doc/JAQPOT-425/Sklearn_jupyter_examples/datasets/regression_smiles_categorical.csv")
