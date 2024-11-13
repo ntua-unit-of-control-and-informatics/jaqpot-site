@@ -14,7 +14,7 @@ Jaqpot uses **[ONNX](https://onnx.ai/) (Open Neural Network Exchange)** as a sta
 
 Currently, Jaqpot fully supports the conversion and deployment of:
 - **Scikit-learn Models**: These models work directly and reliably with ONNX, making Scikit-Learn a primary library for Jaqpot.
-- **PyTorch Geometric Models**: Support for PyTorch-Geometric models is being developed, and users can start to experiment with some Pytorch Graph Neural Network models using ONNX.
+- **PyTorch Geometric Models**: Support for PyTorch-Geometric models is being developed (specifically for molecular modelling), and users can start to experiment with some Pytorch Graph Neural Network models using ONNX.
 
 ONNX allows users to convert models into a single, standardized format, providing cross-platform compatibility and a smoother integration experience.
 
