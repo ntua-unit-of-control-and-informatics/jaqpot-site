@@ -1,6 +1,6 @@
 ---
 title: QSAR Toolbox Python SDK
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 The jaqpotpy SDK provides seamless access to QSAR Toolbox, a comprehensive software application designed for filling data gaps in toxicity data. Through the SDK, users can interact with three main components of QSAR Toolbox:
