@@ -39,5 +39,5 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     - run: npm ci
     - run: cd docusaurus && npm ci
-    - run: ALGOLIA_APP_ID=test ALGOLIA_SEARCH_API_KEY=test npm run build --if-present
+    - run: npm run build --if-present
 
