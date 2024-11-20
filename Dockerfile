@@ -1,6 +1,8 @@
 FROM node:18-alpine AS base
 # Add build argument
 ARG DEPLOYMENT_ENV=production
+ARG ALGOLIA_APP_ID
+ARG ALGOLIA_SEARCH_API_KEY
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -35,7 +37,7 @@ COPY .env.${DEPLOYMENT_ENV} .env.production
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
-  cd docusaurus && npm run build && cd .. && \
+  cd docusaurus && ALGOLIA_APP_ID=${ALGOLIA_APP_ID} ALGOLIA_SEARCH_API_KEY=${ALGOLIA_SEARCH_API_KEY} npm run build && cd .. && \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
