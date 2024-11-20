@@ -25,6 +25,8 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+ENV ALGOLIA_APP_ID=${ALGOLIA_APP_ID}
+ENV ALGOLIA_SEARCH_API_KEY=${ALGOLIA_SEARCH_API_KEY}
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/docusaurus/node_modules ./docusaurus/node_modules
 COPY . .
