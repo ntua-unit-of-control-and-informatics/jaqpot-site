@@ -48,7 +48,7 @@ model.fit()
 # Upload Model on Jaqpot
 jaqpot = Jaqpot()
 jaqpot.login()
-jaqpot_model.deploy_on_jaqpot(
+model.deploy_on_jaqpot(
     jaqpot=jaqpot,
     name="My first Jaqpot Model",
     description="This is my first attempt to train and upload a Jaqpot model.",
