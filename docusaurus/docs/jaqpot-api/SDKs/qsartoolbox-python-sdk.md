@@ -13,23 +13,23 @@ This integration allows users to programmatically access QSAR Toolbox functional
 
 ## QSAR Toolbox
 
-To retrieve a component (model, profiler or calculator) of QsarToolBox, you can retrieve a model by its ID using the `get_model_by_id` method. Here is an example:
+To retrieve a component (model, profiler or calculator) of QSAR Toolbox, you can retrieve a model by its ID using the `get_model_by_id` method. Here is an example:
 
 ```python
-# To get all calculators of QsarToolBox:
+# To get all calculators of QSAR Toolbox:
 calculators = jaqpot.get_model_by_id(model_id=6)
 
-# To get all models of QsarToolBox:
+# To get all models of QSAR Toolbox:
 models = jaqpot.get_model_by_id(model_id=1837)
 
-# To get all profilers of QsarToolBox
+# To get all profilers of QSAR Toolbox
 profilers = jaqpot.get_model_by_id(model_id=1842)
 
 ```
 
 ### QSAR Toolbox Calculator
 
-To take a prediction with any QsarToolBox calculator, you can use the `qsartoolbox_calculator_predict_sync` method. Here is an example:
+To take a prediction with any QSAR Toolbox calculator, you can use the `qsartoolbox_calculator_predict_sync` method. Here is an example:
 
 ```python
 prediction = jaqpot.qsartoolbox_calculator_predict_sync(
@@ -41,7 +41,7 @@ print(prediction)
 
 ### QSAR Toolbox Model
 
-To take a prediction with any QsarToolBox model, you can use the `qsartoolbox_qsar_model_predict_sync` method as:
+To take a prediction with any QSAR Toolbox model, you can use the `qsartoolbox_qsar_model_predict_sync` method as:
 
 ```python
 prediction = jaqpot.qsartoolbox_qsar_model_predict_sync(
@@ -53,7 +53,7 @@ print(prediction)
 
 ### QSAR Toolbox Profiler
 
-To take a prediction with any QsarToolBox profiler, you can use the `qsartoolbox_profiler_predict_sync` method. Here is an example:
+To take a prediction with any QSAR Toolbox profiler, you can use the `qsartoolbox_profiler_predict_sync` method. Here is an example:
 
 ```python
 prediction = jaqpot.qsartoolbox_profiler_predict_sync(
