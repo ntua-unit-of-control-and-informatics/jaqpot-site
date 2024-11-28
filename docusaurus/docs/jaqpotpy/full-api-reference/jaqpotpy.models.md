@@ -150,7 +150,7 @@ Get or set the version of the model.
 
 ## jaqpotpy.models.sklearn module
 
-### *class* jaqpotpy.models.sklearn.SklearnModel(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | list | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None, random_seed: int | None = 1311)
+### *class* jaqpotpy.models.sklearn.SklearnModel(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | list | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None)
 
 Bases: [`Model`](#jaqpotpy.models.base_classes.Model)
 
@@ -324,7 +324,7 @@ Args:
 Raises:
 : ValueError: If a preprocessor is not valid.
 
-#### cross_validate(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), n_splits=5)
+#### cross_validate(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), n_splits=5, random_seed=42)
 
 Perform cross-validation.
 

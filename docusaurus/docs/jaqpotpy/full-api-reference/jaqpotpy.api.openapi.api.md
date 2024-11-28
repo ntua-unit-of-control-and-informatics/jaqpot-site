@@ -1109,6 +1109,81 @@ Ref: [https://openapi-generator.tech](https://openapi-generator.tech)
 
 Do not edit the class manually.
 
+#### archive_model(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to archive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → ArchiveModel200Response
+
+Archive a model
+
+Archives a model. Models that remain archived for more than 30 days will be permanently deleted.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to archive (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### archive_model_with_http_info(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to archive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [ApiResponse](jaqpotpy.api.openapi.md#jaqpotpy.api.openapi.api_response.ApiResponse)[ArchiveModel200Response]
+
+Archive a model
+
+Archives a model. Models that remain archived for more than 30 days will be permanently deleted.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to archive (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### archive_model_without_preload_content(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to archive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → HTTPResponse
+
+Archive a model
+
+Archives a model. Models that remain archived for more than 30 days will be permanently deleted.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to archive (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
 #### create_model(model: [Model](jaqpotpy.api.openapi.models.md#jaqpotpy.api.openapi.models.model.Model), \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → None
 
 Create a new model
@@ -1236,6 +1311,162 @@ Delete a single model by its ID
 
 * **Parameters:**
   * **id** (*int*) – The ID of the model to delete (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_all_models(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [GetModels200Response](jaqpotpy.api.openapi.models.md#jaqpotpy.api.openapi.models.get_models200_response.GetModels200Response)
+
+Get paginated models
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_all_models_with_http_info(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [ApiResponse](jaqpotpy.api.openapi.md#jaqpotpy.api.openapi.api_response.ApiResponse)[[GetModels200Response](jaqpotpy.api.openapi.models.md#jaqpotpy.api.openapi.models.get_models200_response.GetModels200Response)]
+
+Get paginated models
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_all_models_without_preload_content(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → HTTPResponse
+
+Get paginated models
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_archived_models(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [GetModels200Response](jaqpotpy.api.openapi.models.md#jaqpotpy.api.openapi.models.get_models200_response.GetModels200Response)
+
+Get paginated archived models
+
+Retrieve a paginated list of models that have been archived by the user
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_archived_models_with_http_info(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [ApiResponse](jaqpotpy.api.openapi.md#jaqpotpy.api.openapi.api_response.ApiResponse)[[GetModels200Response](jaqpotpy.api.openapi.models.md#jaqpotpy.api.openapi.models.get_models200_response.GetModels200Response)]
+
+Get paginated archived models
+
+Retrieve a paginated list of models that have been archived by the user
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### get_archived_models_without_preload_content(page: Annotated[int, Strict(strict=True)] | None = None, size: Annotated[int, Strict(strict=True)] | None = None, sort: List[Annotated[str, Strict(strict=True)]] | None = None, \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → HTTPResponse
+
+Get paginated archived models
+
+Retrieve a paginated list of models that have been archived by the user
+
+* **Parameters:**
+  * **page** (*int*)
+  * **size** (*int*)
+  * **sort** (*List* *[**str* *]*)
   * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
     number provided, it will be total request
     timeout. It can also be a pair (tuple) of
@@ -1842,6 +2073,81 @@ Search for models
   * **query** (*str*) – (required)
   * **page** (*int*)
   * **size** (*int*)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### unarchive_model(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to unarchive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → UnarchiveModel200Response
+
+Unarchive a model
+
+Unarchives a previously archived model. This will cancel any scheduled deletion.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to unarchive (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### unarchive_model_with_http_info(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to unarchive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → [ApiResponse](jaqpotpy.api.openapi.md#jaqpotpy.api.openapi.api_response.ApiResponse)[UnarchiveModel200Response]
+
+Unarchive a model
+
+Unarchives a previously archived model. This will cancel any scheduled deletion.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to unarchive (required)
+  * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
+    number provided, it will be total request
+    timeout. It can also be a pair (tuple) of
+    (connection, read) timeouts.
+  * **\_request_auth** (*dict* *,* *optional*) – set to override the auth_settings for an a single
+    request; this effectively ignores the
+    authentication in the spec for a single request.
+  * **\_content_type** (*str* *,* *Optional*) – force content-type for the request.
+  * **\_headers** (*dict* *,* *optional*) – set to override the headers for a single
+    request; this effectively ignores the headers
+    in the spec for a single request.
+  * **\_host_index** (*int* *,* *optional*) – set to override the host_index for a single
+    request; this effectively ignores the host_index
+    in the spec for a single request.
+* **Returns:**
+  Returns the result object.
+
+#### unarchive_model_without_preload_content(model_id: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, description='The ID of the model to unarchive')], \_request_timeout: None | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | Tuple[Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]] = None, \_request_auth: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_content_type: Annotated[str, Strict(strict=True)] | None = None, \_headers: Dict[Annotated[str, Strict(strict=True)], Any] | None = None, \_host_index: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=0)])] = 0) → HTTPResponse
+
+Unarchive a model
+
+Unarchives a previously archived model. This will cancel any scheduled deletion.
+
+* **Parameters:**
+  * **model_id** (*int*) – The ID of the model to unarchive (required)
   * **\_request_timeout** (*int* *,* *tuple* *(**int* *,* *int* *)* *,* *optional*) – timeout setting for this request. If one
     number provided, it will be total request
     timeout. It can also be a pair (tuple) of
