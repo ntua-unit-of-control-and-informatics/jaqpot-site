@@ -35,8 +35,7 @@ export default async function Home() {
     <div className="flex w-full flex-col items-center justify-center">
       <div className="z-10 max-w-2xl px-5 xl:px-0">
         <Link
-          // TODO fix url when posted twitter status about release
-          href="https://x.com/upci_ntua"
+          href="https://x.com/upci_ntua/status/1863559342936498573"
           target="_blank"
           rel="noreferrer"
           className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
