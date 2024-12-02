@@ -75,7 +75,6 @@ We define a test dataset for external evaluation and prepare it using `JaqpotpyD
 X_test = pd.DataFrame(
     {
         "smiles": ["CCCOC", "CO"],
-        "cat_col": ["low", "low"],
         "temperature": [27.0, 22.0],
         "activity": [89.0, 86.0],
     }
@@ -85,7 +84,7 @@ X_test = pd.DataFrame(
 test_dataset = JaqpotpyDataset(
     df=X_test,
     smiles_cols="smiles",
-    x_cols=["cat_col", "temperature"],
+    x_cols=["temperature"],
     y_cols=["activity"],
     task="regression",
     featurizer=featurizer,
