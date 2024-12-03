@@ -62,13 +62,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     ol({ children }) {
-      return <ol className="list-inside list-decimal">{children}</ol>;
+      return <ol className="list-decimal">{children}</ol>;
     },
     ul({ children }) {
-      return <ul className="list-inside list-disc">{children}</ul>;
+      return <ul className="list-disc">{children}</ul>;
     },
     li({ children }) {
-      return <li className="mb-2 list-item list-inside">{children}</li>;
+      return <li>{children}</li>;
     },
     blockquote({ children }) {
       return (

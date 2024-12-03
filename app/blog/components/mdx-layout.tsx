@@ -1,9 +1,8 @@
-import { Image, Link } from "@nextui-org/react";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { CalendarDaysIcon } from "@heroicons/react/24/solid";
-import JaqpotTimeAgo from "@/app/components/JaqpotTimeAgo";
-import { Divider } from "@nextui-org/divider";
-import { Post } from "@/app/blog/posts";
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
+import { CalendarDaysIcon } from '@heroicons/react/24/solid';
+import JaqpotTimeAgo from '@/app/components/JaqpotTimeAgo';
+import { Divider } from '@nextui-org/divider';
+import { Post } from '@/app/blog/posts';
 
 export default function MdxLayout({
   metadata,

@@ -1,0 +1,105 @@
+import MdxLayout from "../../components/mdx-layout";
+
+export const metadata = {
+    title: 'Deploy your first model with Jaqpot',
+    publishDate: '2024-12-03T00:00:00Z',
+    textPreview: 'Ready to share your machine learning model with the world? This guide shows you how to deploy your first model using Jaqpot. No complex infrastructure needed - just your trained model and a few lines of code.'
+};
+
+![Deploy model](/deploy-first-model.png)
+
+After introducing ourselves in our first post, many of you asked for a practical guide to get started with Jaqpot. This post shows you how to deploy your first machine learning model in just a few minutes.
+
+## Why deploy with Jaqpot?
+
+Machine learning deployment often involves complex infrastructure setup, container management, and ongoing maintenance. We built Jaqpot to handle all of this for you. You focus on your model, we handle the rest.
+
+## What You Need
+
+Before we start, make sure you have:
+- A trained machine learning model (we support scikit-learn, PyTorch, and more)
+- Python installed on your computer
+- Basic familiarity with Python programming
+
+## Step-by-Step Guide
+
+### 1. Install the Package
+
+First, install our Python package:
+
+```python
+pip install jaqpotpy
+```
+
+### 2. Prepare Your Model
+
+Here's a simple example using a scikit-learn model:
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+
+# Train your model
+model = RandomForestRegressor()
+model.fit(X_train, y_train)
+```
+
+### 3. Deploy to Jaqpot
+
+Now for the interesting part. Deploy your model with just three lines of code:
+
+```python
+from jaqpotpy import Jaqpot
+
+# Initialize Jaqpot
+jaq = Jaqpot()
+
+# Upload your model
+deployment = jaq.upload_model(
+    model=model,
+    name="my-first-model",
+    description="A regression model for property prediction"
+)
+```
+
+### 4. Use Your Model
+
+Your model now has its own API endpoint. Use it like this:
+
+```python
+# Make predictions
+predictions = jaq.predict(
+    model_id=deployment.id,
+    input_data=your_data
+)
+```
+
+## What's Next?
+
+Your deployed model is now:
+- Available 24/7 through a REST API
+- Automatically scaled based on usage
+- Protected with authentication
+- Monitored for performance
+
+## Join Our Community
+
+We're building a community of scientists and developers who use machine learning in their research. Join our [Discord server](link) to:
+- Get help with model deployment
+- Share your experience
+- Connect with other researchers
+- Stay updated on new features
+
+## Looking Forward
+
+In upcoming posts, we'll cover:
+- Advanced deployment options
+- Model versioning
+- Handling different types of data
+- Best practices for production deployment
+
+Try it out and let us know what you build!
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
