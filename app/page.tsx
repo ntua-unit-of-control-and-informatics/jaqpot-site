@@ -1,5 +1,4 @@
 import Card from '@/components/home/card';
-import { DEPLOY_URL } from '@/lib/constants';
 import { Github, Twitter } from '@/components/shared/icons';
 import Image from 'next/image';
 import { nFormatter } from '@/lib/utils';
@@ -11,7 +10,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = generateSharedMetadata(
   'Jaqpot: Deploy models, get predictions via API',
-  'A presentation of Jaqpot features',
+  'A presentation of Jaqpot features'
 );
 
 export default async function Home() {
@@ -26,7 +25,7 @@ export default async function Home() {
       }),
       // data will revalidate every 24 hours
       next: { revalidate: 86400 },
-    },
+    }
   )
     .then((res) => res.json())
     .catch((e) => console.log(e));
