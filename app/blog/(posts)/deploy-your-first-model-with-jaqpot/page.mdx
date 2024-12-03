@@ -10,20 +10,18 @@ export const metadata = {
 
 Many of you asked for a practical example after our first post. Here's a complete guide to deploy your first classification model using Jaqpot. We'll use a simple dataset to show you the basics.
 
-## What We'll Build
+## What we'll build
 
 We'll create a binary classification model that:
 - Uses two features to make predictions
 - Runs on logistic regression
 - Gets deployed privately on Jaqpot
 
-## The Complete Code
-
 At the end of the post you'll find the complete code sample. Here's a quick overview of the steps we'll cover:
 
-## Breaking It Down
+## Breaking it down
 
-### 1. Prepare Your Dataset
+### 1. Prepare your dataset
 
 First, we create a dataset object that Jaqpot understands:
 
@@ -36,7 +34,7 @@ dataset = JaqpotpyDataset(
 )
 ```
 
-### 2. Train Your Model
+### 2. Train your model
 
 Next, we wrap our scikit-learn model with Jaqpot's model class:
 
@@ -63,7 +61,7 @@ model.deploy_on_jaqpot(
 )
 ```
 
-## What Just Happened?
+## What just happened?
 
 Let's break down what we did:
 1. Created a simple dataset with two features
@@ -118,7 +116,7 @@ model.deploy_on_jaqpot(
     visibility="PRIVATE",
 )
 ```
-## Next Steps
+## Next steps
 
 Try this with your own data:
 1. Replace our sample data with your dataset
@@ -126,7 +124,7 @@ Try this with your own data:
 3. Choose a different model type if needed
 4. Deploy with your preferred visibility settings
 
-## Need Help?
+## Need help?
 
 If you run into any issues:
 - Check our [documentation](https://jaqpot.org/docs)
@@ -134,7 +132,7 @@ If you run into any issues:
 - Open a GitHub issue in our [repository](https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy/issues)
 - Contact our [support team](mailto:jaqpot@jaqpot.org)
 
-## Coming Up Next
+## Coming up next
 
 In future posts, we'll cover:
 - Working with larger datasets
