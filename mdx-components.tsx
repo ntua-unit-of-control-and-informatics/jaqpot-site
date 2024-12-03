@@ -27,15 +27,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     p({ children }) {
-      return (
-        <p style={{ marginTop: '1rem', marginBottom: '1rem' }}>{children}</p>
-      );
+      return <p style={{ marginBottom: '1rem' }}>{children}</p>;
     },
     h1({ children }) {
       return (
         <h1
           className="text-3xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: '1rem', marginBottom: '1rem' }}
+          style={{ marginTop: '1.5rem', marginBottom: '1rem' }}
         >
           {children}
         </h1>
@@ -45,7 +43,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h2
           className="mb-5 text-2xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: '1rem', marginBottom: '1rem' }}
+          style={{ marginTop: '1.5rem', marginBottom: '1rem' }}
         >
           {children}
         </h2>
@@ -55,20 +53,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h3
           className="mb-5 text-xl font-bold sm:text-3xl sm:tracking-tight"
-          style={{ marginTop: '1rem', marginBottom: '1rem' }}
+          style={{ marginTop: '1.5rem', marginBottom: '1rem' }}
         >
           {children}
         </h3>
       );
     },
     ol({ children }) {
-      return <ol className="list-decimal">{children}</ol>;
+      return (
+        <ol style={{ listStylePosition: 'inside', listStyleType: 'decimal' }}>
+          {children}
+        </ol>
+      );
     },
     ul({ children }) {
-      return <ul className="list-disc">{children}</ul>;
+      return (
+        <ul style={{ listStylePosition: 'inside', listStyleType: 'disc' }}>
+          {children}
+        </ul>
+      );
     },
     li({ children }) {
-      return <li>{children}</li>;
+      return <li className="mb-2 list-item list-inside">{children}</li>;
     },
     blockquote({ children }) {
       return (
@@ -79,6 +85,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     table({ children }) {
       return <table className="table-auto">{children}</table>;
+    },
+    pre({ children }) {
+      return (
+        <pre style={{ padding: '1rem', backgroundColor: 'rgb(229 231 235)' }}>
+          {children}
+        </pre>
+      );
+    },
+    code({ children }) {
+      return <code style={{}}>{children}</code>;
     },
     ...components,
   };
