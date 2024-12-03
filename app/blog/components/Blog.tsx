@@ -3,7 +3,7 @@ import BlogPost from '@/app/blog/components/BlogPost';
 
 export default function Blog({ posts }: { posts: Post[] }) {
   return (
-    <ol className="flex w-full flex-col items-center gap-5 p-5 sm:py-16">
+    <ol className="flex w-full flex-col items-center gap-5 p-5">
       {posts.map(
         ({ slug, title, publishDate, imageUrl, textPreview, categories }) => (
           <li key={slug}>
@@ -15,7 +15,7 @@ export default function Blog({ posts }: { posts: Post[] }) {
               categories={categories}
             />
           </li>
-        ),
+        )
       )}
     </ol>
   );

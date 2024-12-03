@@ -100,7 +100,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     pre({ children }) {
       return (
-        <pre style={{ padding: '1rem', backgroundColor: 'rgb(229 231 235)' }}>
+        <pre
+          style={{
+            padding: '1rem',
+            backgroundColor: 'rgb(229 231 235)',
+            textWrap: 'wrap',
+          }}
+        >
           {children}
         </pre>
       );
