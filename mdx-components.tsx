@@ -61,14 +61,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     ol({ children }) {
       return (
-        <ol style={{ listStylePosition: 'inside', listStyleType: 'decimal' }}>
+        <ol
+          style={{
+            listStylePosition: 'inside',
+            listStyleType: 'decimal',
+            marginBottom: '1rem',
+          }}
+        >
           {children}
         </ol>
       );
     },
     ul({ children }) {
       return (
-        <ul style={{ listStylePosition: 'inside', listStyleType: 'disc' }}>
+        <ul
+          style={{
+            listStylePosition: 'inside',
+            listStyleType: 'disc',
+            marginBottom: '1rem',
+          }}
+        >
           {children}
         </ul>
       );
