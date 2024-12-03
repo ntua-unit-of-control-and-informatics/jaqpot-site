@@ -1,27 +1,30 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
-export const openGraphImage = { images: ["/opengraph-image.png"] };
 export const jaqpotAppDescription =
-  "Jaqpot is an API-driven platform for deploying, managing, and accessing machine learning models. Use open-source or custom models to perform fast and reliable inferences across various data types.";
+  'Jaqpot is an API-driven platform for deploying, managing, and accessing machine learning models. Use open-source or custom models to perform fast and reliable inferences across various data types.';
 
 export const generateSharedMetadata = (
-  pageTitle: string = "",
-  pageDescription: string = "",
+  pageTitle: string = '',
+  pageDescription: string = '',
+  imageUrls: string[] = [],
 ): Metadata => {
+  const ogImageUrls = imageUrls.map((imageUrl) => ({
+    url: imageUrl,
+  }));
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
     title: `${pageTitle} | Jaqpot`,
     description: `${
-      pageDescription ? pageDescription + ". " : ""
+      pageDescription ? pageDescription + '. ' : ''
     }${jaqpotAppDescription}`,
     openGraph: {
       title: `${pageTitle} | Jaqpot`,
       url: process.env.NEXT_PUBLIC_SITE_URL!,
-      type: "website",
+      type: 'website',
       description: `${
-        pageDescription ? pageDescription + ". " : ""
+        pageDescription ? pageDescription + '. ' : ''
       }${jaqpotAppDescription}`,
-      ...openGraphImage,
+      images: [...ogImageUrls, '/opengraph-image.png'],
     },
   };
 };

@@ -1,0 +1,147 @@
+import MdxLayout from "../../components/mdx-layout";
+
+export const metadata = {
+    title: 'Deploy your first classification model with Jaqpot',
+    publishDate: '2024-12-04T00:00:00Z',
+    textPreview: 'Ready to deploy your first machine learning model? This guide walks you through creating and deploying a simple classification model using Jaqpot. We\'ll show you how to prepare your data, train a model, and deploy it with just a few lines of code.'
+};
+
+![Deploy model](/deploy-first-model.png)
+
+Many of you asked for a practical example after our first post. Here's a complete guide to deploy your first classification model using Jaqpot. We'll use a simple dataset to show you the basics.
+
+## What we'll build
+
+We'll create a binary classification model that:
+- Uses two features to make predictions
+- Runs on logistic regression
+- Gets deployed privately on Jaqpot
+
+At the end of the post you'll find the complete code sample. Here's a quick overview of the steps we'll cover:
+
+## Breaking it down
+
+### 1. Prepare your dataset
+
+First, we create a dataset object that Jaqpot understands:
+
+```python
+dataset = JaqpotpyDataset(
+    df=data,
+    x_cols=['feature1', 'feature2'],  # Feature columns
+    y_cols=['target'],                # Target column
+    task='binary_classification'      # Specify the task type
+)
+```
+
+### 2. Train your model
+
+Next, we wrap our scikit-learn model with Jaqpot's model class:
+
+```python
+model = SklearnModel(
+    model=LogisticRegression(),
+    dataset=dataset
+)
+model.fit()
+```
+
+### 3. Deploy to Jaqpot
+
+Finally, we deploy our trained model:
+
+```python
+jaqpot = Jaqpot()
+jaqpot.login()
+model.deploy_on_jaqpot(
+    jaqpot=jaqpot,
+    name="My first Jaqpot Model",
+    description="This is my first attempt to train and upload a Jaqpot model.",
+    visibility="PRIVATE",
+)
+```
+
+## What just happened?
+
+Let's break down what we did:
+1. Created a simple dataset with two features
+2. Wrapped it in a Jaqpot-friendly format
+3. Trained a basic classification model
+4. Deployed it privately on Jaqpot
+
+The model is now:
+- Accessible through an API
+- Protected with authentication
+- Ready for predictions
+- Private to your account
+
+## The complete code
+
+```python
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.models import SklearnModel
+from jaqpotpy import Jaqpot
+
+# Sample data
+data = pd.DataFrame({
+    'feature1': [1, 2, 3, 4, 5],
+    'feature2': [2.1, 3.2, 4.3, 5.4, 6.5],
+    'target': [0, 1, 0, 1, 0]
+})
+
+# Create dataset for binary classification
+dataset = JaqpotpyDataset(
+    df=data,
+    x_cols=['feature1', 'feature2'],  # Feature columns
+    y_cols=['target'],                # Target column
+    task='binary_classification'      # Specify the task type
+)
+
+# Τrain a model
+model = SklearnModel(
+    model =LogisticRegression(),
+    dataset = dataset
+)
+model.fit()
+
+# Upload Model on Jaqpot
+jaqpot = Jaqpot()
+jaqpot.login()
+model.deploy_on_jaqpot(
+    jaqpot=jaqpot,
+    name="My first Jaqpot Model",
+    description="This is my first attempt to train and upload a Jaqpot model.",
+    visibility="PRIVATE",
+)
+```
+## Next steps
+
+Try this with your own data:
+1. Replace our sample data with your dataset
+2. Adjust the feature and target columns
+3. Choose a different model type if needed
+4. Deploy with your preferred visibility settings
+
+## Need help?
+
+If you run into any issues:
+- Check our [documentation](https://jaqpot.org/docs)
+- Join our [Discord community](https://discord.gg/tVpCjYQqSV)
+- Open a GitHub issue in our [repository](https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy/issues)
+- Contact our [support team](mailto:jaqpot@jaqpot.org)
+
+## Coming up next
+
+In future posts, we'll cover:
+- Working with larger datasets
+- Using different model types
+- Advanced deployment options
+- Model monitoring and updates
+
+Try it out and let us know what you build!
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
