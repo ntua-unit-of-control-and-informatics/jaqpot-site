@@ -52,7 +52,7 @@ Finally, we upload the trained model to Jaqpot. To upload a model, a Jaqpot acco
 ```python
 from jaqpotpy import Jaqpot
 
-# Upload Model on Jaqpot
+# Upload the pretrained model on Jaqpot
 jaqpot = Jaqpot()
 jaqpot.login()
 jaqpot_model.deploy_on_jaqpot(

@@ -12,6 +12,9 @@
     "lint": "next lint",
     "generate:schema": "npx openapi-typescript ../jaqpot-api-v2/src/main/resources/openapi.yaml -o ./src/app/api.schema.d.ts"
   },
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
     "@mdx-js/loader": "^3.0.1",
