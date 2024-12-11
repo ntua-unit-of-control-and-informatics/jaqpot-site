@@ -25,7 +25,7 @@ export default function MdxLayout({
                 {metadata.title}
               </h2>
             </div>
-            <div className="flex w-full text-gray-400">
+            <div className="flex w-full items-center text-gray-400">
               <>
                 <CalendarDaysIcon className="mr-2 size-5" />
                 <JaqpotTimeAgo
