@@ -34,7 +34,7 @@ export default function MdxLayout({
               </>
             </div>
           </CardHeader>
-          <CardBody>{children}</CardBody>
+          <CardBody className="text-sm">{children}</CardBody>
         </Card>
       </div>
     </div>
