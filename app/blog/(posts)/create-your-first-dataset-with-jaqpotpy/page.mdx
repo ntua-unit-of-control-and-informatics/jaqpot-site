@@ -1,0 +1,153 @@
+import MdxLayout from "../../components/mdx-layout";
+
+export const metadata = {
+    title: 'Create your first dataset with Jaqpotpy',
+    publishDate: '2024-12-11T00:00:00Z',
+    textPreview: 'Learn how to create datasets with jaqpotpy. This guide covers simple numeric data, SMILES-based features, and task setup for regression or classification.'
+};
+
+![Dataset creation](/create_dataset.jpg)
+
+In the previous post, we showed how to train and deploy a classification model on Jaqpot. Now, we’ll dive deeper into creating and working with datasets using `jaqpotpy`. You’ll learn how to prepare simple datasets, generate molecular descriptors, and set up tasks for regression and classification. We’ll also explain SMILES (Simplified Molecular Input Line Entry System), a compact way of representing molecules as strings, and how these can be converted into useful features (molecular descriptors) for machine learning models. Molecular descriptors capture important properties of molecules, such as their size, shape, or electronic properties, enabling their use in predictive modeling tasks.
+
+## What we’ll cover
+
+We’ll create datasets that:
+- Use simple numeric data or SMILES representations of molecules
+- Extract molecular features using descriptor calculators
+- Prepare for regression or classification tasks
+
+At the end of this post, you’ll find examples for all major use cases.
+
+## Step 1: Basic setup
+
+To begin, let’s import the libraries needed for creating and working with datasets. The code uses `pandas` for managing tabular data and several modules from `jaqpotpy`, such as `JaqpotpyDataset` for defining datasets and `RDKitDescriptors`, `MordredDescriptors`, and others for generating molecular descriptors based on SMILES strings or calculating molecular fingerprints.
+
+```python
+import pandas as pd
+from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.descriptors import RDKitDescriptors, MordredDescriptors, TopologicalFingerprint, MACCSKeysFingerprint
+```
+
+## Step 2: Create a simple dataset
+
+To get started, let’s create a dataset with basic features. This demo dataset includes two numeric features (`feature1` and `feature2`) and a target column (`target`) representing binary classification labels. The features could represent any measurable quantities, such as experimental conditions or other relevant data, while the target indicates the class (e.g., positive or negative outcome).
+
+```python
+# Sample data
+data = pd.DataFrame({
+    'feature1': [1, 2, 3, 4, 5],
+    'feature2': [2.1, 3.2, 4.3, 5.4, 6.5],
+    'target': [0, 1, 0, 1, 0]
+})
+
+# Create dataset for binary classification
+dataset = JaqpotpyDataset(
+    df=data,
+    x_cols=['feature1', 'feature2'],  # Feature columns
+    y_cols=['target'],                # Target column
+    task='binary_classification'      # Specify the task type
+)
+```
+
+## Step 3: Create a dataset with SMILES and descriptors
+
+For molecular data, we use SMILES (Simplified Molecular Input Line Entry System) strings to represent chemical structures. SMILES strings are a compact and human-readable way to describe the molecular makeup of compounds using a linear string format. For example, "CC" represents ethane, and "CCO" represents ethanol. If you'd like to learn more, you can read about SMILES on [Wikipedia](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system). 
+
+These strings can be converted into molecular descriptors using specialized calculators. Molecular descriptors are numerical representations of molecular properties such as size, shape, electronic distribution, or functional groups, which can then be used as input features for machine learning models.
+
+```python
+# Sample data with SMILES
+mol_data = pd.DataFrame({
+    'smiles': ['CC', 'CCO', 'CCC', 'CCCl'],
+    'temperature': [25, 30, 35, 40],
+    'activity': [0.5, 0.7, 0.3, 0.9]
+})
+
+# Initialize a molecular descriptor calculator
+rdkit_desc = RDKitDescriptors()
+
+# Create dataset with molecular descriptors
+mol_dataset = JaqpotpyDataset(
+    df=mol_data,
+    x_cols=['temperature'],    # Additional feature columns
+    y_cols=['activity'],       # Target column
+    smiles_cols=['smiles'],    # SMILES column
+    task='regression',         # Regression task
+    featurizer=rdkit_desc      # Specify the descriptor calculator
+)
+```
+
+## Step 4: Available molecular descriptors
+
+Jaqpotpy provides a variety of molecular descriptor calculators that translate SMILES strings into numerical properties for machine learning tasks. Here are the options available:
+
+- **RDKit descriptors**: Calculates a comprehensive set of physicochemical, topological, and structural properties of molecules.
+- **Mordred descriptors**: Offers a wide range of descriptors covering different chemical and structural aspects.
+- **Topological fingerprints**: Captures molecular connectivity and substructure patterns, which are useful for classification tasks.
+- **MACCS keys fingerprints**: Provides a fixed-length binary representation of molecular features, widely used for chemical informatics applications.
+
+Choose the calculator that best fits your modeling needs based on the types of properties or patterns you want to capture.
+
+```python
+# RDKit descriptors
+rdkit_desc = RDKitDescriptors()
+
+# Mordred descriptors
+mordred_desc = MordredDescriptors()
+
+# Topological fingerprints
+topo_fp = TopologicalFingerprint()
+
+# MACCS keys fingerprints
+maccs_fp = MACCSKeysFingerprint()
+```
+
+## Step 5: Create a multiclass classification dataset
+
+To create a dataset suitable for a multiclass classification task, we use molecular data combined with categorical labels representing multiple classes. This example demonstrates how SMILES strings are used to describe chemical structures, alongside numeric features that might capture experimental data or other molecular properties. The target column contains classes (e.g., 'A', 'B', 'C') indicating the categories for classification. To generate additional input features, molecular descriptors are calculated from the SMILES strings. These descriptors, such as MACCS keys fingerprints, offer a binary encoding of key structural characteristics of the molecules. Below is the process in detail:
+
+```python
+# Sample data for multiclass classification
+multi_data = pd.DataFrame({
+    'smiles': ['CC', 'CCO', 'CCC', 'CCCl'],
+    'feature1': [1, 2, 3, 4],
+    'class': ['A', 'B', 'C', 'A']
+})
+
+# Using MACCS keys fingerprints
+maccs_fp = MACCSKeysFingerprint()
+
+multi_dataset = JaqpotpyDataset(
+    df=multi_data,
+    x_cols=['feature1'],
+    y_cols=['class'],
+    smiles_cols=['smiles'],
+    task='multiclass_classification',
+    featurizer=maccs_fp
+)
+```
+
+## Key takeaways
+
+1. You can use `JaqpotpyDataset` for simple numeric data or molecular data.
+2. Add molecular features by specifying `smiles_cols` and a `featurizer`.
+3. Choose the correct `task` for your problem:
+
+   - `regression` for continuous targets
+   - `binary_classification` for two-class problems
+   - `multiclass_classification` for more than two classes
+4. Combine molecular and non-molecular features in `x_cols`.
+
+## Next steps
+
+Now that you have a dataset:
+- Train a model with it using Jaqpot’s model classes.
+- Experiment with different descriptor calculators.
+- Try creating datasets for your own data and tasks.
+
+Need more help? Check our [documentation](https://jaqpot.org/docs) or reach out to our [community](https://discord.gg/tVpCjYQqSV).
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
