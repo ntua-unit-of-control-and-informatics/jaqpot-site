@@ -45,7 +45,7 @@ model = SklearnModel(
 )
 model.fit()
 
-# Upload Model on Jaqpot
+# Upload the pretrained model on Jaqpot
 jaqpot = Jaqpot()
 jaqpot.login()
 model.deploy_on_jaqpot(
