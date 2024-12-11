@@ -1,9 +1,9 @@
-import { Category } from "@/app/blog/categories";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { Link } from "@nextui-org/react";
-import { CalendarDaysIcon } from "@heroicons/react/24/solid";
-import JaqpotTimeAgo from "@/app/components/JaqpotTimeAgo";
-import { Divider } from "@nextui-org/divider";
+import { Category } from '@/app/blog/categories';
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
+import { Link } from '@nextui-org/react';
+import { CalendarDaysIcon } from '@heroicons/react/24/solid';
+import JaqpotTimeAgo from '@/app/components/JaqpotTimeAgo';
+import { Divider } from '@nextui-org/divider';
 
 export default function BlogPost(props: {
   slug: string;
@@ -35,7 +35,7 @@ export default function BlogPost(props: {
             {props.title}
           </h2>
         </div>
-        <div className="flex w-full text-gray-400">
+        <div className="flex w-full items-center text-gray-400">
           <>
             <CalendarDaysIcon className="mr-2 size-5" />
             <JaqpotTimeAgo
@@ -53,8 +53,8 @@ export default function BlogPost(props: {
           <Divider />
           <CardFooter>
             <p>
-              Categories:{" "}
-              {props.categories.map((cat, i) => `${i ? ", " : ""}${cat}`)}
+              Categories:{' '}
+              {props.categories.map((cat, i) => `${i ? ', ' : ''}${cat}`)}
             </p>
           </CardFooter>
         </>
