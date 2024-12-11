@@ -52,7 +52,7 @@ dataset = JaqpotpyDataset(
 
 ## Step 3: Create a dataset with SMILES and descriptors
 
-For molecular data, we use SMILES (Simplified Molecular Input Line Entry System) strings to represent chemical structures. SMILES strings are a compact and human-readable way to describe the molecular makeup of compounds using a linear string format. For example, "CC" represents ethane, and "CCO" represents ethanol. If you'd like to learn more, you can read about SMILES on [Wikipedia](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system). 
+For molecular data, we use SMILES (Simplified Molecular Input Line Entry System) strings to represent chemical structures. SMILES strings are a compact and human-readable way to describe the molecular makeup of compounds using a linear string format. For example, "CC" represents ethane, and "CCO" represents ethanol. If you'd like to learn more, you can read about SMILES on [Wikipedia](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system).
 
 These strings can be converted into molecular descriptors using specialized calculators. Molecular descriptors are numerical representations of molecular properties such as size, shape, electronic distribution, or functional groups, which can then be used as input features for machine learning models.
 
@@ -133,7 +133,6 @@ multi_dataset = JaqpotpyDataset(
 1. You can use `JaqpotpyDataset` for simple numeric data or molecular data.
 2. Add molecular features by specifying `smiles_cols` and a `featurizer`.
 3. Choose the correct `task` for your problem:
-
    - `regression` for continuous targets
    - `binary_classification` for two-class problems
    - `multiclass_classification` for more than two classes
