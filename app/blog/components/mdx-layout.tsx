@@ -5,6 +5,8 @@ import { Divider } from '@nextui-org/divider';
 import { Post } from '@/app/blog/posts';
 import Link from 'next/link';
 import { User } from '@nextui-org/react';
+import Claps from '@upstash/claps';
+import ClapsComponent from '@/app/blog/components/Claps';
 
 export default function MdxLayout({
   metadata,
@@ -55,6 +57,9 @@ export default function MdxLayout({
             <Divider className="my-4" />
           </CardHeader>
           <CardBody className="text-base">{children}</CardBody>
+          <CardFooter>
+            <ClapsComponent />
+          </CardFooter>
         </Card>
       </div>
     </div>
