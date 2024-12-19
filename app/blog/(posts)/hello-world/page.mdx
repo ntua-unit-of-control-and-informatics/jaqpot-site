@@ -1,10 +1,18 @@
 import MdxLayout from "../../components/mdx-layout";
 import Image from "next/image";
+import {Link} from "@nextui-org/react";
 
 export const metadata = {
     title: 'Hello world!',
     publishDate: '2024-09-05T00:00:00Z',
-    textPreview: 'Welcome to our very first blog post! We are excited to finally share our story, our mission, and the journey that led to the creation of Jaqpot. Whether you\'re a machine learning enthusiast, a researcher, or just curious about who we are, this post will give you a peek behind the scenes.'
+    textPreview: 'Welcome to our very first blog post! We are excited to finally share our story, our mission, and the journey that led to the creation of Jaqpot. Whether you\'re a machine learning enthusiast, a researcher, or just curious about who we are, this post will give you a peek behind the scenes.',
+    author: {
+        name: 'Alex Arvanitidis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/af2a132a-5997-4b52-936b-35695452035b.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
+            @alarv
+        </Link>,
+    }
 };
 
 ![ML image](/hello-world.png)
