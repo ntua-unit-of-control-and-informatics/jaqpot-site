@@ -18,8 +18,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <div style={{ position: 'relative', width: '100%', height: '300px' }}>
           <Image
-            sizes="300px"
             fill
+            sizes="100vw"
             style={{
               objectFit: 'contain',
             }}
@@ -29,7 +29,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     p({ children }) {
-      return <p style={{ marginBottom: '1rem' }}>{children}</p>;
+      return (
+        <p style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+          {children}
+        </p>
+      );
     },
     h1({ children }) {
       return (
@@ -106,8 +110,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return match ? (
         <SyntaxHighlighter
           PreTag="div"
+          lineProps={{
+            style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' },
+          }}
           // eslint-disable-next-line react/no-children-prop
           children={String(children).replace(/\n$/, '')}
+          wrapLines
+          wrapLongLines
           language={match[1]}
           style={materialDark}
         />

@@ -14,7 +14,7 @@ export default function BlogPost(props: {
 }) {
   return (
     <Card
-      className="max-w-3xl px-10 py-5"
+      className="max-w-xl px-10 py-5 sm:max-w-3xl"
       isPressable
       as={Link}
       href={`/blog/${props.slug}`}
