@@ -13,6 +13,7 @@ export interface Post {
     avatarUrl: string;
     name: string;
   };
+  timeToReadInMin?: number;
   categories: Category[];
 }
 

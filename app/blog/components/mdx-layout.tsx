@@ -44,11 +44,17 @@ export default function MdxLayout({
                 <JaqpotTimeAgo
                   date={new Date(metadata.publishDate as unknown as string)}
                 />
+
+                {metadata.timeToReadInMin && (
+                  <span className="ml-2">
+                    · {metadata.timeToReadInMin} min read
+                  </span>
+                )}
               </>
             </div>
             <Divider className="my-4" />
           </CardHeader>
-          <CardBody className="text-sm">{children}</CardBody>
+          <CardBody className="text-base">{children}</CardBody>
         </Card>
       </div>
     </div>

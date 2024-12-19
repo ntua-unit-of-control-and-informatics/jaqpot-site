@@ -11,16 +11,37 @@ export const metadata = {
         description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
             @alarv
         </Link>,
-    }
+    },
+    timeToReadInMin: 10
 };
 
 ![Deploy LLM](/deploy-llm.svg)
 
 Want to build a modern LLM application with real-time streaming responses? Here's a complete guide covering backend, frontend, and deployment. We'll be using some of the most popular technologies in the modern web development ecosystem: Next.js with the Next UI component library, FastAPI for our backend, and Docker for containerization.
 
+Let me explain how LLaMA works and its inference process in simple terms.
+
+The rise of ChatGPT made many people interested in large language models, but its code stayed private. This led to the development of open alternatives like LLaMA, which anyone can use and modify.
+LLaMA, like other language models, creates text one piece at a time. Here's how it works:
+
+When you type a question or prompt, LLaMA processes it token by token. A token is basically a piece of text - it could be a word, part of a word, or even a single character. The model looks at all the tokens you've given it and predicts what should come next.
+
+For example, if you write "The cat sat on the", LLaMA will:
+1. Read your input
+2. Predict the next most likely token (maybe "mat")
+3. Add "mat" to your input
+4. Use the new, longer text to predict the next token
+5. Keep going until it reaches a stopping point
+
+This step-by-step process is called autoregressive generation. It's like building a sentence one brick at a time, where each new brick depends on all the ones that came before it.
+
+The autoregressive process is the same one used by all large language models, including ChatGPT and Claude. The speed differences you might notice when running LLaMA locally versus using commercial APIs usually come down to hardware resources, deployment optimization, and specific techniques used to speed up inference. A single response typically needs hundreds of predictions to complete, which is why having the right deployment setup matters for getting good performance
+
+Anyway, enough talk, let's jump into the code!
+
 ## Preparing your LLM weights
 
-First, let's talk about the model weights. The Llama model comes in various sizes (7B, 13B, 70B parameters) and versions (Llama 3, Llama 3 Chat). For this tutorial, we'll use the Llama 3.2-1B-Instruct model, which is a good balance between performance and resource requirements.
+First, let's talk about the model weights. The Llama model comes in various sizes (7B, 13B, 70B parameters) and versions (Llama 2, Llama 2 Chat). For this tutorial, we'll use the Llama 3.2-1B-Instruct model, which is a good balance between performance and resource requirements.
 
 Before we can use the model, we need to convert the weights to a format that works with the Hugging Face transformers library. This conversion process is necessary because Llama models are originally distributed in their own format, but we want to use them with the transformers ecosystem.
 
@@ -116,6 +137,53 @@ Let's examine the key components of our service:
 3.**Generation process**: Text generation happens in a separate thread to prevent blocking. We use GPU acceleration when available.
 
 4.**Streaming setup**: We use FastAPI's StreamingResponse to send tokens back to the client as they're generated, providing a real-time experience.
+
+Now, let's look at how we set up our FastAPI application to serve the model:
+
+```python
+from contextlib import asynccontextmanager
+import uvicorn
+from fastapi import FastAPI, HTTPException
+from jaqpot_api_client.models.prediction_request import PredictionRequest
+from jaqpot_api_client.models.prediction_response import PredictionResponse
+from fastapi.responses import StreamingResponse
+
+model_service: ModelService = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Load the ML model
+    global model_service
+    model_service = MockModelService()
+    yield
+
+app = FastAPI(title="ML Model API", lifespan=lifespan)
+app.add_middleware(LogMiddleware)
+
+@app.post("/infer", response_model=PredictionResponse)
+def infer(req: PredictionRequest) -> StreamingResponse:
+    try:
+        return model_service.infer(req)
+    except Exception as e:
+        logger.error("Prediction request for model failed " + str(e))
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/health")
+def health_check():
+    return {"status": "OK"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8005, log_config=None)
+```
+
+This FastAPI application:
+- uses FastAPI's lifespan management to initialize our model service when the app starts
+- provides an `/infer` endpoint that accepts prediction requests and returns streaming responses
+- includes a health check endpoint for monitoring
+- handles errors gracefully with proper HTTP status codes
+- runs on port 8005 with uvicorn server
+
+The lifespan context manager ensures our model is loaded only once when the application starts, and the middleware adds logging capabilities to track requests and responses.
 
 ## Creating the frontend
 
@@ -265,15 +333,110 @@ Key features of our frontend implementation:
 
 ## Deployment
 
-Once your application is ready:
-1. Build your docker image with the model service
-2. Set up your Next.js frontend
-3. Configure your environment variables
-4. Deploy using your preferred hosting solution
+Let's look at containerizing our model service. We'll explore two approaches: a multi-stage build that includes training, and our current production setup with pre-trained models.
+
+### Approach 1: Multi-stage build (work in progress)
+Here's a multi-stage Dockerfile that attempts to include the training process:
+
+```dockerfile
+# Training stage
+FROM python:3.10 AS trainer
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+COPY ./src /code/src
+COPY ./train.py /code/train.py
+COPY ./llama /code/llama
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN python train.py
+
+# Deployment stage
+FROM python:3.10
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./src /code/src
+COPY ./main.py /code/main.py
+COPY /model.pkl /code/model.pkl
+COPY /tokenizer.pkl /code/tokenizer.pkl
+
+#COPY --from=trainer /code/model.pkl /code/model.pkl
+#COPY --from=trainer /code/tokenizer.pkl /code/tokenizer.pkl
+
+EXPOSE 8005
+
+CMD ["python", "-m", "main", "--port", "8005"]
+```
+
+However, training during the Docker build process proved challenging due to memory constraints and build timeouts. Instead, we perform the training offline using this simple script:
+
+```python
+import joblib
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_path = "./llama"
+
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModelForCausalLM.from_pretrained(model_path)
+
+model.to("cpu")
+
+# Save the model
+joblib.dump(model, 'model.pkl')
+joblib.dump(tokenizer, 'tokenizer.pkl')
+```
+
+This script:
+- loads the converted Llama model and tokenizer
+- moves the model to CPU for compatibility
+- saves both as pickle files for easy loading in our service
+
+### Approach 2: Production setup
+For production, we use a simpler Dockerfile that focuses on deployment:
+
+```dockerfile
+FROM python:3.10
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./src /code/src
+COPY ./main.py /code/main.py
+COPY /model.pkl /code/model.pkl
+COPY /tokenizer.pkl /code/tokenizer.pkl
+
+EXPOSE 8005
+
+CMD ["python", "-m", "main", "--port", "8005"]
+```
+
+This production Dockerfile:
+- uses Python 3.10 base image
+- sets up a clean working directory
+- installs requirements first for better caching
+- copies only the necessary files
+- runs our FastAPI service on port 8005
+
+Next steps:
+1. Run the training script locally to generate model files
+2. Build your docker image: `docker build -t llm-service .`
+3. Set up your Next.js frontend
+4. Configure your environment variables
+5. Deploy using your preferred hosting solution
 
 In part 2, I will explain how you can deploy this setup on AWS using an EC2 instance with a GPU (g4dn.xlarge) on your EKS cluster with a GPU node group that will only be used by your LLM pod.
 
-P.s. This exact setup is currently running on the Jaqpot platform at `https://app.jaqpot.org/dashboard/models/1983/description`. Check it out to see it in action!
+P.S. This exact setup is currently running on the Jaqpot platform at [https://app.jaqpot.org/dashboard/models/1983/description](https://app.jaqpot.org/dashboard/models/1983/description). Check it out to see it in action!
+
+P.S.2 The code for this tutorial is available on GitHub at [https://github.com/ntua-unit-of-control-and-informatics/jaqpot-Llama3.2-1B-Instruct](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-Llama3.2-1B-Instruct).
 
 export default function MDXPage({children}) {
     return <MdxLayout metadata={metadata}>{children}</MdxLayout>
