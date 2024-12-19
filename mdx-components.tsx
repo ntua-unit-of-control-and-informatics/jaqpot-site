@@ -2,6 +2,8 @@ import type { MDXComponents } from 'mdx/types';
 import { Link } from '@nextui-org/react';
 import Image from 'next/image';
 import { ImageProps } from 'next/image';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -111,8 +113,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </pre>
       );
     },
-    code({ children }) {
-      return <code style={{}}>{children}</code>;
+    code(props) {
+      const { children, className, ...rest } = props;
+      const match = /language-(\w+)/.exec(className || '');
+      return match ? (
+        <SyntaxHighlighter
+          PreTag="div"
+          // eslint-disable-next-line react/no-children-prop
+          children={String(children).replace(/\n$/, '')}
+          language={match[1]}
+          style={materialDark}
+        />
+      ) : (
+        <code {...rest} className={className}>
+          {children}
+        </code>
+      );
     },
     ...components,
   };
