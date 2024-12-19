@@ -1,9 +1,17 @@
 import MdxLayout from "../../components/mdx-layout";
+import {Link} from "@nextui-org/react";
 
 export const metadata = {
     title: 'Create your first dataset with Jaqpotpy',
     publishDate: '2024-12-11T00:00:00Z',
-    textPreview: 'Learn how to create datasets with jaqpotpy. This guide covers simple numeric data, SMILES-based features, and task setup for regression or classification.'
+    textPreview: 'Learn how to create datasets with jaqpotpy. This guide covers simple numeric data, SMILES-based features, and task setup for regression or classification.',
+    author: {
+        name: 'Vassilis Minadakis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/8ba56047-97db-4954-affb-b4f78bab0c05.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/vassilis_minadakis" size="sm">
+            @vassilis_minadakis
+        </Link>,
+    }
 };
 
 ![Dataset creation](/create_dataset.jpg)

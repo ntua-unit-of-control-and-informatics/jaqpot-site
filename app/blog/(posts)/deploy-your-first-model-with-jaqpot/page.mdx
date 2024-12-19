@@ -1,9 +1,17 @@
 import MdxLayout from "../../components/mdx-layout";
+import {Link} from "@nextui-org/react";
 
 export const metadata = {
     title: 'Deploy your first classification model with Jaqpot',
     publishDate: '2024-12-04T00:00:00Z',
-    textPreview: 'Ready to deploy your first machine learning model? This guide walks you through creating and deploying a simple classification model using Jaqpot. We\'ll show you how to prepare your data, train a model, and deploy it with just a few lines of code.'
+    textPreview: 'Ready to deploy your first machine learning model? This guide walks you through creating and deploying a simple classification model using Jaqpot. We\'ll show you how to prepare your data, train a model, and deploy it with just a few lines of code.',
+    author: {
+        name: 'Alex Arvanitidis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/af2a132a-5997-4b52-936b-35695452035b.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
+            @alarv
+        </Link>,
+    }
 };
 
 ![Deploy model](/deploy-first-model.png)

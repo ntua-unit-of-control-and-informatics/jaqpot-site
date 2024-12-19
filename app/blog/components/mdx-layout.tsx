@@ -3,6 +3,8 @@ import { CalendarDaysIcon } from '@heroicons/react/24/solid';
 import JaqpotTimeAgo from '@/app/components/JaqpotTimeAgo';
 import { Divider } from '@nextui-org/divider';
 import { Post } from '@/app/blog/posts';
+import Link from 'next/link';
+import { User } from '@nextui-org/react';
 
 export default function MdxLayout({
   metadata,
@@ -25,7 +27,18 @@ export default function MdxLayout({
                 {metadata.title}
               </h2>
             </div>
-            <div className="flex w-full items-center text-gray-400">
+            <div className="flex w-full items-center">
+              {metadata.author && (
+                <User
+                  avatarProps={{
+                    src: metadata.author.avatarUrl,
+                  }}
+                  description={metadata.author.description}
+                  name={metadata.author.name}
+                />
+              )}
+            </div>
+            <div className="flex w-full items-center text-tiny text-gray-400">
               <>
                 <CalendarDaysIcon className="mr-2 size-5" />
                 <JaqpotTimeAgo
@@ -33,6 +46,7 @@ export default function MdxLayout({
                 />
               </>
             </div>
+            <Divider className="my-4" />
           </CardHeader>
           <CardBody className="text-sm">{children}</CardBody>
         </Card>

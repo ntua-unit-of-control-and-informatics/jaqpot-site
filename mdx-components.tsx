@@ -9,7 +9,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     a(props: any) {
       return (
-        <Link href={props.href} isExternal>
+        <Link href={props.href} isExternal size="sm">
           {props.children}
         </Link>
       );
@@ -99,19 +99,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     table({ children }) {
       return <table className="table-auto">{children}</table>;
-    },
-    pre({ children }) {
-      return (
-        <pre
-          style={{
-            padding: '1rem',
-            backgroundColor: 'rgb(229 231 235)',
-            textWrap: 'wrap',
-          }}
-        >
-          {children}
-        </pre>
-      );
     },
     code(props) {
       const { children, className, ...rest } = props;
