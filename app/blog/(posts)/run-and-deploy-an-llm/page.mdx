@@ -11,16 +11,37 @@ export const metadata = {
         description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
             @alarv
         </Link>,
-    }
+    },
+    timeToReadInMin: 10
 };
 
 ![Deploy LLM](/deploy-llm.svg)
 
 Want to build a modern LLM application with real-time streaming responses? Here's a complete guide covering backend, frontend, and deployment. We'll be using some of the most popular technologies in the modern web development ecosystem: Next.js with the Next UI component library, FastAPI for our backend, and Docker for containerization.
 
+Today we'll be deploying LLama, an open-source large language model, with real-time streaming responses. This setup will allow users to interact with the model in real-time, getting responses as they type. We'll cover the complete stack, including the backend, frontend, and deployment.
+
+The rise of ChatGPT made many people interested in large language models, but its code stayed private. This led to the development of open alternatives like LLaMA, which anyone can use and modify.
+LLaMA, like other language models, creates text one piece at a time. Here's how it works:
+
+When you type a question or prompt, LLaMA processes it token by token. A token is basically a piece of text - it could be a word, part of a word, or even a single character. The model looks at all the tokens you've given it and predicts what should come next.
+
+For example, if you write "The cat 🐈 sat on the", LLaMA will:
+1. Read your input
+2. Predict the next most likely token (maybe "mat")
+3. Add "mat" to your input
+4. Use the new, longer text to predict the next token
+5. Keep going until it reaches a stopping point
+
+This step-by-step process is called autoregressive generation. It's like building a sentence one brick at a time, where each new brick depends on all the ones that came before it.
+
+The autoregressive process is the same one used by all large language models, including ChatGPT and Claude. The speed differences you might notice when running LLaMA locally versus using commercial APIs usually come down to hardware resources, deployment optimization, and specific techniques used to speed up inference. A single response typically needs hundreds of predictions to complete, which is why having the right deployment setup matters for getting good performance
+
+Anyway, enough talk, let's jump into the code!
+
 ## Preparing your LLM weights
 
-First, let's talk about the model weights. The Llama model comes in various sizes (7B, 13B, 70B parameters) and versions (Llama 3, Llama 3 Chat). For this tutorial, we'll use the Llama 3.2-1B-Instruct model, which is a good balance between performance and resource requirements.
+First, let's talk about the model weights. The Llama model comes in various sizes (7B, 13B, 70B parameters) and versions (Llama 3, Llama 3 Chat). For this tutorial, we'll use the [Llama 3.2-1B-Instruct model](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct), which is a good balance between performance and resource requirements.
 
 Before we can use the model, we need to convert the weights to a format that works with the Hugging Face transformers library. This conversion process is necessary because Llama models are originally distributed in their own format, but we want to use them with the transformers ecosystem.
 
@@ -50,7 +71,9 @@ For more details about Llama model usage and optimization tips, check out the [o
 
 ## Setting up the backend
 
-Our backend is built with FastAPI, a modern Python web framework known for its speed and ease of use. Here's our complete model service that handles predictions and streaming:
+Our backend is built with FastAPI, a modern Python web framework known for its speed and ease of use. Note that this is just a simple way to deploy your model. For production, you might want to consider more advanced setups like [ExecuTorch](https://pytorch.org/executorch-overview) or [vLLM](https://github.com/vllm-project/vllm). These frameworks are outside of the scope of this tutorial but offer more advanced features for deploying large language models and we might explore them in future tutorials.
+
+Here's our complete model service that handles predictions and streaming:
 
 ```python
 import asyncio
@@ -117,6 +140,53 @@ Let's examine the key components of our service:
 
 4.**Streaming setup**: We use FastAPI's StreamingResponse to send tokens back to the client as they're generated, providing a real-time experience.
 
+Now, let's look at how we set up our FastAPI application to serve the model:
+
+```python
+from contextlib import asynccontextmanager
+import uvicorn
+from fastapi import FastAPI, HTTPException
+from jaqpot_api_client.models.prediction_request import PredictionRequest
+from jaqpot_api_client.models.prediction_response import PredictionResponse
+from fastapi.responses import StreamingResponse
+
+model_service: ModelService = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Load the ML model
+    global model_service
+    model_service = MockModelService()
+    yield
+
+app = FastAPI(title="ML Model API", lifespan=lifespan)
+app.add_middleware(LogMiddleware)
+
+@app.post("/infer", response_model=PredictionResponse)
+def infer(req: PredictionRequest) -> StreamingResponse:
+    try:
+        return model_service.infer(req)
+    except Exception as e:
+        logger.error("Prediction request for model failed " + str(e))
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/health")
+def health_check():
+    return {"status": "OK"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8005, log_config=None)
+```
+
+This FastAPI application:
+- uses FastAPI's lifespan management to initialize our model service when the app starts
+- provides an `/infer` endpoint that accepts prediction requests and returns streaming responses
+- includes a health check endpoint for monitoring
+- handles errors gracefully with proper HTTP status codes
+- runs on port 8005 with uvicorn server
+
+The lifespan context manager ensures our model is loaded only once when the application starts, and the middleware adds logging capabilities to track requests and responses.
+
 ## Creating the frontend
 
 Our frontend is built with Next.js and the Next UI component library, providing a modern and responsive interface. Next UI gives us a set of beautiful, accessible components that work great with Next.js 13+.
@@ -125,35 +195,31 @@ We'll break down our frontend into two main components:
 
 ### Navigation component
 ```typescript
-export default function LLMNavigation({ model }: LLMTabsProps) {
-  const params = useParams<{ datasetId: string }>();
-  const [selectedKeys, setSelectedKeys] = useState<Set<string>>(
-    params.datasetId ? new Set([params.datasetId]) : new Set<string>(),
-  );
+export default function LLMNavigation() {
+  const [conversations, setConversations] = useState<string[]>([]);
 
-  // handle chat history and navigation
   return (
     <div className="flex flex-row gap-5">
       <div className="flex max-w-48 flex-col gap-3">
         <Button
           color="primary"
-          onPress={async () => {
-            router.push(`${pathnameWithoutDatasetId}/new`);
-          }}
+          onPress={() => setConversations([...conversations, 'New Chat'])}
         >
           start new chat
         </Button>
         <Table
-          selectedKeys={selectedKeys}
-          onSelectionChange={(keys) => {
-            router.push(`${pathnameWithoutDatasetId}/${[...keys][0]}`);
-          }}
           selectionMode="single"
         >
-          {/* table content */}
+          <TableBody>
+            {conversations.map((chat, index) => (
+              <TableRow key={index}>
+                <TableCell>{chat}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
       </div>
-      <LLMForm model={model} datasetId={params.datasetId} />
+      <ChatForm />
     </div>
   );
 }
@@ -163,28 +229,24 @@ The navigation component manages chat history and session navigation. It uses Ne
 
 ### Chat form component
 ```typescript
-export function LLMForm({ model, datasetId }: LLMFormProps) {
-  const [isFormLoading, setIsFormLoading] = useState(false);
+export function ChatForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const [currentResponse, setCurrentResponse] = useState<string>();
-  const [chatHistory, setChatHistory] = useState<Array<ChatMessage>>([]);
+  const [chatHistory, setChatHistory] = useState<Array<{
+    prompt: string;
+    response: string;
+  }>>([]);
 
-  const createStreamingPrediction = async (
-    modelId: string,
-    datasetId: string,
-    streamingPredictionRequestDto: { prompt: string },
-  ) => {
-    const apiResponse = await fetch(
-      `/api/models/${modelId}/predict/stream/${datasetId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/event-stream' },
-        body: JSON.stringify(streamingPredictionRequestDto),
-      },
-    );
+  const createStreamingPrediction = async (prompt: string) => {
+    const response = await fetch('http://localhost:8005/infer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/event-stream' },
+      body: JSON.stringify({ prompt }),
+    });
 
-    if (!apiResponse.body) return;
+    if (!response.body) return;
 
-    const reader = apiResponse.body
+    const reader = response.body
       .pipeThrough(new TextDecoderStream())
       .getReader();
     let fullResponse = '';
@@ -202,37 +264,45 @@ export function LLMForm({ model, datasetId }: LLMFormProps) {
     return fullResponse;
   };
 
-  const handleFormSubmit = async () => {
-    // handle form submission and streaming
+  const handleSubmit = async (prompt: string) => {
     try {
-      const response = await createStreamingPrediction(
-        model.id!.toString(),
-        dataset.id!.toString(),
-        { prompt },
-      );
-
-      setChatHistory((prev) => [
-        ...prev,
-        { prompt, output: response },
-      ]);
+      setIsLoading(true);
+      const response = await createStreamingPrediction(prompt);
+      setChatHistory((prev) => [...prev, { prompt, response }]);
     } catch (error) {
-      // error handling
+      console.error('Failed to get response:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <Card>
       <CardBody>
-        <div ref={chatContainerRef}>
-          {/* chat messages */}
-          <form>
+        <div className="flex flex-col gap-4">
+          {chatHistory.map((chat, index) => (
+            <div key={index} className="space-y-2">
+              <div className="font-medium">You: {chat.prompt}</div>
+              <div>AI: {chat.response}</div>
+            </div>
+          ))}
+          {currentResponse && (
+            <div>AI: {currentResponse}</div>
+          )}
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const input = e.currentTarget.elements.namedItem('prompt') as HTMLInputElement;
+            handleSubmit(input.value);
+            input.value = '';
+          }}>
             <Textarea
-              onKeyDown={handleKeyPress}
+              name="prompt"
+              placeholder="Type your message..."
               endContent={
                 <Button
                   isIconOnly
-                  onPress={handleFormSubmit}
-                  isLoading={isFormLoading}
+                  type="submit"
+                  isLoading={isLoading}
                 >
                   <ArrowUpIcon />
                 </Button>
@@ -263,17 +333,119 @@ Key features of our frontend implementation:
 - Keyboard shortcuts (enter to send)
 - Error handling and recovery
 
+After doing all this we end up with a UI looking like this image:
+![Llama ui](/llama-ui.png)
+
 ## Deployment
 
-Once your application is ready:
-1. Build your docker image with the model service
-2. Set up your Next.js frontend
-3. Configure your environment variables
-4. Deploy using your preferred hosting solution
+Let's look at containerizing our model service. We'll explore two approaches: a multi-stage build that includes training, and our current production setup with pre-trained models.
+
+### Approach 1: Multi-stage build (work in progress)
+Here's a multi-stage Dockerfile that attempts to include the training process:
+
+Here's the training code `train.py`
+```python
+import joblib
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_path = "./llama"
+
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModelForCausalLM.from_pretrained(model_path)
+
+model.to("cpu")
+
+# Save the model
+joblib.dump(model, 'model.pkl')
+joblib.dump(tokenizer, 'tokenizer.pkl')
+```
+
+and the Dockerfile:
+```dockerfile
+# Training stage
+FROM python:3.10 AS trainer
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+COPY ./src /code/src
+COPY ./train.py /code/train.py
+COPY ./llama /code/llama
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN python train.py
+
+# Deployment stage
+FROM python:3.10
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./src /code/src
+COPY ./main.py /code/main.py
+COPY /model.pkl /code/model.pkl
+COPY /tokenizer.pkl /code/tokenizer.pkl
+
+COPY --from=trainer /code/model.pkl /code/model.pkl
+COPY --from=trainer /code/tokenizer.pkl /code/tokenizer.pkl
+
+EXPOSE 8005
+
+CMD ["python", "-m", "main", "--port", "8005"]
+```
+
+However, training during the Docker build process proved challenging due to memory constraints and build timeouts.
+
+Instead, we perform the training offline using the `train.py` script and we move on to the 2nd approach for now.
+
+This script:
+- loads the converted Llama model and tokenizer
+- moves the model to CPU for compatibility
+- saves both as pickle files for easy loading in our service
+
+### Approach 2: Production setup
+For production, we use a simpler Dockerfile that focuses on deployment:
+
+```dockerfile
+FROM python:3.10
+
+WORKDIR /code
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./src /code/src
+COPY ./main.py /code/main.py
+COPY /model.pkl /code/model.pkl
+COPY /tokenizer.pkl /code/tokenizer.pkl
+
+EXPOSE 8005
+
+CMD ["python", "-m", "main", "--port", "8005"]
+```
+
+This production Dockerfile:
+- uses Python 3.10 base image
+- sets up a clean working directory
+- installs requirements first for better caching
+- copies only the necessary files
+- runs our FastAPI service on port 8005
+
+Next steps:
+1. Run the training script locally to generate model files
+2. Build your docker image: `docker build -t llm-service .`
+3. Set up your Next.js frontend
+4. Configure your environment variables
+5. Deploy using your preferred hosting solution
 
 In part 2, I will explain how you can deploy this setup on AWS using an EC2 instance with a GPU (g4dn.xlarge) on your EKS cluster with a GPU node group that will only be used by your LLM pod.
 
-P.s. This exact setup is currently running on the Jaqpot platform at `https://app.jaqpot.org/dashboard/models/1983/description`. Check it out to see it in action!
+P.S. This exact setup is currently running on the Jaqpot platform at [https://app.jaqpot.org/dashboard/models/1983/description](https://app.jaqpot.org/dashboard/models/1983/description). Check it out to see it in action!
+
+P.S.2 The code for this tutorial is available on GitHub at [https://github.com/ntua-unit-of-control-and-informatics/jaqpot-Llama3.2-1B-Instruct](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-Llama3.2-1B-Instruct).
 
 export default function MDXPage({children}) {
     return <MdxLayout metadata={metadata}>{children}</MdxLayout>
