@@ -9,7 +9,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     a(props: any) {
       return (
-        <Link href={props.href} isExternal size="md" className='break-all'>
+        <Link
+          href={props.href}
+          isExternal
+          size="md"
+          style={{ wordBreak: 'break-all' }}
+        >
           {props.children}
         </Link>
       );
