@@ -17,7 +17,7 @@ export default function MdxLayout({
   // Create any shared layout or styles here
   return (
     <div className="flex w-full justify-center">
-      <div className="max-w-full md:max-w-4xl">
+      <div className="max-w-full break-all md:max-w-4xl">
         <Card className="px-2 py-5 sm:px-10">
           <CardHeader className="flex flex-col gap-3">
             <div className="flex w-full items-center gap-1">
