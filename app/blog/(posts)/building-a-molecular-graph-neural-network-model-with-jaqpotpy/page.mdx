@@ -58,13 +58,12 @@ featurizer.set_default_config()
 # Create datasets
 train_dataset = SmilesGraphDataset(
     smiles=train_smiles, y=train_y, featurizer=featurizer
-).precompute_featurization()
-val_dataset = SmilesGraphDataset(
-    smiles=val_smiles, y=val_y, featurizer=featurizer
-).precompute_featurization()
-test_dataset = SmilesGraphDataset(
-    smiles=test_smiles, y=test_y, featurizer=featurizer
-).precompute_featurization()
+)
+train_dataset.precompute_featurization()
+val_dataset = SmilesGraphDataset(smiles=val_smiles, y=val_y, featurizer=featurizer)
+val_dataset.precompute_featurization()
+test_dataset = SmilesGraphDataset(smiles=test_smiles, y=test_y, featurizer=featurizer)
+test_dataset.precompute_featurization()
 ```
 ### 3. Define the model
 Set up the Graph Neural Network model. In our case we will use a simple Graph Convolution Neural Network. For simplicity we will not mess with the network's hyperparameters. However you can freely choose the depth, activation function and more components of the architecture.
