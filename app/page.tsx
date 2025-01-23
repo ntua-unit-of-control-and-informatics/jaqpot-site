@@ -84,6 +84,28 @@ export default async function Home() {
             </p>
           </Link>
         </div>
+        <div>
+          <p
+            className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+            style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
+          >
+            Visit{' '}
+            <Link href={`${process.env.NEXT_PUBLIC_APP_URL}/dashboard`}>
+              our dashboard
+            </Link>
+            ,{' '}
+            <Link href={`${process.env.NEXT_PUBLIC_APP_URL}/dashboard/explore`}>
+              explore existing models
+            </Link>{' '}
+            and run predictions on them or access{' '}
+            <Link
+              href={`${process.env.NEXT_PUBLIC_SITE_URL}/docs/category/getting-started`}
+            >
+              our documentation
+            </Link>{' '}
+            to upload your own model
+          </p>
+        </div>
       </div>
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {features.map(({ title, description, demo, large }) => (
