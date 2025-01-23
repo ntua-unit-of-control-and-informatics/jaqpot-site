@@ -7,7 +7,10 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="https://jaqpot.org/" className="flex items-center">
+            <a
+              href="https://jaqpot.org/"
+              className="flex items-center text-black"
+            >
               <Image
                 src="/jaqpot-j-logo.svg"
                 className="me-3 h-12"
@@ -29,7 +32,7 @@ export default function Footer() {
                 <li className="mb-4">
                   <Link
                     href="https://app.jaqpot.org/"
-                    className="hover:underline"
+                    className="text-gray-500 hover:underline"
                   >
                     Dashboard
                   </Link>
@@ -37,7 +40,7 @@ export default function Footer() {
                 <li className="mb-4">
                   <Link
                     href="https://jaqpot.org/docs"
-                    className="hover:underline"
+                    className="text-gray-500 hover:underline"
                   >
                     Docs
                   </Link>
@@ -45,7 +48,7 @@ export default function Footer() {
                 <li className="mb-4">
                   <Link
                     href="https://api.jaqpot.org"
-                    className="hover:underline"
+                    className="text-gray-500 hover:underline"
                   >
                     API
                   </Link>
@@ -53,7 +56,7 @@ export default function Footer() {
                 {/*<li className="mb-4">*/}
                 {/*  <Link*/}
                 {/*    href="https://jaqpot.org/pricing"*/}
-                {/*    className="hover:underline"*/}
+                {/*    className="text-gray-500 hover:underline"*/}
                 {/*  >*/}
                 {/*    Pricing*/}
                 {/*  </Link>*/}
@@ -61,7 +64,7 @@ export default function Footer() {
                 {/*<li className="mb-4">*/}
                 {/*  <Link*/}
                 {/*    href="https://jaqpot.org/blog"*/}
-                {/*    className="hover:underline"*/}
+                {/*    className="text-gray-500 hover:underline"*/}
                 {/*  >*/}
                 {/*    Blog*/}
                 {/*  </Link>*/}
@@ -69,7 +72,7 @@ export default function Footer() {
                 {/*<li className="mb-4">*/}
                 {/*  <Link*/}
                 {/*    href="https://jaqpot.org/contact"*/}
-                {/*    className="hover:underline"*/}
+                {/*    className="text-gray-500 hover:underline"*/}
                 {/*  >*/}
                 {/*    Contact*/}
                 {/*  </Link>*/}
@@ -84,7 +87,7 @@ export default function Footer() {
                 <li className="mb-4">
                   <a
                     href="https://github.com/orgs/ntua-unit-of-control-and-informatics"
-                    className="hover:underline "
+                    className="text-gray-500 hover:underline "
                   >
                     Github
                   </a>
@@ -92,7 +95,7 @@ export default function Footer() {
                 <li className="mb-4">
                   <a
                     href="https://www.linkedin.com/in/upci-ntua-15794b194/"
-                    className="hover:underline "
+                    className="text-gray-500 hover:underline "
                   >
                     LinkedIn
                   </a>
@@ -100,7 +103,7 @@ export default function Footer() {
                 <li>
                   <a
                     href="https://discord.gg/tVpCjYQqSV"
-                    className="hover:underline"
+                    className="text-gray-500 hover:underline"
                   >
                     Discord
                   </a>
@@ -113,12 +116,12 @@ export default function Footer() {
               </h2>
               <ul className="font-medium text-gray-500 ">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="text-gray-500 hover:underline">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="text-gray-500 hover:underline">
                     Terms &amp; Conditions
                   </a>
                 </li>
@@ -130,7 +133,7 @@ export default function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center ">
             © {new Date().getFullYear()}{' '}
-            <a href="https://flowbite.com/" className="hover:underline">
+            <a href="https://jaqpot.org/" className="hover:underline">
               Jaqpot™
             </a>
             . All Rights Reserved.
