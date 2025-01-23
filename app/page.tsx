@@ -99,7 +99,7 @@ export default async function Home() {
             </Link>{' '}
             and run predictions on them or access{' '}
             <Link
-              href={`${process.env.NEXT_PUBLIC_SITE_URL}/docs/category/getting-started`}
+              href={`${process.env.NEXT_PUBLIC_SITE_URL}/docs/getting-started`}
             >
               our documentation
             </Link>{' '}
