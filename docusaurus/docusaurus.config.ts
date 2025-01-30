@@ -150,10 +150,10 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: process.env.ALGOLIA_APP_ID,
+      appId: process.env.ALGOLIA_APP_ID || 'local',
 
       // Public API key: it is safe to commit it
-      apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+      apiKey: process.env.ALGOLIA_SEARCH_API_KEY || 'local',
 
       indexName: 'jaqpot',
 
