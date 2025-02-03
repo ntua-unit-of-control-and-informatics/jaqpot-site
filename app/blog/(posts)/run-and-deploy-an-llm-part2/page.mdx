@@ -1,0 +1,153 @@
+import MdxLayout from "../../components/mdx-layout";
+import {Link} from "@nextui-org/react";
+
+export const metadata = {
+    title: 'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)',
+    publishDate: '2025-02-03T00:00:00Z',
+    textPreview: 'Want to deploy your LLM with real-time streaming responses? Here\'s a complete guide covering backend, frontend, and deployment.',
+    author: {
+        name: 'Alex Arvanitidis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/af2a132a-5997-4b52-936b-35695452035b.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
+            @alarv
+        </Link>,
+    },
+    timeToReadInMin: 10
+};
+
+![Deploy LLM](/vllm-logo-text-light.png)
+
+# Deploying LLMs on AWS EKS with GPU Support: A Quick Guide
+
+As promised in [part 1](https://jaqpot.org/blog/run-and-deploy-an-llm), here's how we deployed our LLM workload into production using AWS, terraform, and kubernetes with gpu support. We'll share the key parts of our infrastructure setup that made this possible.
+
+## Setting up gpu nodes with terraform
+
+For our gpu needs, we created a dedicated node group in our EKS cluster. Here's the relevant part of our terraform configuration that sets up g4dn.2xlarge instances:
+
+```hcl
+# GPU node group
+gpu_node_group = {
+  create_launch_template     = false
+  use_custom_launch_template = false
+  disk_size                  = 50
+  instance_types            = ["g4dn.2xlarge"]
+  min_size                  = 1
+  subnet_ids                = slice(dependency.vpc.outputs.private_subnets, 0, 2)
+  max_size                  = 2
+  desired_size              = 1
+  ami_type                  = "AL2_x86_64_GPU"
+  iam_role_attach_cni_policy = true
+  labels = {
+    "environment" = "production"
+    "workload-type" = "gpu"
+    "nvidia.com/gpu" = "true"
+  }
+  taints = [{
+    key    = "nvidia.com/gpu"
+    value  = "true"
+    effect = "NO_SCHEDULE"
+  }]
+  update_config = {
+    max_unavailable = 1
+  }
+}
+```
+
+This part of our configuration creates a node group specifically for our gpu workloads. We chose g4dn.2xlarge instances as they provided the best balance of performance and cost for our needs.
+
+## Configuring gpu node selection
+
+In our helm values, we needed to ensure the LLM pods would only run on our gpu nodes. Here's how we configured it:
+
+```yaml
+  resources:
+    limits:
+      nvidia.com/gpu: 1
+      cpu: "8000m"
+      memory: "32Gi"
+    requests:
+      nvidia.com/gpu: 1
+      cpu: "6000m"
+      memory: "30Gi"
+  nodeSelector:
+    workload-type: gpu
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+```
+
+## Our llm container setup
+
+For our LLM service, we used vllm with the following kubernetes configuration:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: llm
+        image: ghcr.io/vllm-project/vllm:latest
+        command: [
+          "vllm",
+          "serve",
+          "mistralai/Mistral-7B-Instruct-v0.3",
+          "--trust-remote-code",
+          "--enable-chunked-prefill",
+          "--max_num_batched_tokens", "1024",
+          "--dtype=half",
+          "--tokenizer-mode", "mistral",
+          "--gpu-memory-utilization", "1.0",
+          "--max-model-len", "6944",
+          "--enforce-eager"
+        ]
+        volumeMounts:
+        - name: model-storage
+          mountPath: /models
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: llm-model-storage
+```
+
+## Storage configuration
+
+For the model weights, we set up persistent storage with this configuration:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mistral-7b
+  namespace: jaqpot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: gp2
+  volumeMode: Filesystem
+```
+
+## Our deployment process
+
+Here's how we rolled this out in our environment:
+1. We first applied our terraform configuration to set up the gpu nodes
+2. Once the nodes were ready and properly labeled, we created the persistent volume claim
+3. Finally, we deployed our llm service
+
+Some key monitoring aspects we implemented:
+- Gpu utilization tracking through prometheus/grafana
+- Autoscaling based on our specific gpu metrics
+- Comprehensive logging for debugging and monitoring
+
+That's how we got our LLM deployment running on aws eks with gpu support. If you're planning something similar, you might want to check the vllm documentation and aws eks best practices for more insights.
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
