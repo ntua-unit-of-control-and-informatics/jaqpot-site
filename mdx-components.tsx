@@ -21,7 +21,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     img(props: any) {
       return (
-        <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+        <span style={{ display: 'block', position: 'relative', width: '100%', height: '300px' }}>
           <Image
             fill
             sizes="100vw"
@@ -30,7 +30,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             }}
             {...(props as ImageProps)}
           />
-        </div>
+        </span>
       );
     },
     p({ children }) {
