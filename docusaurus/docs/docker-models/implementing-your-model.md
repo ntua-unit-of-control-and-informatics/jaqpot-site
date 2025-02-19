@@ -106,7 +106,7 @@ python train.py
 2. Run the FastAPI server:
 
 ```bash
-uvicorn app.main:app --reload
+python main.py
 ```
 
 Your model is now ready for Docker deployment on Jaqpot.
