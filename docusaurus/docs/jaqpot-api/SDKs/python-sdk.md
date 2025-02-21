@@ -3,7 +3,7 @@ title: Python SDK
 sidebar_position: 1
 ---
 
-The jaqpotpy Python SDK provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
+The Jaqpot Python SDK provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
 
 ## Authentication
 
@@ -55,8 +55,9 @@ load_dotenv(".env") # Returns True if successful
 After setting up your environment variables, initialize the Jaqpot client:
 
 ```python
-from jaqpotpy.api.jaqpot_api_client import JaqpotApiClient
-jaqpot = JaqpotApiClient()
+from jaqpot_python_sdk.jaqpot_api_client import JaqpotApiClient
+
+jaqpot_api_client = JaqpotApiClient()
 ```
 
 ## Retrieve a model by ID
@@ -64,7 +65,7 @@ jaqpot = JaqpotApiClient()
 To retrieve a model by its ID, you can use the `get_model_by_id` method. Here is an example:
 
 ```python
-model = jaqpot.get_model_by_id(model_id=1886)
+model = jaqpot_api_client.get_model_by_id(model_id=1886)
 print(model)
 ```
 
@@ -73,7 +74,7 @@ print(model)
 To get the models that you share with Jaqpot organizations, you can use the `get_shared_models` method. Here is an example:
 
 ```python
-shared_models = jaqpot.get_shared_models()
+shared_models = jaqpot_api_client.get_shared_models()
 print(shared_models)
 ```
 
@@ -83,7 +84,7 @@ To take a synchronous prediction with a model, you can use the `predict_sync` me
 
 ```python
 input_data = [{"SMILES": "CC", "X1": 1, "X2": 2, "Cat_col": "CAT_1"}]
-prediction = jaqpot.predict_sync(model_id=1886, dataset=input_data)
+prediction = jaqpot_api_client.predict_sync(model_id=1886, dataset=input_data)
 print(prediction)
 ```
 
@@ -95,7 +96,7 @@ To take an asynchronous prediction with a model, you can use the `predict_async`
 
 ```python
 input_data = [{"SMILES": "CC", "X1": 1, "X2": 2, "Cat_col": "CAT_1"}]
-prediction_dataset_id = jaqpot.predict_async(model_id=1886, dataset=input_data)
+prediction_dataset_id = jaqpot_api_client.predict_async(model_id=1886, dataset=input_data)
 ```
 
 ## Get a dataset by ID
@@ -103,7 +104,7 @@ prediction_dataset_id = jaqpot.predict_async(model_id=1886, dataset=input_data)
 To retrieve a dataset by its ID, you can use the `get_dataset_by_id` method. Here is an example:
 
 ```python
-results = jaqpot.get_dataset_by_id(dataset_id=prediction_dataset_id)
+results = jaqpot_api_client.get_dataset_by_id(dataset_id=prediction_dataset_id)
 print(results)
 ```
 
@@ -113,6 +114,6 @@ To take a prediction with a model using a CSV file, you can use the `predict_wit
 
 ```python
 csv_path = "ADD_A_CSV_PATH.csv"
-prediction = jaqpot.predict_with_csv_sync(model_id=1886, csv_path=csv_path)
+prediction = jaqpot_api_client.predict_with_csv_sync(model_id=1886, csv_path=csv_path)
 print(prediction)
 ```
