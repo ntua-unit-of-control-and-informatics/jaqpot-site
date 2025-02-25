@@ -8,7 +8,7 @@
 
 Dataset abstract classes
 
-### *class* jaqpotpy.datasets.dataset_base.BaseDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, task: str | None = None)
+### *class* jaqpotpy.datasets.dataset_base.BaseDataset(df: DataFrame = None, path: str | None = None, y_cols: Iterable[str] = None, x_cols: Iterable[str] | None = None, task: str = None)
 
 Bases: `ABC`
 
@@ -38,7 +38,7 @@ y
 X
 : The features of the dataset.
 
-#### *abstract* create()
+#### *abstractmethod* create()
 
 Creates the dataset.
 
@@ -85,7 +85,7 @@ str
 
 ## jaqpotpy.datasets.graph_pyg_dataset module
 
-### *class* jaqpotpy.datasets.graph_pyg_dataset.SmilesGraphDataset(smiles: list | None = None, y: list | None = None, featurizer: [SmilesGraphFeaturizer](jaqpotpy.descriptors.graph.md#jaqpotpy.descriptors.graph.graph_featurizer.SmilesGraphFeaturizer) | None = None)
+### *class* jaqpotpy.datasets.graph_pyg_dataset.SmilesGraphDataset(smiles: list = None, y: list | None = None, featurizer: [SmilesGraphFeaturizer](jaqpotpy.descriptors.graph.md#jaqpotpy.descriptors.graph.graph_featurizer.SmilesGraphFeaturizer) | None = None)
 
 Bases: `Dataset`
 
@@ -128,7 +128,7 @@ Sets:
 
 Dataset classes for molecular modelling
 
-### *class* jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizer: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: str | None = None)
+### *class* jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset(df: DataFrame = None, path: str | None = None, y_cols: Iterable[str] = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizer: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: str = None)
 
 Bases: [`BaseDataset`](#jaqpotpy.datasets.dataset_base.BaseDataset)
 
@@ -143,6 +143,16 @@ Returns:
 #### create()
 
 Create the dataset by featurizing the SMILES columns and combining with other features.
+
+#### df_astype(dtype, columns=None)
+
+Convert the dataset to the specified data type.
+
+Args:
+: dtype: The data type to convert to.
+
+Returns:
+: JaqpotpyDataset: The dataset converted to the specified data type.
 
 #### *property* featurizer_name *: Iterable[Any]*
 
@@ -175,7 +185,7 @@ Bases: `Dataset`
 
 ## Module contents
 
-### *class* jaqpotpy.datasets.JaqpotpyDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizer: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: str | None = None)
+### *class* jaqpotpy.datasets.JaqpotpyDataset(df: DataFrame = None, path: str | None = None, y_cols: Iterable[str] = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizer: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: str = None)
 
 Bases: [`BaseDataset`](#jaqpotpy.datasets.dataset_base.BaseDataset)
 
@@ -190,6 +200,16 @@ Returns:
 #### create()
 
 Create the dataset by featurizing the SMILES columns and combining with other features.
+
+#### df_astype(dtype, columns=None)
+
+Convert the dataset to the specified data type.
+
+Args:
+: dtype: The data type to convert to.
+
+Returns:
+: JaqpotpyDataset: The dataset converted to the specified data type.
 
 #### *property* featurizer_name *: Iterable[Any]*
 
@@ -212,7 +232,7 @@ Raises:
   ValueError: If FeatureSelector is not a valid sklearn feature selector.
   ValueError: If any features in SelectColumns are not in the dataset.
 
-### *class* jaqpotpy.datasets.SmilesGraphDataset(smiles: list | None = None, y: list | None = None, featurizer: [SmilesGraphFeaturizer](jaqpotpy.descriptors.graph.md#jaqpotpy.descriptors.graph.graph_featurizer.SmilesGraphFeaturizer) | None = None)
+### *class* jaqpotpy.datasets.SmilesGraphDataset(smiles: list = None, y: list | None = None, featurizer: [SmilesGraphFeaturizer](jaqpotpy.descriptors.graph.md#jaqpotpy.descriptors.graph.graph_featurizer.SmilesGraphFeaturizer) | None = None)
 
 Bases: `Dataset`
 

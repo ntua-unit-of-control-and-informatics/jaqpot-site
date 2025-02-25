@@ -51,7 +51,7 @@ Attributes:
   log_filepath (os.path.relpath or None): Relative path to the log file.
   logger (logging.Logger): The logger object at INFO level used for logging during model training.
 
-#### *abstract* evaluate(val_loader)
+#### *abstractmethod* evaluate(val_loader)
 
 Abstract method for evaluating the model.
 
@@ -65,7 +65,7 @@ Returns:
 Raises:
 : NotImplementedError: If this method is not implemented in a subclass.
 
-#### *abstract* train(train_loader, val_loader=None)
+#### *abstractmethod* train(train_loader, val_loader=None)
 
 Abstract method for training the model.
 

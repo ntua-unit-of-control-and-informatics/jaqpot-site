@@ -54,7 +54,7 @@ Args:
 Returns:
 : Tensor: Pooled graph-level embeddings.
 
-### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphAttentionNetwork(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean', edge_dim: int | None = None, heads: int = 1)
+### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphAttentionNetworkModel(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean', edge_dim: int | None = None, heads: int = 1)
 
 Bases: [`BaseGraphNetwork`](#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork)
 
@@ -63,7 +63,7 @@ Graph Attention Network (GAT) model.
 Attributes:
 : Inherits attributes from BaseGraphNetwork.
 
-### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphConvolutionNetwork(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean')
+### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphConvolutionNetworkModel(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean')
 
 Bases: [`BaseGraphNetwork`](#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork)
 
@@ -72,7 +72,7 @@ Graph Convolutional Network (GCN) model.
 Attributes:
 : Inherits attributes from BaseGraphNetwork.
 
-### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphSageNetwork(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean')
+### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphSageNetworkModel(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean')
 
 Bases: [`BaseGraphNetwork`](#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork)
 
@@ -81,7 +81,7 @@ GraphSAGENetwork model.
 Attributes:
 : Inherits attributes from BaseGraphNetwork.
 
-### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphTransformerNetwork(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean', edge_dim: int | None = None, heads: int = 1)
+### *class* jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphTransformerNetworkModel(input_dim: int, hidden_layers: int = 2, hidden_dim: int = 16, output_dim: int = 1, activation: Module = ReLU(), dropout_proba: float = 0.0, batch_norm: bool = False, seed=42, pooling: str = 'mean', edge_dim: int | None = None, heads: int = 1)
 
 Bases: [`BaseGraphNetwork`](#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork)
 

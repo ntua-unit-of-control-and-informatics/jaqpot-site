@@ -9,17 +9,17 @@
       * [`BaseGraphNetwork.add_layer()`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork.add_layer)
       * [`BaseGraphNetwork.forward()`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork.forward)
       * [`BaseGraphNetwork.pooling_layer()`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.BaseGraphNetwork.pooling_layer)
-    * [`GraphAttentionNetwork`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphAttentionNetwork)
-    * [`GraphConvolutionNetwork`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphConvolutionNetwork)
-    * [`GraphSageNetwork`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphSageNetwork)
-    * [`GraphTransformerNetwork`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphTransformerNetwork)
+    * [`GraphAttentionNetworkModel`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphAttentionNetworkModel)
+    * [`GraphConvolutionNetworkModel`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphConvolutionNetworkModel)
+    * [`GraphSageNetworkModel`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphSageNetworkModel)
+    * [`GraphTransformerNetworkModel`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.GraphTransformerNetworkModel)
     * [`pyg_to_onnx()`](jaqpotpy.models.torch_geometric_models.md#jaqpotpy.models.torch_geometric_models.graph_neural_network.pyg_to_onnx)
   * [Module contents](jaqpotpy.models.torch_geometric_models.md#module-jaqpotpy.models.torch_geometric_models)
 * [jaqpotpy.models.torch_models package](jaqpotpy.models.torch_models.md)
   * [Submodules](jaqpotpy.models.torch_models.md#submodules)
   * [jaqpotpy.models.torch_models.smiles_sequence module](jaqpotpy.models.torch_models.md#module-jaqpotpy.models.torch_models.smiles_sequence)
-    * [`Sequence_LSTM`](jaqpotpy.models.torch_models.md#jaqpotpy.models.torch_models.smiles_sequence.Sequence_LSTM)
-      * [`Sequence_LSTM.forward()`](jaqpotpy.models.torch_models.md#jaqpotpy.models.torch_models.smiles_sequence.Sequence_LSTM.forward)
+    * [`SequenceLstmModel`](jaqpotpy.models.torch_models.md#jaqpotpy.models.torch_models.smiles_sequence.SequenceLstmModel)
+      * [`SequenceLstmModel.forward()`](jaqpotpy.models.torch_models.md#jaqpotpy.models.torch_models.smiles_sequence.SequenceLstmModel.forward)
     * [`lstm_to_onnx()`](jaqpotpy.models.torch_models.md#jaqpotpy.models.torch_models.smiles_sequence.lstm_to_onnx)
   * [Module contents](jaqpotpy.models.torch_models.md#module-jaqpotpy.models.torch_models)
 * [jaqpotpy.models.trainers package](jaqpotpy.models.trainers.md)
@@ -362,7 +362,7 @@ Fit the model to the dataset.
 Args:
 : onnx_options (Optional[Dict]): Options for ONNX conversion.
 
-#### predict(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### predict(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), \*\*kwargs)
 
 Predict using the trained model.
 

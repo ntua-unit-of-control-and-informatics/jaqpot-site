@@ -7,35 +7,18 @@
     * [jaqpotpy.api.openapi package](jaqpotpy.api.openapi.md)
       * [Subpackages](jaqpotpy.api.openapi.md#subpackages)
       * [Submodules](jaqpotpy.api.openapi.md#submodules)
-      * [jaqpotpy.api.openapi.api_client module](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi.api_client)
-      * [jaqpotpy.api.openapi.api_response module](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi.api_response)
-      * [jaqpotpy.api.openapi.configuration module](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi.configuration)
-      * [jaqpotpy.api.openapi.exceptions module](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi.exceptions)
-      * [jaqpotpy.api.openapi.rest module](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi.rest)
-      * [Module contents](jaqpotpy.api.openapi.md#module-jaqpotpy.api.openapi)
+      * [jaqpotpy.api.openapi.api_client module](jaqpotpy.api.openapi.md#jaqpotpy-api-openapi-api-client-module)
+      * [jaqpotpy.api.openapi.api_response module](jaqpotpy.api.openapi.md#jaqpotpy-api-openapi-api-response-module)
+      * [jaqpotpy.api.openapi.configuration module](jaqpotpy.api.openapi.md#jaqpotpy-api-openapi-configuration-module)
+      * [jaqpotpy.api.openapi.exceptions module](jaqpotpy.api.openapi.md#jaqpotpy-api-openapi-exceptions-module)
+      * [jaqpotpy.api.openapi.rest module](jaqpotpy.api.openapi.md#jaqpotpy-api-openapi-rest-module)
+      * [Module contents](jaqpotpy.api.openapi.md#module-contents)
   * [Submodules](jaqpotpy.api.md#submodules)
   * [jaqpotpy.api.get_installed_libraries module](jaqpotpy.api.md#module-jaqpotpy.api.get_installed_libraries)
     * [`get_installed_libraries()`](jaqpotpy.api.md#jaqpotpy.api.get_installed_libraries.get_installed_libraries)
-  * [jaqpotpy.api.jaqpot_api_client module](jaqpotpy.api.md#module-jaqpotpy.api.jaqpot_api_client)
-    * [`JaqpotApiClient`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient)
-      * [`JaqpotApiClient.get_dataset_by_id()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.get_dataset_by_id)
-      * [`JaqpotApiClient.get_model_by_id()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.get_model_by_id)
-      * [`JaqpotApiClient.get_model_summary()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.get_model_summary)
-      * [`JaqpotApiClient.get_shared_models()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.get_shared_models)
-      * [`JaqpotApiClient.predict_async()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.predict_async)
-      * [`JaqpotApiClient.predict_sync()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.predict_sync)
-      * [`JaqpotApiClient.predict_with_csv_sync()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.predict_with_csv_sync)
-      * [`JaqpotApiClient.qsartoolbox_calculator_predict_sync()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.qsartoolbox_calculator_predict_sync)
-      * [`JaqpotApiClient.qsartoolbox_profiler_predict_sync()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.qsartoolbox_profiler_predict_sync)
-      * [`JaqpotApiClient.qsartoolbox_qsar_model_predict_sync()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client.JaqpotApiClient.qsartoolbox_qsar_model_predict_sync)
-  * [jaqpotpy.api.jaqpot_api_client_builder module](jaqpotpy.api.md#module-jaqpotpy.api.jaqpot_api_client_builder)
-    * [`JaqpotApiHttpClientBuilder`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client_builder.JaqpotApiHttpClientBuilder)
-      * [`JaqpotApiHttpClientBuilder.build()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client_builder.JaqpotApiHttpClientBuilder.build)
-      * [`JaqpotApiHttpClientBuilder.build_with_access_token()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client_builder.JaqpotApiHttpClientBuilder.build_with_access_token)
-      * [`JaqpotApiHttpClientBuilder.build_with_api_keys()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_client_builder.JaqpotApiHttpClientBuilder.build_with_api_keys)
-  * [jaqpotpy.api.jaqpot_api_http_client module](jaqpotpy.api.md#module-jaqpotpy.api.jaqpot_api_http_client)
-    * [`JaqpotApiHttpClient`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_http_client.JaqpotApiHttpClient)
-      * [`JaqpotApiHttpClient.set_access_token()`](jaqpotpy.api.md#jaqpotpy.api.jaqpot_api_http_client.JaqpotApiHttpClient.set_access_token)
+  * [jaqpotpy.api.jaqpot_api_client module](jaqpotpy.api.md#jaqpotpy-api-jaqpot-api-client-module)
+  * [jaqpotpy.api.jaqpot_api_client_builder module](jaqpotpy.api.md#jaqpotpy-api-jaqpot-api-client-builder-module)
+  * [jaqpotpy.api.jaqpot_api_http_client module](jaqpotpy.api.md#jaqpotpy-api-jaqpot-api-http-client-module)
   * [jaqpotpy.api.model_to_b64encoding module](jaqpotpy.api.md#module-jaqpotpy.api.model_to_b64encoding)
     * [`file_to_b64encoding()`](jaqpotpy.api.md#jaqpotpy.api.model_to_b64encoding.file_to_b64encoding)
     * [`model_to_b64encoding()`](jaqpotpy.api.md#jaqpotpy.api.model_to_b64encoding.model_to_b64encoding)
@@ -96,6 +79,7 @@
     * [`JaqpotpyDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset)
       * [`JaqpotpyDataset.copy()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.copy)
       * [`JaqpotpyDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.create)
+      * [`JaqpotpyDataset.df_astype()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.df_astype)
       * [`JaqpotpyDataset.featurizer_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.featurizer_name)
       * [`JaqpotpyDataset.select_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.select_features)
   * [jaqpotpy.datasets.tokenizer_dataset module](jaqpotpy.datasets.md#module-jaqpotpy.datasets.tokenizer_dataset)
@@ -105,6 +89,7 @@
     * [`JaqpotpyDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset)
       * [`JaqpotpyDataset.copy()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.copy)
       * [`JaqpotpyDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.create)
+      * [`JaqpotpyDataset.df_astype()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.df_astype)
       * [`JaqpotpyDataset.featurizer_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.featurizer_name)
       * [`JaqpotpyDataset.select_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.select_features)
     * [`SmilesGraphDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.SmilesGraphDataset)
@@ -147,12 +132,22 @@
       * [`BoundingBox.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.BoundingBox.fit)
       * [`BoundingBox.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.BoundingBox.get_attributes)
       * [`BoundingBox.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.BoundingBox.predict)
+    * [`CityBlock`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock)
+      * [`CityBlock.calculate_distance()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock.calculate_distance)
+      * [`CityBlock.calculate_threshold()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock.calculate_threshold)
+      * [`CityBlock.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock.fit)
+      * [`CityBlock.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock.get_attributes)
+      * [`CityBlock.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.CityBlock.predict)
     * [`DOA`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA)
       * [`DOA.data`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA.data)
       * [`DOA.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA.fit)
       * [`DOA.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA.get_attributes)
       * [`DOA.in_doa`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA.in_doa)
       * [`DOA.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA.predict)
+    * [`KernelBased`](jaqpotpy.doa.md#jaqpotpy.doa.doa.KernelBased)
+      * [`KernelBased.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.KernelBased.fit)
+      * [`KernelBased.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.KernelBased.get_attributes)
+      * [`KernelBased.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.KernelBased.predict)
     * [`Leverage`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage)
       * [`Leverage.calculate_matrix()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage.calculate_matrix)
       * [`Leverage.calculate_threshold()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage.calculate_threshold)
@@ -161,6 +156,12 @@
       * [`Leverage.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage.get_attributes)
       * [`Leverage.h_star`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage.h_star)
       * [`Leverage.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Leverage.predict)
+    * [`Mahalanobis`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis)
+      * [`Mahalanobis.calculate_distance()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis.calculate_distance)
+      * [`Mahalanobis.calculate_threshold()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis.calculate_threshold)
+      * [`Mahalanobis.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis.fit)
+      * [`Mahalanobis.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis.get_attributes)
+      * [`Mahalanobis.predict()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.Mahalanobis.predict)
     * [`MeanVar`](jaqpotpy.doa.md#jaqpotpy.doa.doa.MeanVar)
       * [`MeanVar.fit()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.MeanVar.fit)
       * [`MeanVar.get_attributes()`](jaqpotpy.doa.md#jaqpotpy.doa.doa.MeanVar.get_attributes)
@@ -234,7 +235,7 @@
 * [jaqpotpy.preprocessors package](jaqpotpy.preprocessors.md)
   * [Submodules](jaqpotpy.preprocessors.md#submodules)
   * [jaqpotpy.preprocessors.custom_one_hot_encoder module](jaqpotpy.preprocessors.md#jaqpotpy-preprocessors-custom-one-hot-encoder-module)
-  * [Module contents](jaqpotpy.preprocessors.md#module-jaqpotpy.preprocessors)
+  * [Module contents](jaqpotpy.preprocessors.md#module-contents)
 * [jaqpotpy.utils package](jaqpotpy.utils.md)
   * [Submodules](jaqpotpy.utils.md#submodules)
   * [jaqpotpy.utils.data_utils module](jaqpotpy.utils.md#jaqpotpy-utils-data-utils-module)
@@ -248,7 +249,7 @@
   * [jaqpotpy.utils.seeding module](jaqpotpy.utils.md#jaqpotpy-utils-seeding-module)
   * [jaqpotpy.utils.types module](jaqpotpy.utils.md#jaqpotpy-utils-types-module)
   * [jaqpotpy.utils.url_utils module](jaqpotpy.utils.md#jaqpotpy-utils-url-utils-module)
-  * [Module contents](jaqpotpy.utils.md#module-jaqpotpy.utils)
+  * [Module contents](jaqpotpy.utils.md#module-contents)
 
 ## Submodules
 
@@ -285,6 +286,37 @@ keycloak_client_id
 
 create_logs
 : Whether to create logs. Default is False.
+
+#### deploy_docker_model(model: DockerModel, name: str, description: str, visibility: ModelVisibility) → None
+
+Deploys a Docker-based model on Jaqpot.
+
+This method registers a Docker-encapsulated machine learning model on the Jaqpot platform,
+allowing it to be accessed via the Jaqpot API.
+
+Args:
+: model (DockerModel):
+  : The Docker-based model to be deployed. The model must contain attributes such as:
+    - jaqpotpy_version (str): The version of JaqpotPy used.
+    - docker_config (DockerConfig): The Docker container configuration.
+    - dependent_features (List[Feature]): The output features of the model.
+    - independent_features (List[Feature]): The input features of the model.
+  <br/>
+  name (str):
+  : The name of the model to be displayed on Jaqpot.
+  <br/>
+  description (str):
+  : A short textual description of the model.
+  <br/>
+  visibility (ModelVisibility):
+  : The access level of the model (e.g., public, private, or restricted to an organization).
+
+Returns:
+: None
+
+Raises:
+: ValueError: If any of the required parameters are invalid or missing.
+  JaqpotAPIError: If the deployment request fails due to an API issue.
 
 #### deploy_sklearn_model(model, name, description, visibility)
 

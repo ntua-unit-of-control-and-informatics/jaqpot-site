@@ -49,6 +49,64 @@ Args:
 Returns:
 : Iterable[Any]: List of dictionaries containing the percentage of features out of DOA and a boolean indicating if the data point is within DOA.
 
+### *class* jaqpotpy.doa.doa.CityBlock(threshold_percentile=95)
+
+Bases: [`DOA`](#jaqpotpy.doa.doa.DOA)
+
+City Block (Manhattan) Distance Domain of Applicability (DOA) calculation class.
+
+Attributes:
+: \_data (Union[np.array, pd.DataFrame]): Input data used for DOA calculation.
+  \_mean_vector (np.array): Mean vector of the training data.
+  \_threshold (float): Threshold value for City Block distance.
+  doa_attributes (CityBlockDoA): Attributes of the City Block DOA.
+
+Methods:
+: \_\_init_\_(): Initializes the CityBlock DOA class.
+  fit(X: Union[np.array, pd.DataFrame]): Fits the model using the input data.
+  predict(new_data: Union[np.array, pd.DataFrame]) -> Iterable[Any]: Predicts if new data points are within DOA.
+  calculate_distance(sample: np.array) -> float: Calculates City Block distance for a sample.
+  calculate_threshold(): Calculates the City Block distance threshold.
+
+#### calculate_distance(sample: array) → float
+
+Calculates City Block (Manhattan) distance for a sample.
+
+Args:
+: sample (np.array): Input sample to calculate distance for.
+
+Returns:
+: float: City Block distance of the sample.
+
+#### calculate_threshold()
+
+Calculates the City Block distance threshold based on the chosen percentile.
+
+#### fit(X: array | DataFrame)
+
+Fits the model using the input data.
+
+Args:
+: X (Union[np.array, pd.DataFrame]): Input training data.
+
+#### get_attributes()
+
+Returns the attributes of the CityBlock DOA.
+
+Returns:
+: CityBlockDOAAttributes: Attributes of the CityBlock DOA.
+
+#### predict(new_data: array | DataFrame) → Iterable[Any]
+
+Predicts if new data points are within DOA.
+
+Args:
+: new_data (Union[np.array, pd.DataFrame]): New data points to be predicted.
+
+Returns:
+: Iterable[Any]: List of dictionaries containing the City Block distance,
+  threshold, and a boolean indicating if the data point is within DOA.
+
 ### *class* jaqpotpy.doa.doa.DOA
 
 Bases: `ABC`
@@ -77,11 +135,11 @@ Methods:
 
 Getter for the data attribute.
 
-#### *abstract* fit(X: array)
+#### *abstractmethod* fit(X: array)
 
 Abstract method to fit the model using the input data X.
 
-#### *abstract* get_attributes()
+#### *abstractmethod* get_attributes()
 
 Abstract method to get the attributes of the DOA.
 
@@ -89,9 +147,41 @@ Abstract method to get the attributes of the DOA.
 
 Getter for the in_doa attribute.
 
-#### *abstract* predict(data: Iterable[Any]) → Iterable[Any]
+#### *abstractmethod* predict(data: Iterable[Any]) → Iterable[Any]
 
 Abstract method to predict if data points are within DOA.
+
+### *class* jaqpotpy.doa.doa.KernelBased(kernel_type='GAUSSIAN', threshold_method='percentile', threshold_percentile=5, sigma=None, gamma=None)
+
+Bases: [`DOA`](#jaqpotpy.doa.doa.DOA)
+
+Enhanced Kernel-based Distance of Applicability (DOA) calculation class.
+
+Supports multiple kernel types and more flexible threshold calculation.
+
+#### fit(X: ndarray | DataFrame)
+
+Fit the kernel DOA model.
+
+Args:
+: X (Union[np.ndarray, pd.DataFrame]): Training data.
+
+#### get_attributes()
+
+Returns the attributes of the Kernel DOA.
+
+Returns:
+: KernelDOAAttributes: Attributes of the Kernel DOA.
+
+#### predict(new_data: ndarray | DataFrame) → Iterable[dict]
+
+Predict DOA for new data points.
+
+Args:
+: new_data (Union[np.ndarray, pd.DataFrame]): Data to predict.
+
+Returns:
+: Iterable[dict]: Prediction results for each data point.
 
 ### *class* jaqpotpy.doa.doa.Leverage
 
@@ -100,9 +190,7 @@ Bases: [`DOA`](#jaqpotpy.doa.doa.DOA)
 Leverage class for Domain of Applicability (DOA) calculation using the leverage method.
 
 Attributes:
-: \_doa (list): List to store leverage values.
-  \_in_doa (list): List to store boolean values indicating if data points are within DOA.
-  \_data (Union[np.array, pd.DataFrame]): Input data used for DOA calculation.
+: \_data (Union[np.array, pd.DataFrame]): Input data used for DOA calculation.
   \_doa_matrix (np.array): Matrix used for leverage calculation.
   \_h_star (float): Threshold value for leverage.
   doa_attributes (LeverageDoa): Attributes of the leverage DOA.
@@ -161,6 +249,67 @@ Args:
 
 Returns:
 : Iterable[Any]: List of dictionaries containing the leverage value, threshold, and a boolean indicating if the data point is within DOA.
+
+### *class* jaqpotpy.doa.doa.Mahalanobis(chi2_quantile=0.95)
+
+Bases: [`DOA`](#jaqpotpy.doa.doa.DOA)
+
+Mahalanobis Distance Domain of Applicability (DOA) calculation class.
+
+Attributes:
+: \_data (Union[np.array, pd.DataFrame]): Input data used for DOA calculation.
+  \_mean_vector (np.array): Mean vector of the training data.
+  \_cov_matrix (np.array): Covariance matrix of the training data.
+  \_inv_cov_matrix (np.array): Inverse of the covariance matrix.
+  \_threshold (float): Threshold value for Mahalanobis distance.
+  doa_attributes (MahalanobisDoA): Attributes of the Mahalanobis DOA.
+
+Methods:
+: \_\_init_\_(): Initializes the Mahalanobis DOA class.
+  fit(X: Union[np.array, pd.DataFrame]): Fits the model using the input data.
+  predict(new_data: Union[np.array, pd.DataFrame]) -> Iterable[Any]: Predicts if new data points are within DOA.
+  calculate_distance(sample: np.array) -> float: Calculates Mahalanobis distance for a sample.
+  calculate_threshold(): Calculates the Mahalanobis distance threshold.
+
+#### calculate_distance(sample: array) → float
+
+Calculates Mahalanobis distance for a sample.
+
+Args:
+: sample (np.array): Input sample to calculate distance for.
+
+Returns:
+: float: Mahalanobis distance of the sample.
+
+#### calculate_threshold()
+
+Calculates the Mahalanobis distance threshold using chi-square distribution.
+Uses 99% confidence level by default.
+
+#### fit(X: array | DataFrame)
+
+Fits the model using the input data.
+
+Args:
+: X (Union[np.array, pd.DataFrame]): Input training data.
+
+#### get_attributes()
+
+Returns the attributes of the Mahalanobis DOA.
+
+Returns:
+: MahalanobisDOAAttributes: Attributes of the Mahalanobis DOA.
+
+#### predict(new_data: array | DataFrame) → Iterable[Any]
+
+Predicts if new data points are within DOA.
+
+Args:
+: new_data (Union[np.array, pd.DataFrame]): New data points to be predicted.
+
+Returns:
+: Iterable[Any]: List of dictionaries containing the Mahalanobis distance,
+  threshold, and a boolean indicating if the data point is within DOA.
 
 ### *class* jaqpotpy.doa.doa.MeanVar
 

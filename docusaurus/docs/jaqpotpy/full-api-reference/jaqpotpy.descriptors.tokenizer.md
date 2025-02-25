@@ -4,7 +4,7 @@
 
 ## jaqpotpy.descriptors.tokenizer.smiles_tokenizer module
 
-### *class* jaqpotpy.descriptors.tokenizer.smiles_tokenizer.SmilesVectorizer(charset='@C)(=cOn1S2/H[N]\\\\', pad=10, maxlength=120, leftpad=True, isomericSmiles=True, augment=True, canonical=False, startchar='^', endchar='$', unknownchar='?', binary=False)
+### *class* jaqpotpy.descriptors.tokenizer.smiles_tokenizer.SmilesVectorizer(charset='@C)(=cOn1S2/H[N]\\\\', pad=10, maxlength=120, startchar='^', endchar='$', unknownchar='?')
 
 Bases: `object`
 
@@ -23,7 +23,7 @@ as data augmentation
 
 #### *property* charset
 
-#### fit(mols, extra_chars=[])
+#### fit(smiles, extra_chars=[])
 
 Performs extraction of the charset and length of a SMILES datasets and sets self.maxlength and self.charset
 
@@ -31,18 +31,23 @@ Performs extraction of the charset and length of a SMILES datasets and sets self
   * **smiles** – Numpy array or Pandas series containing smiles as strings
   * **extra_chars** – List of extra chars to add to the charset (e.g. “\\” when “/” is present)
 
+#### get_dict()
+
+Returns a dictionary representation of the featurizer’s settings and feature sets.
+
+Returns:
+: dict: Featurizer configuration and feature sets.
+
+#### load_dict(feat_dict)
+
+Loads settings and feature sets from a dictionary.
+
+Args:
+: feat_dict (dict): Dictionary containing featurizer settings and feature sets.
+
 #### *property* maxlength
 
 #### *property* pad
-
-#### randomize_mol(mol)
-
-Performs a randomization of the atom order of an RDKit molecule
-
-#### randomize_smiles(smiles)
-
-Perform a randomization of a SMILES string
-must be RDKit sanitizable
 
 #### reverse_transform(vect, strip=True)
 
@@ -57,7 +62,7 @@ charset must be the same as used for vectorization.
 
 Calculates and sets the output dimensions of the vectorized molecules from the current settings
 
-#### transform(mols, augment=None, canonical=None)
+#### transform(smiles)
 
 Perform an enumeration (atom order randomization) and vectorization of a Numpy array of RDkit molecules
 
