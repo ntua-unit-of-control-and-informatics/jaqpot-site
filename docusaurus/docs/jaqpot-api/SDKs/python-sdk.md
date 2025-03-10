@@ -3,7 +3,14 @@ title: Python SDK
 sidebar_position: 1
 ---
 
-The Jaqpot Python SDK provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
+The [Jaqpot Python SDK](https://pypi.org/project/jaqpot-python-sdk/) provides a streamlined interface for interacting with Jaqpot's predictive models and services within Python environments. With this SDK, users can easily retrieve models, make predictions (both synchronously and asynchronously), manage datasets, and handle model sharing across organizations. The SDK simplifies the process of integrating Jaqpot's machine learning capabilities into Python applications, supporting both individual predictions and batch processing through CSV files.
+
+## Installation
+
+Install using pip:
+```shell
+pip install jaqpot-python-sdk
+```
 
 ## Authentication
 

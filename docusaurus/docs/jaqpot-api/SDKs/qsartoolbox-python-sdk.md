@@ -3,13 +3,20 @@ title: QSAR Toolbox Python SDK
 sidebar_position: 3
 ---
 
-The Jaqpot Python SDK provides seamless access to QSAR Toolbox, a comprehensive software application designed for filling data gaps in toxicity data. Through the SDK, users can interact with three main components of QSAR Toolbox:
+The [Jaqpot Python SDK](https://pypi.org/project/jaqpot-python-sdk/) provides seamless access to QSAR Toolbox, a comprehensive software application designed for filling data gaps in toxicity data. Through the SDK, users can interact with three main components of QSAR Toolbox:
 
 1. Calculators: Tools that compute various molecular descriptors and properties
 2. Models: QSAR predictive models for different endpoints
 3. Profilers: Components that analyze chemical structures and identify structural features
 
 This integration allows users to programmatically access QSAR Toolbox functionalities, perform calculations, make predictions, and analyze chemical structures directly from their Python environment. All components are accessible through simple API calls, requiring only SMILES notation as input for predictions.
+
+## Installation
+
+Install using pip:
+```shell
+pip install jaqpot-python-sdk
+```
 
 ## Initializing the Client
 
