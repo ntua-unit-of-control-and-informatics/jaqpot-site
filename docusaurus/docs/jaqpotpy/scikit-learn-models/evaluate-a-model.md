@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from jaqpotpy.models import SklearnModel
-from jaqpotpy.datasets import JaqpotpyTabularDataset
+from jaqpotpy.datasets import JaqpotTabularDataset
 from jaqpotpy.descriptors import RDKitDescriptors
 ```
 
@@ -36,13 +36,13 @@ data = pd.DataFrame(
 )
 ```
 
-Next, we prepare the dataset for training using `JaqpotpyTabularDataset` and `RDKitDescriptors` for feature extraction.
+Next, we prepare the dataset for training using `JaqpotTabularDataset` and `RDKitDescriptors` for feature extraction.
 
 ```python
 featurizer = RDKitDescriptors()
 
 # Prepare the dataset for training with Jaqpotpy
-train_dataset = JaqpotpyTabularDataset(
+train_dataset = JaqpotTabularDataset(
     df=data,
     x_cols=["temperature"],
     y_cols=["activity"],
@@ -68,7 +68,7 @@ To estimate the model's performance, we perform cross-validation on the training
 jaqpot_model.cross_validate(train_dataset, n_splits=10)
 ```
 
-We define a test dataset for external evaluation and prepare it using `JaqpotpyTabularDataset`.
+We define a test dataset for external evaluation and prepare it using `JaqpotTabularDataset`.
 
 ```python
 # Define test data for external evaluation
@@ -81,7 +81,7 @@ X_test = pd.DataFrame(
 )
 
 # Prepare the test dataset with Jaqpotpy
-test_dataset = JaqpotpyTabularDataset(
+test_dataset = JaqpotTabularDataset(
     df=X_test,
     smiles_cols="smiles",
     x_cols=["temperature"],

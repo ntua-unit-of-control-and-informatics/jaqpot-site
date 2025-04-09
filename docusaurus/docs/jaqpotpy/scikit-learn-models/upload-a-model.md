@@ -20,13 +20,13 @@ df = pd.DataFrame(X, columns=["X1", "X2", "X3", "X4"])
 df["y"] = y
 ```
 
-Next, we initialize a `JaqpotpyTabularDataset` with the DataFrame, specifying the feature columns, target column, and task type:
+Next, we initialize a `JaqpotTabularDataset` with the DataFrame, specifying the feature columns, target column, and task type:
 
 ```python
-from jaqpotpy.datasets import JaqpotpyTabularDataset
+from jaqpotpy.datasets import JaqpotTabularDataset
 
-# Initialize a JaqpotpyTabularDataset with the DataFrame
-dataset = JaqpotpyTabularDataset(
+# Initialize a JaqpotTabularDataset with the DataFrame
+dataset = JaqpotTabularDataset(
     df=df,
     x_cols=["X1", "X2", "X3", "X4"],
     y_cols=["y"],

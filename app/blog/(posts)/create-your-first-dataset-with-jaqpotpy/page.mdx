@@ -29,11 +29,11 @@ At the end of this post, you’ll find examples for all major use cases.
 
 ## Step 1: Basic setup
 
-To begin, let’s import the libraries needed for creating and working with datasets. The code uses `pandas` for managing tabular data and several modules from `jaqpotpy`, such as `JaqpotpyTabularDataset` for defining datasets and `RDKitDescriptors`, `MordredDescriptors`, and others for generating molecular descriptors based on SMILES strings or calculating molecular fingerprints.
+To begin, let’s import the libraries needed for creating and working with datasets. The code uses `pandas` for managing tabular data and several modules from `jaqpotpy`, such as `JaqpotTabularDataset` for defining datasets and `RDKitDescriptors`, `MordredDescriptors`, and others for generating molecular descriptors based on SMILES strings or calculating molecular fingerprints.
 
 ```python
 import pandas as pd
-from jaqpotpy.datasets import JaqpotpyTabularDataset
+from jaqpotpy.datasets import JaqpotTabularDataset
 from jaqpotpy.descriptors import RDKitDescriptors, MordredDescriptors, TopologicalFingerprint, MACCSKeysFingerprint
 ```
 
@@ -50,7 +50,7 @@ data = pd.DataFrame({
 })
 
 # Create dataset for binary classification
-dataset = JaqpotpyTabularDataset(
+dataset = JaqpotTabularDataset(
     df=data,
     x_cols=['feature1', 'feature2'],  # Feature columns
     y_cols=['target'],                # Target column
@@ -76,7 +76,7 @@ mol_data = pd.DataFrame({
 rdkit_desc = RDKitDescriptors()
 
 # Create dataset with molecular descriptors
-mol_dataset = JaqpotpyTabularDataset(
+mol_dataset = JaqpotTabularDataset(
     df=mol_data,
     x_cols=['temperature'],    # Additional feature columns
     y_cols=['activity'],       # Target column
@@ -126,7 +126,7 @@ multi_data = pd.DataFrame({
 # Using MACCS keys fingerprints
 maccs_fp = MACCSKeysFingerprint()
 
-multi_dataset = JaqpotpyTabularDataset(
+multi_dataset = JaqpotTabularDataset(
     df=multi_data,
     x_cols=['feature1'],
     y_cols=['class'],
@@ -138,7 +138,7 @@ multi_dataset = JaqpotpyTabularDataset(
 
 ## Key takeaways
 
-1. You can use `JaqpotpyTabularDataset` for simple numeric data or molecular data.
+1. You can use `JaqpotTabularDataset` for simple numeric data or molecular data.
 2. Add molecular features by specifying `smiles_cols` and a `featurizer`.
 3. Choose the correct `task` for your problem:
    - `regression` for continuous targets

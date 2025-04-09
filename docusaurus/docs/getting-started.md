@@ -19,7 +19,7 @@ pip install jaqpotpy
 ```python
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from jaqpotpy.datasets import JaqpotpyTabularDataset
+from jaqpotpy.datasets import JaqpotTabularDataset
 from jaqpotpy.models import SklearnModel
 from jaqpotpy import Jaqpot
 
@@ -31,7 +31,7 @@ data = pd.DataFrame({
 })
 
 # Create dataset for binary classification
-dataset = JaqpotpyTabularDataset(
+dataset = JaqpotTabularDataset(
     df=data,
     x_cols=['feature1', 'feature2'],  # Feature columns
     y_cols=['target'],                # Target column
