@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Create a Dataset
 
-This guide demonstrates how to create and work with datasets using `jaqpotpy`. The `JaqpotpyDataset` class is versatile and can handle various types of data, including molecular representations (SMILES) and their descriptors.
+This guide demonstrates how to create and work with datasets using `jaqpotpy`. The `JaqpotpyTabularDataset` class is versatile and can handle various types of data, including molecular representations (SMILES) and their descriptors.
 
 ## Basic Setup
 
@@ -13,7 +13,7 @@ First, import the necessary libraries:
 ```python
 import pandas as pd
 import numpy as np
-from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.datasets import JaqpotpyTabularDataset
 from jaqpotpy.descriptors import RDKitDescriptors, MordredDescriptors, TopologicalFingerprint, MACCSKeysFingerprint
 ```
 
@@ -30,7 +30,7 @@ data = pd.DataFrame({
 })
 
 # Create dataset for binary classification
-dataset = JaqpotpyDataset(
+dataset = JaqpotpyTabularDataset(
     df=data,
     x_cols=['feature1', 'feature2'],  # Feature columns
     y_cols=['target'],                # Target column
@@ -54,7 +54,7 @@ mol_data = pd.DataFrame({
 rdkit_desc = RDKitDescriptors()
 
 # Create dataset with molecular descriptors
-mol_dataset = JaqpotpyDataset(
+mol_dataset = JaqpotpyTabularDataset(
     df=mol_data,
     x_cols=['temperature'],    # Additional feature columns
     y_cols=['activity'],       # Target column
@@ -66,7 +66,7 @@ mol_dataset = JaqpotpyDataset(
 
 ## Available Task Types
 
-JaqpotpyDataset supports three types of machine learning tasks:
+JaqpotpyTabularDataset supports three types of machine learning tasks:
 
 - `regression`: For predicting continuous values
 - `binary_classification`: For two-class classification problems
@@ -103,7 +103,7 @@ multi_data = pd.DataFrame({
 # Using MACCS keys fingerprints
 maccs_fp = MACCSKeysFingerprint()
 
-multi_dataset = JaqpotpyDataset(
+multi_dataset = JaqpotpyTabularDataset(
     df=multi_data,
     x_cols=['feature1'],
     y_cols=['class'],

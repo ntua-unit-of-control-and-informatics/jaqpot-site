@@ -9,7 +9,7 @@ First, we generate a small regression dataset with 100 samples, each having 4 fe
 ```python
 import pandas as pd
 from sklearn.datasets import make_regression
-from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.datasets import JaqpotpyTabularDataset
 from sklearn.linear_model import LinearRegression
 from jaqpotpy.models.sklearn import SklearnModel
 from jaqpotpy.doa import Leverage, BoundingBox, MeanVar
@@ -19,10 +19,10 @@ df = pd.DataFrame(X, columns=["X1", "X2", "X3", "X4"])
 df["y"] = y
 ```
 
-Next, we initialize a `JaqpotpyDataset` with the DataFrame, specifying the feature columns and the target column, and define the task as regression.
+Next, we initialize a `JaqpotpyTabularDataset` with the DataFrame, specifying the feature columns and the target column, and define the task as regression.
 
 ```python
-dataset = JaqpotpyDataset(
+dataset = JaqpotpyTabularDataset(
     df=df,
     x_cols=["X1", "X2", "X3", "X4"],
     y_cols=["y"],
@@ -48,10 +48,10 @@ X_test, _ = make_regression(n_samples=5, n_features=4, noise=0.2, random_state=4
 df_test = pd.DataFrame(X_test, columns=["X1", "X2", "X3", "X4"])
 ```
 
-We initialize a `JaqpotpyDataset` for prediction, specifying the feature columns and setting `y_cols` to `None` since we are predicting.
+We initialize a `JaqpotpyTabularDataset` for prediction, specifying the feature columns and setting `y_cols` to `None` since we are predicting.
 
 ```python
-test_dataset = JaqpotpyDataset(
+test_dataset = JaqpotpyTabularDataset(
     df=df_test,
     x_cols=["X1", "X2", "X3", "X4"],
     y_cols=None,

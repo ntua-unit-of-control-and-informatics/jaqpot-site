@@ -135,11 +135,11 @@ Methods:
 
 Getter for the data attribute.
 
-#### *abstractmethod* fit(X: array)
+#### *abstract* fit(X: array)
 
 Abstract method to fit the model using the input data X.
 
-#### *abstractmethod* get_attributes()
+#### *abstract* get_attributes()
 
 Abstract method to get the attributes of the DOA.
 
@@ -147,7 +147,7 @@ Abstract method to get the attributes of the DOA.
 
 Getter for the in_doa attribute.
 
-#### *abstractmethod* predict(data: Iterable[Any]) → Iterable[Any]
+#### *abstract* predict(data: Iterable[Any]) → Iterable[Any]
 
 Abstract method to predict if data points are within DOA.
 

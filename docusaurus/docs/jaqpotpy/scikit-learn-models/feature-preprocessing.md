@@ -18,7 +18,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from jaqpotpy.models import SklearnModel
-from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.datasets import JaqpotpyTabularDataset
 from jaqpotpy.descriptors import RDKitDescriptors, MACCSKeysFingerprint
 ```
 
@@ -35,10 +35,10 @@ from jaqpotpy.descriptors import RDKitDescriptors, MACCSKeysFingerprint
 featurizers = [RDKitDescriptors(), MACCSKeysFingerprint()]
 ```
 
-We then pass this list of featurizers to the `JaqpotpyDataset` object when creating the training dataset:
+We then pass this list of featurizers to the `JaqpotpyTabularDataset` object when creating the training dataset:
 
 ```python
-train_dataset = JaqpotpyDataset(
+train_dataset = JaqpotpyTabularDataset(
     df=data,
     x_cols=["cat_col", "temperature"],
     y_cols=["activity"],
@@ -52,7 +52,7 @@ By providing a list of featurizers, the dataset will generate both RDKit descrip
 
 ## Feature Selection
 
-In the second script, we demonstrate the use of feature selection. After creating the `JaqpotpyDataset` object, we apply a feature selection technique using the `select_features()` method:
+In the second script, we demonstrate the use of feature selection. After creating the `JaqpotpyTabularDataset` object, we apply a feature selection technique using the `select_features()` method:
 
 ```python
 # Use VarianceThreshold to select features with a minimum variance of 0.1

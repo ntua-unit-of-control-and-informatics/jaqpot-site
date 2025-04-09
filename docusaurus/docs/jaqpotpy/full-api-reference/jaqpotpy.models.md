@@ -150,7 +150,7 @@ Get or set the version of the model.
 
 ## jaqpotpy.models.sklearn module
 
-### *class* jaqpotpy.models.sklearn.SklearnModel(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | list | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None)
+### *class* jaqpotpy.models.sklearn.SklearnModel(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | list | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None, verbose: bool | None = True)
 
 Bases: [`Model`](#jaqpotpy.models.base_classes.Model)
 
@@ -324,12 +324,12 @@ Args:
 Raises:
 : ValueError: If a preprocessor is not valid.
 
-#### cross_validate(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), n_splits=5, random_seed=42)
+#### cross_validate(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), n_splits=5, random_seed=42)
 
 Perform cross-validation.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for cross-validation.
+: dataset (JaqpotTabularDataset): The dataset for cross-validation.
   n_splits (int): The number of splits.
 
 Returns:
@@ -345,12 +345,12 @@ Args:
   description (str): The description of the model.
   visibility: The visibility of the model.
 
-#### evaluate(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### evaluate(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
 Evaluate the model on a dataset.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for evaluation.
+: dataset (JaqpotTabularDataset): The dataset for evaluation.
 
 Returns:
 : Evaluation scores.
@@ -362,63 +362,63 @@ Fit the model to the dataset.
 Args:
 : onnx_options (Optional[Dict]): Options for ONNX conversion.
 
-#### predict(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), \*\*kwargs)
+#### predict(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), \*\*kwargs)
 
 Predict using the trained model.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for prediction.
+: dataset (JaqpotTabularDataset): The dataset for prediction.
 
 Returns:
 : Predictions.
 
-#### predict_doa(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### predict_doa(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
 Predict the Domain of Applicability (DOA).
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for prediction.
+: dataset (JaqpotTabularDataset): The dataset for prediction.
 
 Returns:
 : DOA results.
 
-#### predict_onnx(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### predict_onnx(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
 Predict using the ONNX model.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for prediction.
+: dataset (JaqpotTabularDataset): The dataset for prediction.
 
 Returns:
 : ONNX predictions.
 
-#### predict_proba(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### predict_proba(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
 Predict probabilities using the trained model.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for prediction.
+: dataset (JaqpotTabularDataset): The dataset for prediction.
 
 Returns:
 : List of probabilities.
 
-#### predict_proba_onnx(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset))
+#### predict_proba_onnx(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
 Predict probabilities using the ONNX model.
 
 Args:
-: dataset (JaqpotpyDataset): The dataset for prediction.
+: dataset (JaqpotTabularDataset): The dataset for prediction.
 
 Returns:
 : List of ONNX probabilities.
 
-#### randomization_test(train_dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), test_dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), n_iters=10)
+#### randomization_test(train_dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), test_dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), n_iters=10)
 
 Perform a randomization test.
 
 Args:
-: train_dataset (JaqpotpyDataset): The training dataset.
-  test_dataset (JaqpotpyDataset): The testing dataset.
+: train_dataset (JaqpotTabularDataset): The training dataset.
+  test_dataset (JaqpotTabularDataset): The testing dataset.
   n_iters (int): The number of iterations.
 
 Returns:
@@ -426,20 +426,20 @@ Returns:
 
 ## jaqpotpy.models.xgboost module
 
-### *class* jaqpotpy.models.xgboost.XGBoostModel(dataset: [JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None, random_seed: int | None = 1311)
+### *class* jaqpotpy.models.xgboost.XGBoostModel(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset), model: Any, doa: [DOA](jaqpotpy.doa.md#jaqpotpy.doa.doa.DOA) | None = None, preprocess_x: BaseEstimator | List[BaseEstimator] | None = None, preprocess_y: BaseEstimator | List[BaseEstimator] | None = None, random_seed: int | None = 1311)
 
 Bases: [`SklearnModel`](#jaqpotpy.models.sklearn.SklearnModel)
 
 XGBoostModel class for handling XGBoost models within the Jaqpotpy framework.
 
 Attributes:
-: dataset (JaqpotpyDataset): The dataset used for training the model.
+: dataset (JaqpotTabularDataset): The dataset used for training the model.
   model (Any): The XGBoost model instance.
   doa (Optional[DOA or list]): Domain of Applicability (DOA) methods.
   preprocess_x (Optional[Union[BaseEstimator, List[BaseEstimator]]]): Preprocessing steps for input features.
   preprocess_y (Optional[Union[BaseEstimator, List[BaseEstimator]]]): Preprocessing steps for target features.
 
-#### fit(eval_set: List[[JaqpotpyDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset)] | None = None, onnx_options: Dict | None = None)
+#### fit(eval_set: List[[JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset)] | None = None, onnx_options: Dict | None = None)
 
 Fit the model to the dataset.
 

@@ -67,6 +67,7 @@
     * [`BaseDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset)
       * [`BaseDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.create)
       * [`BaseDataset.dataset_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.dataset_name)
+      * [`BaseDataset.df_astype()`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.df_astype)
       * [`BaseDataset.load()`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.load)
       * [`BaseDataset.save()`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.save)
       * [`BaseDataset.task`](jaqpotpy.datasets.md#jaqpotpy.datasets.dataset_base.BaseDataset.task)
@@ -75,23 +76,16 @@
       * [`SmilesGraphDataset.get_num_edge_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.graph_pyg_dataset.SmilesGraphDataset.get_num_edge_features)
       * [`SmilesGraphDataset.get_num_node_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.graph_pyg_dataset.SmilesGraphDataset.get_num_node_features)
       * [`SmilesGraphDataset.precompute_featurization()`](jaqpotpy.datasets.md#jaqpotpy.datasets.graph_pyg_dataset.SmilesGraphDataset.precompute_featurization)
-  * [jaqpotpy.datasets.jaqpotpy_dataset module](jaqpotpy.datasets.md#module-jaqpotpy.datasets.jaqpotpy_dataset)
-    * [`JaqpotpyDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset)
-      * [`JaqpotpyDataset.copy()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.copy)
-      * [`JaqpotpyDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.create)
-      * [`JaqpotpyDataset.df_astype()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.df_astype)
-      * [`JaqpotpyDataset.featurizer_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.featurizer_name)
-      * [`JaqpotpyDataset.select_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.jaqpotpy_dataset.JaqpotpyDataset.select_features)
+  * [jaqpotpy.datasets.jaqpotpy_dataset module](jaqpotpy.datasets.md#jaqpotpy-datasets-jaqpotpy-dataset-module)
   * [jaqpotpy.datasets.tokenizer_dataset module](jaqpotpy.datasets.md#module-jaqpotpy.datasets.tokenizer_dataset)
     * [`SmilesSeqDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.tokenizer_dataset.SmilesSeqDataset)
       * [`SmilesSeqDataset.get_feature_dim()`](jaqpotpy.datasets.md#jaqpotpy.datasets.tokenizer_dataset.SmilesSeqDataset.get_feature_dim)
   * [Module contents](jaqpotpy.datasets.md#module-jaqpotpy.datasets)
-    * [`JaqpotpyDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset)
-      * [`JaqpotpyDataset.copy()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.copy)
-      * [`JaqpotpyDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.create)
-      * [`JaqpotpyDataset.df_astype()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.df_astype)
-      * [`JaqpotpyDataset.featurizer_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.featurizer_name)
-      * [`JaqpotpyDataset.select_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotpyDataset.select_features)
+    * [`JaqpotTabularDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset)
+      * [`JaqpotTabularDataset.copy()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset.copy)
+      * [`JaqpotTabularDataset.create()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset.create)
+      * [`JaqpotTabularDataset.featurizer_name`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset.featurizer_name)
+      * [`JaqpotTabularDataset.select_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset.select_features)
     * [`SmilesGraphDataset`](jaqpotpy.datasets.md#jaqpotpy.datasets.SmilesGraphDataset)
       * [`SmilesGraphDataset.get_num_edge_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.SmilesGraphDataset.get_num_edge_features)
       * [`SmilesGraphDataset.get_num_node_features()`](jaqpotpy.datasets.md#jaqpotpy.datasets.SmilesGraphDataset.get_num_node_features)
@@ -235,7 +229,7 @@
 * [jaqpotpy.preprocessors package](jaqpotpy.preprocessors.md)
   * [Submodules](jaqpotpy.preprocessors.md#submodules)
   * [jaqpotpy.preprocessors.custom_one_hot_encoder module](jaqpotpy.preprocessors.md#jaqpotpy-preprocessors-custom-one-hot-encoder-module)
-  * [Module contents](jaqpotpy.preprocessors.md#module-contents)
+  * [Module contents](jaqpotpy.preprocessors.md#module-jaqpotpy.preprocessors)
 * [jaqpotpy.utils package](jaqpotpy.utils.md)
   * [Submodules](jaqpotpy.utils.md#submodules)
   * [jaqpotpy.utils.data_utils module](jaqpotpy.utils.md#jaqpotpy-utils-data-utils-module)
@@ -249,7 +243,7 @@
   * [jaqpotpy.utils.seeding module](jaqpotpy.utils.md#jaqpotpy-utils-seeding-module)
   * [jaqpotpy.utils.types module](jaqpotpy.utils.md#jaqpotpy-utils-types-module)
   * [jaqpotpy.utils.url_utils module](jaqpotpy.utils.md#jaqpotpy-utils-url-utils-module)
-  * [Module contents](jaqpotpy.utils.md#module-contents)
+  * [Module contents](jaqpotpy.utils.md#module-jaqpotpy.utils)
 
 ## Submodules
 
@@ -369,6 +363,28 @@ visibility
 
 task
 : The task type (e.g., ‘binary_classification’, ‘regression’, ‘multiclass_classification’).
+
+#### Returns
+
+None
+
+#### deploy_torch_onnx_model(model: TorchONNXModel, name: str, description: str, visibility: ModelVisibility)
+
+Deploy a Torch model on Jaqpot.
+
+#### Parameters
+
+model
+: The model to be deployed. Must have ONNX and metadata.
+
+name
+: The name of the model.
+
+description
+: Description of the model.
+
+visibility
+: ‘public’ or ‘private’
 
 #### Returns
 

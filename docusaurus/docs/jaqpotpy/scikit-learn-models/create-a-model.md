@@ -11,7 +11,7 @@ First, we import the necessary libraries:
 ```python
 import pandas as pd
 from sklearn.datasets import make_classification
-from jaqpotpy.datasets import JaqpotpyDataset
+from jaqpotpy.datasets import JaqpotpyTabularDataset
 from sklearn.linear_model import LogisticRegression
 from jaqpotpy.models import SklearnModel
 ```
@@ -29,10 +29,10 @@ df = pd.DataFrame(X, columns=["X1", "X2", "X3", "X4"])
 df["y"] = y
 ```
 
-Now, we initialize a `JaqpotpyDataset` with the DataFrame:
+Now, we initialize a `JaqpotpyTabularDataset` with the DataFrame:
 
 ```python
-dataset = JaqpotpyDataset(
+dataset = JaqpotpyTabularDataset(
     df=df,
     x_cols=["X1", "X2", "X3", "X4"],
     y_cols=["y"],
@@ -64,10 +64,10 @@ We create a DataFrame with the features:
 df_test = pd.DataFrame(X_test, columns=["X1", "X2", "X3", "X4"])
 ```
 
-We initialize a `JaqpotpyDataset` for prediction:
+We initialize a `JaqpotpyTabularDataset` for prediction:
 
 ```python
-test_dataset = JaqpotpyDataset(
+test_dataset = JaqpotpyTabularDataset(
     df=df_test,
     x_cols=["X1", "X2", "X3", "X4"],
     y_cols=None,
