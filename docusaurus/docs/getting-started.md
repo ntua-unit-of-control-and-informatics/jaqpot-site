@@ -40,8 +40,8 @@ dataset = JaqpotTabularDataset(
 
 # Τrain a model
 model = SklearnModel(
-    model =LogisticRegression(),
-    dataset = dataset
+    model=LogisticRegression(),
+    dataset=dataset
 )
 model.fit()
 
