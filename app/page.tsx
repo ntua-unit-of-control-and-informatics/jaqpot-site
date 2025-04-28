@@ -59,7 +59,7 @@ export default async function Home() {
           API.
         </p>
         <p
-          className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          className="my-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
         >
           Visit{' '}
@@ -79,7 +79,7 @@ export default async function Home() {
           to upload your own model
         </p>
         <div
-          className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
+          className="mx-auto mt-12 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
         >
           <Link
