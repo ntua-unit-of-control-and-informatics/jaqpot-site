@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+title: Upload a Model (Tabular Regression)
 ---
 
 ### Upload a Model (Tabular Regression)

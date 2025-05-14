@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: Train and Evaluate the Model
 ---
 
 ### Train and Evaluate the Model
