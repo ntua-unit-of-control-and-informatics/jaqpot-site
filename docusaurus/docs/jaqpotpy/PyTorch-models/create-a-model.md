@@ -4,7 +4,7 @@ title: Create a model
 ---
 
 
-### Create a Model (Tabular Regression)
+You can define your model by subclassing torch.nn.Module. Here we use a simple feedforward network with two hidden layers. This model maps five input features to a single output.
 
 ```python
 import torch.nn as nn

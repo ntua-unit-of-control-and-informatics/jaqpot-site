@@ -3,7 +3,7 @@ sidebar_position: 5
 title: Upload an image input model
 ---
 
-# Image Processing with PyTorch and Jaqpot
+Jaqpot also supports models that take images as input. In this case, we use a convolutional neural network (CNN) with a preprocessing step. The preprocessing step is also converted to ONNX and bundled with the model. This setup is useful for image-based tasks like segmentation or classification.
 
 Learn how to create and deploy an image processing model using PyTorch and custom preprocessing. We'll walk through creating a model that:
 

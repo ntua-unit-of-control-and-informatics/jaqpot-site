@@ -3,7 +3,7 @@ sidebar_position: 4
 title: Upload a Model (Tabular Regression)
 ---
 
-### Upload a Model (Tabular Regression)
+After training, you can deploy your model to Jaqpot using the TorchONNXModel class. This wraps your PyTorch model and prepares it for deployment by converting it to ONNX. You also need to define the input and output features, which describe the structure of the data Jaqpot will receive and return.
 
 ```python
 from jaqpotpy.models.torch_models.torch_onnx import TorchONNXModel

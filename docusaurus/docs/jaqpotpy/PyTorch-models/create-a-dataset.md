@@ -4,7 +4,7 @@ title: Create a dataset
 ---
 
 
-### Create a Dataset (Tabular Regression)
+To start, you need to define your dataset. In this example, we generate synthetic data for a regression problem with five input features. We create a PyTorch Dataset class and use a DataLoader to prepare it for training.
 
 ```python
 import numpy as np
