@@ -31,12 +31,18 @@ Define a custom preprocessor for image transformations:
 ```python
 from torchvision import transforms
 
-class MyImagePreprocessor: def init(self): self.transform = transforms.Compose([ transforms.Resize((128, 128)), transforms.ToTensor(), transforms.Normalize( mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225] ) ])
-def preprocess(self, image):
-    return self.transform(image)
 
-def export_to_onnx(self):
-    return self.transform
+class MyImagePreprocessor:
+    def init(self):
+        self.transform = transforms.Compose([transforms.Resize((128, 128)), transforms.ToTensor(),
+                                             transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                                                  std=[0.229, 0.224, 0.225])])
+
+    def preprocess(self, image):
+        return self.transform(image)
+
+    def export_to_onnx(self):
+        return self.transform
 
 ```
 
@@ -45,15 +51,16 @@ def export_to_onnx(self):
 Set up a PyTorch model for image processing:
 
 ```python
-class MyModel(torch.nn.Module): def
+class MyModel(torch.nn.Module):
 
+    def init(self):
+        super(MyModel, self).init()
+        self.features = torch.nn.Sequential(torch.nn.Conv2d(3, 16, kernel_size=3, padding=1), torch.nn.ReLU(),
+                                            torch.nn.Conv2d(16, 3, kernel_size=3, padding=1), torch.nn.Sigmoid) )
 
-init(self): super(MyModel, self).init()
-self.features = torch.nn.Sequential(torch.nn.Conv2d(3, 16, kernel_size=3, padding=1), torch.nn.ReLU(),
-                                    torch.nn.Conv2d(16, 3, kernel_size=3, padding=1), torch.nn.Sigmoid) )
+        def forward(self, x):
 
-def forward(self, x):
-    return self.features(x)
+            return self.features(x)
 ```
 
 ## 4. Configure and Deploy
@@ -61,25 +68,34 @@ def forward(self, x):
 Initialize the model, define features, and deploy to Jaqpot:
 
 ```python
-# Create example input
+
 input_tensor = torch.rand((1, 3, 128, 128), dtype=torch.float32)
 model = MyModel()
-# Setup preprocessor
+
 preprocessor = MyImagePreprocessor()
 onnx_preprocessor = preprocessor.export_to_onnx()
-# Define features
-independent_features = [Feature(key=dependent_features = [Feature(key=
-                                                                  # Create Jaqpot model
-                                                                  jaqpot_model = TorchONNXModel(model=model,
-                                                                                                input_example=input_tensor,
-                                                                                                task=ModelTask.REGRESSION,
-                                                                                                independent_features=independent_features,
-                                                                                                dependent_features=dependent_features,
-                                                                                                onnx_preprocessor=onnx_preprocessor, )
-# Deploy model
+
+independent_features = [Feature(key="input", name="Input", feature_type=FeatureType.IMAGE)]
+dependent_features = [Feature(key="image", name="Image", feature_type=FeatureType.IMAGE)]
+
+jaqpot_model = TorchONNXModel(
+    model=model,
+    input_example=input_tensor,
+    task=ModelTask.REGRESSION,
+    independent_features=independent_features,
+    dependent_features=dependent_features,
+    onnx_preprocessor=onnx_preprocessor,
+)
+
 jaqpot = Jaqpot()
 jaqpot.login()
-jaqpot_model.deploy_on_jaqpot(jaqpot, name=
+
+jaqpot_model.deploy_on_jaqpot(
+    jaqpot,
+    name="Torch ONNX Model v12",
+    description="Torch description",
+    visibility=ModelVisibility.PUBLIC,
+)
 
 ```
 
