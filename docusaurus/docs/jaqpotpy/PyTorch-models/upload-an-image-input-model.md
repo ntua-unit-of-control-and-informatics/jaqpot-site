@@ -29,7 +29,10 @@ from jaqpotpy import Jaqpot
 Define a custom preprocessor for image transformations:
 
 ```python
+import io
+
 from torchvision import transforms
+import torch
 
 
 class MyImagePreprocessor:
@@ -42,7 +45,23 @@ class MyImagePreprocessor:
         return self.transform(image)
 
     def export_to_onnx(self):
-        return self.transform
+        dummy_input = torch.randint(
+            0, 256, (1, 256, 256, 3), dtype=torch.uint8
+        )  # any size
+
+        f = io.BytesIO()
+        torch.onnx.export(
+            self,
+            dummy_input,
+            f,
+            input_names=["image"],
+            output_names=["tensor"],
+            opset_version=11,
+            dynamic_axes={"image": {1: "height", 2: "width", 0: "batch_size"}},
+        )
+
+        f.seek(0)
+        return f.read()
 
 ```
 
