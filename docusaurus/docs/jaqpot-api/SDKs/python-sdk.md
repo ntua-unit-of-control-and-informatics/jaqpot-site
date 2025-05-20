@@ -22,9 +22,13 @@ Before using the SDK, you'll need to obtain API credentials from Jaqpot. To get 
 
 **The API keys are valid for 6 months from their generation date. Please store these keys securely, as they cannot be retrieved from Jaqpot after initial generation. If your keys are lost or expired, you will need to generate new ones by following the same steps above.**
 
+:::tip
+Always ensure you're handling API credentials securely and avoid exposing them in your code or version control systems.
+:::
+
 There are multiple ways to set up your API credentials as environment variables for Jaqpotpy. Here are presented 2 common methods. Using these methods, your API credentials will be automatically loaded and set as HTTP headers (`X-Api-Key` and `X-Api-Secret`) required for authentication with the Jaqpot service.
 
-### Method 1: Using Environment Variables Directly
+### Method 1: Using Environment Variables directly
 You can set environment variables before running your script:
 
 ```python
@@ -56,6 +60,19 @@ load_dotenv(".env") # Returns True if successful
 
 **Note 2**: Remember to add `.env` to your .gitignore file to keep your credentials secure.
 
+### Method 3: Direct API key authentication
+
+For **Jupyter notebook environments** or similar interactive sessions where you can securely handle credentials, you can directly initialize the JaqpotApiClient with your API keys:
+
+
+```python
+from jaqpot_python_sdk.jaqpot_api_client import JaqpotApiClient
+from google.colab import userdata
+jaqpot_api_key = userdata.get('JAQPOT_API_KEY')
+jaqpot_api_secret = userdata.get('JAQPOT_API_SECRET')
+
+JaqpotApiClient(api_key=jaqpot_api_key, api_secret=jaqpot_api_secret)
+```
 
 ### Initializing the Client
 
