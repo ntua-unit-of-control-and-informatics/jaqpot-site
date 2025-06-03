@@ -2,50 +2,100 @@
 sidebar_position: 3
 ---
 
-# Deployment
+# Deploying your model
 
-This guide explains how to deploy your Docker model to Jaqpot.
+After implementing and testing your model locally, you're ready to deploy it on Jaqpot.
 
-## Creating the model configuration
+## Option 1: Use jaqpotpy
 
-First, you need to register your model with Jaqpot by sending a configuration to the `/v1/models` endpoint:
+The easiest way to deploy your Docker model is with the Python SDK:
 
-```json
+```python
+from jaqpot_api_client import Feature, DockerConfig, ModelVisibility, FeatureType
+from jaqpotpy.models.docker_model import DockerModel
+from jaqpotpy import Jaqpot
+
+independent_features = [
+    Feature(key="numGenerations", name="numGenerations", feature_type=FeatureType.FLOAT).to_dict(),
+]
+
+dependent_features = [
+    Feature(key="prediction", name="Prediction", feature_type=FeatureType.FLOAT).to_dict(),
+    Feature(key="smiles", name="SMILES", feature_type=FeatureType.STRING).to_dict(),
+]
+
+docker_config = DockerConfig(
+    app_name="gflownet", 
+    docker_image="upcintua/jaqpot-gflownet"
+)
+
+jaqpot_model = DockerModel(
+    independent_features=independent_features,
+    dependent_features=dependent_features,
+    docker_config=docker_config,
+)
+
+jaqpot = Jaqpot()
+jaqpot.login()
+
+jaqpot_model.deploy_on_jaqpot(
+    jaqpot=jaqpot,
+    name="Gflownet model",
+    description="This is my first attempt to train and upload a Jaqpot model.",
+    visibility=ModelVisibility.PRIVATE,
+)
+```
+
+## Option 2: Send a JSON request manually
+
+You can also deploy your model manually by sending a POST request to `/v1/models`. Below is an example JSON configuration:
+
+```jsonc
 {
-  "name": "Your model name",
+  "name": "Gflownet model",
   "type": "DOCKER",
-  "description": "model description",
+  "description": "This is my first attempt to train and upload a Jaqpot model.",
   "independentFeatures": [
     {
-      "key": "input",
-      "name": "Input",
-      "featureType": "TEXT"
+      "key": "numGenerations",
+      "name": "numGenerations",
+      "featureType": "FLOAT",
+      "featureDependency": "INDEPENDENT"
     }
   ],
   "dependentFeatures": [
     {
-      "key": "output",
-      "name": "Output",
-      "featureType": "TEXT"
+      "key": "prediction",
+      "name": "Prediction",
+      "featureType": "FLOAT",
+      "featureDependency": "DEPENDENT"
+    },
+    {
+      "key": "smiles",
+      "name": "SMILES",
+      "featureType": "STRING",
+      "featureDependency": "DEPENDENT"
     }
   ],
-  "task": "BINARY_CLASSIFICATION",
-  "visibility": "PUBLIC",
+  "task": "REGRESSION",
+  "visibility": "PRIVATE",
   "dockerConfig": {
-    "appName": "your-app-name" 
+    "appName": "gflownet",
+    "dockerImage": "upcintua/jaqpot-gflownet"
   }
 }
 ```
 
-The `appName` in the configuration is a unique identifier for your model in the Jaqpot system.
+### Notes
 
-## Deploying your Docker image
+- The `independentFeatures` and `dependentFeatures` must match what your model expects.
+- Each prediction in your `PredictionResponse` should be a flat object. For example:
+  ```json
+  {
+    "predictions": [
+      {"y": 3, "confidence": 0.98}
+    ]
+  }
+  ```
 
-After registering your model configuration:
-
-1. Build your Docker image using the provided Dockerfile
-2. Push the image to a Docker registry
-3. Share your Docker image name with us
-4. We will host your image and connect it to Jaqpot using your specified `appName`
-
-Once deployed, your model will be available through the standard Jaqpot prediction endpoints.
+Once deployed, your model is available through the Jaqpot prediction endpoint.
