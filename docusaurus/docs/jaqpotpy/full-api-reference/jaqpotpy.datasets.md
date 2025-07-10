@@ -8,7 +8,7 @@
 
 Dataset abstract classes
 
-### *class* jaqpotpy.datasets.dataset_base.BaseDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, task: str | None = None)
+### *class* jaqpotpy.datasets.dataset_base.BaseDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, task: ModelTask | None = None)
 
 Bases: `ABC`
 
@@ -27,7 +27,7 @@ y_cols
 : The columns to be used as labels.
 
 \_task
-: The task type, either ‘regression’ or ‘classification’.
+: The task type (ModelTask.REGRESSION, ModelTask.BINARY_CLASSIFICATION, or ModelTask.MULTICLASS_CLASSIFICATION).
 
 \_dataset_name
 : The name of the dataset.
@@ -91,7 +91,7 @@ Gets the task type.
 
 #### Returns
 
-str
+ModelTask
 : The task type.
 
 ## jaqpotpy.datasets.graph_pyg_dataset module
@@ -147,7 +147,7 @@ Bases: `Dataset`
 
 ## Module contents
 
-### *class* jaqpotpy.datasets.JaqpotTabularDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizer: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: str | None = None, verbose: bool = True, remove_inf_cols: bool = False, remove_inf_rows: bool = False)
+### *class* jaqpotpy.datasets.JaqpotTabularDataset(df: DataFrame | None = None, path: str | None = None, y_cols: Iterable[str] | None = None, x_cols: Iterable[str] | None = None, smiles_cols: Iterable[str] | None = None, featurizers: List[[MolecularFeaturizer](jaqpotpy.descriptors.md#jaqpotpy.descriptors.base_classes.MolecularFeaturizer)] | None = None, task: ModelTask | None = None, verbose: bool = True, remove_inf_cols: bool = False, remove_inf_rows: bool = False)
 
 Bases: [`BaseDataset`](#jaqpotpy.datasets.dataset_base.BaseDataset)
 

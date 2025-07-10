@@ -335,7 +335,7 @@ Args:
 Returns:
 : Cross-validation scores.
 
-#### deploy_on_jaqpot(jaqpot, name, description, visibility)
+#### deploy_on_jaqpot(jaqpot, name, description, visibility: ModelVisibility)
 
 Deploy the model on Jaqpot.
 
@@ -343,7 +343,7 @@ Args:
 : jaqpot: The Jaqpot instance.
   name (str): The name of the model.
   description (str): The description of the model.
-  visibility: The visibility of the model.
+  visibility (ModelVisibility): The visibility of the model.
 
 #### evaluate(dataset: [JaqpotTabularDataset](jaqpotpy.datasets.md#jaqpotpy.datasets.JaqpotTabularDataset))
 
