@@ -249,7 +249,7 @@
 
 ## jaqpotpy.jaqpot module
 
-### *class* jaqpotpy.jaqpot.Jaqpot(base_url=None, app_url=None, login_url=None, api_url=None, keycloak_realm=None, keycloak_client_id=None, create_logs=False)
+### *class* jaqpotpy.jaqpot.Jaqpot(base_url=None, app_url=None, login_url=None, api_url=None, keycloak_realm=None, keycloak_client_id=None, api_key=None, api_secret=None, create_logs=False)
 
 Bases: `object`
 
@@ -277,6 +277,14 @@ keycloak_realm
 
 keycloak_client_id
 : The Keycloak client ID. Default is “jaqpot-client”.
+
+api_key
+: API key for authentication. If provided along with api_secret, API key authentication will be used instead of OAuth.
+  Can also be set via JAQPOT_API_KEY environment variable.
+
+api_secret
+: API secret for authentication. Required when using API key authentication.
+  Can also be set via JAQPOT_API_SECRET environment variable.
 
 create_logs
 : Whether to create logs. Default is False.
@@ -312,7 +320,7 @@ Raises:
 : ValueError: If any of the required parameters are invalid or missing.
   JaqpotAPIError: If the deployment request fails due to an API issue.
 
-#### deploy_sklearn_model(model, name, description, visibility)
+#### deploy_sklearn_model(model, name, description, visibility: ModelVisibility)
 
 Deploy an sklearn model on Jaqpot.
 
@@ -331,13 +339,13 @@ description
 : A description of the model.
 
 visibility
-: The visibility of the model (e.g., ‘public’, ‘private’).
+: The visibility of the model (ModelVisibility.PUBLIC, ModelVisibility.PRIVATE, or ModelVisibility.ORG_SHARED).
 
 #### Returns
 
 None
 
-#### deploy_torch_model(onnx_model, featurizer, name, description, target_name, visibility, task)
+#### deploy_torch_model(onnx_model, featurizer, name, description, target_name, visibility: ModelVisibility, task)
 
 Deploy a PyTorch model on Jaqpot.
 
@@ -359,7 +367,7 @@ target_name
 : The name of the target feature.
 
 visibility
-: The visibility of the model (e.g., ‘public’, ‘private’).
+: The visibility of the model (ModelVisibility.PUBLIC, ModelVisibility.PRIVATE, or ModelVisibility.ORG_SHARED).
 
 task
 : The task type (e.g., ‘binary_classification’, ‘regression’, ‘multiclass_classification’).
@@ -390,6 +398,17 @@ visibility
 
 None
 
+#### download_model(model_id: int, cache: bool = True)
+
+Download a model from Jaqpot platform for local use.
+
+Args:
+: model_id (int): The ID of the model to download
+  cache (bool): Whether to cache the offline model
+
+Returns:
+: Dict containing model metadata and ONNX bytes
+
 #### login()
 
 Log in to Jaqpot using Keycloak.
@@ -400,5 +419,30 @@ then exchanges the authorization code for an access token.
 #### Returns
 
 None
+
+#### *property* model_downloader
+
+Access to model downloader functionality for downloading models locally.
+
+Returns:
+: JaqpotModelDownloader: Instance for model download operations
+
+#### *property* offline_model_predictor
+
+Access to offline model prediction functionality.
+
+Returns:
+: OfflineModelPredictor: Instance for making predictions with offline models
+
+#### predict_local(model_data, input)
+
+Make predictions using a locally offline model.
+
+Args:
+: model_data: Either model_id (str) or model data dict from download_model
+  input: Input data for prediction (numpy array, list, or dict)
+
+Returns:
+: PredictionResponse with predictions in same format as Jaqpot API
 
 ## Module contents
