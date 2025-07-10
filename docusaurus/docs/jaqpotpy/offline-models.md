@@ -129,7 +129,7 @@ input_data = [
 ]
 
 # Make predictions locally (no internet required)
-predictions = jaqpot.predict_local(model_data, input_data)
+predictions = jaqpot.predict_offline(model_data, input_data)
 
 print("Predictions:", predictions.predictions)
 if predictions.probabilities:
@@ -162,7 +162,7 @@ jaqpot = Jaqpot(api_key="your_api_key", api_secret="your_api_secret")
 
 # Example with a scikit-learn model (returns predictions + probabilities + DoA)
 sklearn_model = jaqpot.download_model("sklearn_model_id")
-result = jaqpot.predict_local(sklearn_model, input_data)
+result = jaqpot.predict_offline(sklearn_model, input_data)
 
 print("Predictions:", result.predictions)
 print("Probabilities:", result.probabilities)  # Available for classification
@@ -170,7 +170,7 @@ print("DoA Results:", result.doa)  # Domain of Applicability
 
 # Example with a PyTorch model (returns predictions only)
 torch_model = jaqpot.download_model("torch_model_id")
-result = jaqpot.predict_local(torch_model, input_data)
+result = jaqpot.predict_offline(torch_model, input_data)
 
 print("Predictions:", result.predictions)
 # Note: probabilities and doa are None for PyTorch models
@@ -191,7 +191,7 @@ large_dataset = [
 ]
 
 # All predictions run locally
-predictions = jaqpot.predict_local(model_data, large_dataset)
+predictions = jaqpot.predict_offline(model_data, large_dataset)
 print(f"Processed {len(predictions.predictions)} samples")
 ```
 
@@ -212,7 +212,7 @@ molecular_data = [
 
 # Works with torch geometric models
 geometric_model = jaqpot.download_model("geometric_model_id")
-results = jaqpot.predict_local(geometric_model, molecular_data)
+results = jaqpot.predict_offline(geometric_model, molecular_data)
 ```
 
 ## Model Data Structure
@@ -248,7 +248,7 @@ try:
     model_data = jaqpot.download_model(model_id)
     
     # Make predictions
-    predictions = jaqpot.predict_local(model_data, input_data)
+    predictions = jaqpot.predict_offline(model_data, input_data)
     
 except Exception as e:
     print(f"Error: {e}")
@@ -305,7 +305,7 @@ jaqpot = Jaqpot(api_key="your_api_key", api_secret="your_api_secret")
 
 # After (offline predictions - new method)
 model_data = jaqpot.download_model(model_id)  # Download once
-prediction = jaqpot.predict_local(model_data, input_data)  # Use many times
+prediction = jaqpot.predict_offline(model_data, input_data)  # Use many times
 ```
 
 ## Benefits Summary

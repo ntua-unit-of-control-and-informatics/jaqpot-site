@@ -90,5 +90,5 @@ documentation for details.
       * [`Jaqpot.login()`](jaqpotpy.md#jaqpotpy.jaqpot.Jaqpot.login)
       * [`Jaqpot.model_downloader`](jaqpotpy.md#jaqpotpy.jaqpot.Jaqpot.model_downloader)
       * [`Jaqpot.offline_model_predictor`](jaqpotpy.md#jaqpotpy.jaqpot.Jaqpot.offline_model_predictor)
-      * [`Jaqpot.predict_local()`](jaqpotpy.md#jaqpotpy.jaqpot.Jaqpot.predict_local)
+      * [`Jaqpot.predict_offline()`](jaqpotpy.md#jaqpotpy.jaqpot.Jaqpot.predict_offline)
   * [Module contents](jaqpotpy.md#module-jaqpotpy)

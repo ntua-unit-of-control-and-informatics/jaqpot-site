@@ -92,7 +92,7 @@ input_data = [
 ]
 
 # Run predictions completely offline
-predictions = jaqpot.predict_local(model_data, input_data)
+predictions = jaqpot.predict_offline(model_data, input_data)
 print("Predictions:", predictions.predictions)
 ```
 
@@ -131,7 +131,7 @@ model_data = jaqpot.download_model("your_model_id")
 
 # Now iterate freely without internet dependency
 for new_dataset in my_research_datasets:
-    predictions = jaqpot.predict_local(model_data, new_dataset)
+    predictions = jaqpot.predict_offline(model_data, new_dataset)
     # Analyze, visualize, explore...
 ```
 
@@ -156,7 +156,7 @@ molecules = [
 ]
 
 # All predictions run locally - perfect for sensitive data
-results = jaqpot.predict_local(model_data, molecules)
+results = jaqpot.predict_offline(model_data, molecules)
 
 for smiles, prediction in zip([m["SMILES"] for m in molecules], results.predictions):
     print(f"{smiles}: {prediction}")
@@ -202,7 +202,7 @@ prediction = jaqpot.predict(model_id, input_data)
 
 # After (offline predictions)  
 model_data = jaqpot.download_model(model_id)  # Download once
-prediction = jaqpot.predict_local(model_data, input_data)  # Use many times
+prediction = jaqpot.predict_offline(model_data, input_data)  # Use many times
 ```
 
 ## Try it today
