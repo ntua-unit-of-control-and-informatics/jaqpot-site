@@ -141,3 +141,37 @@ csv_path = "ADD_A_CSV_PATH.csv"
 prediction = jaqpot_api_client.predict_with_csv_sync(model_id=1886, csv_path=csv_path)
 print(prediction)
 ```
+
+## Offline Model Usage
+
+:::info SDK vs Jaqpotpy
+The **Jaqpot Python SDK** is designed for **online API access** only - it handles authentication, model retrieval, and online predictions through the Jaqpot API.
+
+For **offline model usage** (downloading models for local predictions), you need **jaqpotpy**. However, be aware that jaqpotpy comes with heavy dependencies (torch, sklearn, rdkit, etc.) that may cause conflicts with your existing environment.
+:::
+
+### Using Jaqpotpy for Offline Predictions
+
+If you need to download models and run predictions offline, install jaqpotpy:
+
+```bash
+pip install jaqpotpy
+```
+
+:::warning Dependency Conflicts
+Jaqpotpy includes heavy machine learning dependencies (PyTorch, scikit-learn, RDKit, etc.). We recommend using a virtual environment or conda environment to avoid conflicts:
+
+```bash
+# Create a new conda environment
+conda create -n jaqpot python=3.9
+conda activate jaqpot
+pip install jaqpotpy
+
+# Or use a virtual environment
+python -m venv jaqpot_env
+source jaqpot_env/bin/activate  # On Windows: jaqpot_env\Scripts\activate
+pip install jaqpotpy
+```
+:::
+
+For detailed offline model usage, see the [Offline Models Guide](../../jaqpotpy/offline-models.md).
