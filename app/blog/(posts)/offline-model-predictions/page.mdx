@@ -1,0 +1,238 @@
+import MdxLayout from "../../components/mdx-layout";
+import {Link} from "@nextui-org/react";
+
+export const metadata = {
+    title: 'Introducing offline model predictions: Run Jaqpot models anywhere',
+    publishDate: '2025-07-10T00:00:00Z',
+    textPreview: 'Download your Jaqpot models and run predictions locally without internet connectivity. Perfect for production environments, data privacy requirements, and air-gapped systems.',
+    author: {
+        name: 'Alex Arvanitidis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/af2a132a-5997-4b52-936b-35695452035b.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
+            @alarv
+        </Link>,
+    },
+    timeToReadInMin: 8,
+    categories: []
+};
+
+![Offline Model Predictions](/offline-models.png)
+
+# Game changer: Your models are now truly portable
+
+We're excited to announce a major enhancement to Jaqpotpy: **offline model predictions**. You can now download your trained models from Jaqpot and run predictions locally without any internet connection. This opens up entirely new possibilities for production deployments, data privacy compliance, and high-performance scenarios.
+
+## You asked, we delivered
+
+This feature has been one of our most requested enhancements. The feedback was clear and consistent across our community:
+
+> *"I love training models with Jaqpot, but I wish I could run predictions in my Jupyter notebook without making API calls every time"* - Community member
+
+> *"For my research, I need to run hundreds of predictions locally. The API approach works, but it's not practical for my workflow"* - Research scientist
+
+> *"Can I download the model and use it offline? I'm working with sensitive data that can't leave our network"* - Industry user
+
+These requests came from researchers, data scientists, and engineers who wanted the best of both worlds: Jaqpot's powerful model training and deployment capabilities, **combined with the flexibility to run predictions locally in their own environments**.
+
+## Why offline predictions matter
+
+Until now, making predictions with Jaqpot models required an active internet connection and API calls. While this works great for many use cases, we heard from our community that some scenarios needed something different:
+
+- **Jupyter notebook workflows** - Researchers wanted to iterate quickly without API overhead
+- **Exploratory data analysis** - Running predictions on new datasets during investigation
+- **Production environments** with strict network isolation
+- **Data privacy requirements** where data cannot leave your infrastructure  
+- **High-throughput scenarios** where network latency becomes a bottleneck
+- **Air-gapped systems** in secure or regulated environments
+- **Cost optimization** for applications making thousands of predictions
+
+The most common request? **"Let me download my model and use it directly in my notebook."** This seemed so natural - after all, you trained the model, why shouldn't you be able to use it locally?
+
+## What's new: API key authentication
+
+Along with offline predictions, we've streamlined authentication. No more OAuth flows! You can now authenticate with simple API keys:
+
+```python
+from jaqpotpy import Jaqpot
+
+# Initialize with API keys directly
+jaqpot = Jaqpot(
+    api_key="your_api_key",
+    api_secret="your_api_secret"
+)
+
+# Or use environment variables (recommended)
+# JAQPOT_API_KEY=your_key JAQPOT_API_SECRET=your_secret
+jaqpot = Jaqpot()  # Automatically picks up from environment
+```
+
+## How it works: Download once, predict many
+
+The workflow is beautifully simple:
+
+### 1. Download your model
+
+```python
+from jaqpotpy import Jaqpot
+
+jaqpot = Jaqpot(api_key="your_key", api_secret="your_secret")
+
+# Download model for offline use (only needs internet once)
+model_data = jaqpot.download_model(model_id=1886)
+print(f"Downloaded: {model_data.model_metadata.name}")
+```
+
+### 2. Make offline predictions
+
+```python
+# Prepare your data
+input_data = [
+    {"SMILES": "CCO", "descriptor1": 1.5},
+    {"SMILES": "CC", "descriptor1": 0.8}
+]
+
+# Run predictions completely offline
+predictions = jaqpot.predict_local(model_data, input_data)
+print("Predictions:", predictions.predictions)
+```
+
+That's it! No network calls during prediction time.
+
+## Supported model types
+
+We support all major model types for offline predictions:
+
+| Model Type | Returns | Use Case |
+|------------|---------|----------|
+| **SKLEARN_ONNX** | predictions, probabilities, DoA | Traditional ML with full output |
+| **TORCH_ONNX** | predictions | Deep learning models |
+| **TORCH_SEQUENCE_ONNX** | predictions | Sequence models (NLP, time series) |
+| **TORCH_GEOMETRIC_ONNX** | predictions | Graph neural networks (molecules) |
+| **TORCHSCRIPT** | predictions | PyTorch models |
+
+## The notebook workflow users wanted
+
+One of the most common use cases we heard about was the **research notebook workflow**. Scientists and researchers would:
+
+1. Train a model on Jaqpot using their institutional computing resources
+2. Want to explore the model's predictions on new datasets in their Jupyter notebooks
+3. Need to iterate quickly without waiting for API calls
+4. Prefer working with local data for privacy and speed
+
+Here's exactly what that workflow looks like now:
+
+```python
+# Train your model on Jaqpot (once)
+model.deploy_on_jaqpot(jaqpot=jaqpot, name="My Research Model")
+
+# Later, in your notebook (many times)
+jaqpot = Jaqpot(api_key="your_key", api_secret="your_secret")
+model_data = jaqpot.download_model("your_model_id")
+
+# Now iterate freely without internet dependency
+for new_dataset in my_research_datasets:
+    predictions = jaqpot.predict_local(model_data, new_dataset)
+    # Analyze, visualize, explore...
+```
+
+## Real-world example: Molecular property prediction
+
+Here's a complete example predicting molecular properties offline:
+
+```python
+from jaqpotpy import Jaqpot
+
+# Initialize client
+jaqpot = Jaqpot(api_key="your_key", api_secret="your_secret")
+
+# Download a molecular property prediction model
+model_data = jaqpot.download_model("molecular_model_id")
+
+# Predict properties for new molecules
+molecules = [
+    {"SMILES": "CCO"},          # Ethanol
+    {"SMILES": "CC(=O)O"},      # Acetic acid  
+    {"SMILES": "c1ccccc1"},     # Benzene
+]
+
+# All predictions run locally - perfect for sensitive data
+results = jaqpot.predict_local(model_data, molecules)
+
+for smiles, prediction in zip([m["SMILES"] for m in molecules], results.predictions):
+    print(f"{smiles}: {prediction}")
+```
+
+## Production deployment advantages
+
+- **Data never leaves your environment** Your sensitive data stays completely local. The model comes to your data, not the other way around.
+
+- **Blazing fast predictions** No network latency means faster predictions, especially important for real-time applications.
+
+- **Cost optimization** Make unlimited predictions without API call costs. Perfect for high-volume scenarios.
+
+- **Air-gapped compatibility** Deploy in secure, isolated environments without internet access.
+
+## Getting started
+
+### Installation
+
+```bash
+# Create a clean environment (recommended)
+conda create -n jaqpot python=3.9
+conda activate jaqpot
+pip install jaqpotpy
+```
+
+**Important:** Jaqpotpy includes heavy ML dependencies (PyTorch, scikit-learn, RDKit). We strongly recommend using virtual environments to avoid conflicts.
+
+### Get your API keys
+
+1. Log in to [app.jaqpot.org](https://app.jaqpot.org)
+2. Click your account icon → "API keys"
+3. Generate new keys (valid for 6 months)
+4. Store them securely in environment variables
+
+## Migration from online predictions
+
+If you're currently using online predictions, here's how to migrate:
+
+```python
+# Before (online predictions)
+prediction = jaqpot.predict(model_id, input_data)
+
+# After (offline predictions)  
+model_data = jaqpot.download_model(model_id)  # Download once
+prediction = jaqpot.predict_local(model_data, input_data)  # Use many times
+```
+
+## Try it today
+
+Ready to take your models offline? 
+
+- **Read the docs**: [jaqpot.org/docs/jaqpotpy/offline-models](https://jaqpot.org/docs/jaqpotpy/offline-models)
+- **See examples**: [GitHub repository](https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy/tree/main/examples)
+- **Interactive tutorials**: [Google Colab examples](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-google-colab-examples)
+
+## Get help
+
+Questions? We're here to help:
+- **Documentation**: [jaqpot.org/docs](https://jaqpot.org/docs)
+- **Discord**: [Join our community](https://discord.gg/tVpCjYQqSV)
+- **GitHub**: [Report issues](https://github.com/ntua-unit-of-control-and-informatics/jaqpotpy/issues)
+- **Email**: [jaqpot@jaqpot.org](mailto:jaqpot@jaqpot.org)
+
+## Thank you for the feedback
+
+This feature exists because of **your** input. Every GitHub issue, Discord message, email, and conversation helped shape what offline predictions became. The feature we built directly addresses the workflow pain points you shared with us.
+
+Special thanks to our community members who:
+- Shared detailed use cases and workflows
+- Tested early prototypes and provided feedback  
+- Helped us understand the research and production needs
+- Continued to engage with us throughout development
+
+Keep the feedback coming! We can't wait to see what you build with offline predictions. Share your use cases and let us know how this feature helps your projects!
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
