@@ -434,7 +434,7 @@ Access to offline model prediction functionality.
 Returns:
 : OfflineModelPredictor: Instance for making predictions with offline models
 
-#### predict_local(model_data, input)
+#### predict_offline(model_data, input)
 
 Make predictions using a locally offline model.
 
