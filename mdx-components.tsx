@@ -21,16 +21,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     img(props: any) {
       return (
-        <span style={{ display: 'block', position: 'relative', width: '100%', height: '300px' }}>
+        <div className="w-full">
           <Image
-            fill
+            width={800}
+            height={600}
             sizes="100vw"
             style={{
+              width: '100%',
+              height: 'auto',
               objectFit: 'contain',
             }}
             {...(props as ImageProps)}
           />
-        </span>
+        </div>
       );
     },
     p({ children }) {
@@ -104,9 +107,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <ol
           style={{
-            listStylePosition: 'inside',
+            listStylePosition: 'outside',
             listStyleType: 'decimal',
             marginBottom: '1rem',
+            marginLeft: '1.5rem',
+            paddingLeft: '0.5rem',
           }}
         >
           {children}
