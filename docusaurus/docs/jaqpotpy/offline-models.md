@@ -220,9 +220,9 @@ The `OfflineModelData` object contains:
 
 ```python
 class OfflineModelData:
-    onnx_bytes: bytes           # Raw ONNX model data
-    preprocessor: Any           # Preprocessor object
-    model_metadata: Any         # Complete model metadata
+    onnx_bytes: bytes                # Raw ONNX model data
+    preprocessor: Any                # Preprocessor object
+    model_metadata: PredictionModel  # Complete model metadata
     
     # Convenient properties
     @property
