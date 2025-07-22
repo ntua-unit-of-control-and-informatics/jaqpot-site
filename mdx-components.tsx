@@ -66,7 +66,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3({ children }) {
       return (
         <h3
-          className="text-2xl font-semibold sm:text-3xl sm:tracking-tight text-gray-700"
+          className="text-xl font-semibold sm:text-2xl sm:tracking-tight text-gray-700"
           style={{ marginTop: '2rem', marginBottom: '1rem' }}
         >
           {children}
