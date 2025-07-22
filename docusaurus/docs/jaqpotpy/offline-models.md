@@ -146,7 +146,6 @@ The offline prediction system supports the following model types:
 |------------|---------|-------------|
 | **SKLEARN_ONNX** | predictions, probabilities, doa | Scikit-learn models converted to ONNX |
 | **TORCH_ONNX** | predictions | PyTorch models converted to ONNX |
-| **TORCH_SEQUENCE_ONNX** | predictions | PyTorch sequence models (ONNX) |
 | **TORCH_GEOMETRIC_ONNX** | predictions | PyTorch Geometric models (ONNX) |
 | **TORCHSCRIPT** | predictions | PyTorch models saved as TorchScript |
 
