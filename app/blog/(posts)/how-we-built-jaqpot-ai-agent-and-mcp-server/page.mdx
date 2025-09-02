@@ -1,0 +1,93 @@
+import MdxLayout from "../../components/mdx-layout";
+import {Link} from "@nextui-org/react";
+
+export const metadata = {
+    title: 'How we built Jaqpot\'s AI agent and MCP server',
+    publishDate: '2025-09-02T00:00:00Z',
+    textPreview: 'We built an AI agent with Hugging Face\'s smolagents and a Model Context Protocol server to make Jaqpot models accessible in AI workflows and assistants like Claude Desktop.',
+    author: {
+        name: 'Alex Arvanitidis',
+        avatarUrl: 'https://d2zoqz4gyxc03g.cloudfront.net/avatars/af2a132a-5997-4b52-936b-35695452035b.jpg',
+        description: <Link isExternal href="https://app.jaqpot.org/dashboard/user/alarv" size="sm">
+            @alarv
+        </Link>,
+    },
+    timeToReadInMin: 6,
+    categories: []
+};
+
+![Jaqpot AI Agent and MCP Server](/how-we-built-jaqpot-ai-agent-and-mcp-server.png)
+
+# How we built Jaqpot's AI agent and MCP server  
+
+At Jaqpot, we want researchers to not only upload and run models but also use them seamlessly inside AI workflows. This led us to two experiments:  
+1. An **AI agent** built with Hugging Face's smolagents.  
+2. A **Model Context Protocol (MCP) server** that plugs Jaqpot into assistants like Claude Desktop.  
+
+## The AI agent  
+
+The AI agent we built ([QSARion-smolagents](https://huggingface.co/spaces/alarv/QSARion-smolagents)) runs on top of `smolagents` and the `jaqpot-python-sdk`.  
+
+It defines tools such as:  
+- `retrieve_smiles_tool` → fetches SMILES strings for compounds using PubChem.  
+- `qsartoolbox_get_property_value_tool` → queries Jaqpot's QSAR Toolbox models given a SMILES string and a model name, returning the predicted value, units, and domain of applicability.  
+
+The agent is wrapped in a **CodeAgent** with an OpenAI-compatible model backend, combined with extra tools like DuckDuckGo search and image generation. We connected it to a **Gradio UI**, so users can chat with the agent, request predictions for compounds, and see results directly.  
+
+This setup turned Jaqpot into something more interactive: a conversational interface for exploring chemical properties, predictions, and models.  
+
+## The MCP server  
+
+Next, we took the same SDK foundation and built the [jaqpot-mcp-server](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-mcp-server).  
+
+The server implements the MCP standard, exposing Jaqpot as tools any MCP-compatible client can call. Out of the box, it provides:  
+- `jaqpot_predict` → run predictions on a model by ID.  
+- `jaqpot_search_models` → search for models by description or features.  
+- `jaqpot_get_model_info` → fetch metadata for a given model.  
+
+Configuration is straightforward: add the server to your `claude_desktop_config.json` and provide your Jaqpot API key and secret. The server can be run either with `uv run server.py` or plain `python server.py`.  
+
+## The hosting struggle  
+
+When we implemented this in **April 2025**, MCP servers didn't yet support authentication. Since Jaqpot requires an API key and secret, hosting the MCP server online wasn't an option.  
+
+Our workaround: run the MCP server **locally** and pass in the keys via environment variables. This meant every user could securely connect their own Jaqpot account, but it wasn't as smooth as having a shared hosted server.  
+
+We expect this to change soon as the MCP community adds authentication support and patterns for safe remote hosting.  
+
+## Why both matter  
+
+Together, these two pieces — the AI agent and the MCP server — make Jaqpot available in new contexts:  
+- The **AI agent** makes Jaqpot predictions accessible through natural-language interaction.  
+- The **MCP server** lets you call Jaqpot directly from IDEs or AI assistants.  
+
+They both build on the same SDK, showing how Jaqpot can flexibly fit into research workflows, from conversational exploration to developer automation.  
+
+## What's next  
+
+We'll keep extending both sides:  
+- Add more QSAR models and tools to the agent.  
+- Add more MCP commands beyond predictions and search.  
+- Migrate to hosted setups once secure MCP authentication becomes available.  
+
+With these steps, Jaqpot becomes more than a web platform — it becomes a component of the AI ecosystem.  
+
+## Try it today
+
+Ready to use Jaqpot in your AI workflows?
+
+- **AI Agent**: [QSARion-smolagents on Hugging Face](https://huggingface.co/spaces/alarv/QSARion-smolagents)
+- **MCP Server**: [GitHub repository](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-mcp-server)
+- **Documentation**: [jaqpot.org/docs](https://jaqpot.org/docs)
+
+## Get help
+
+Questions? We're here to help:
+- **Documentation**: [jaqpot.org/docs](https://jaqpot.org/docs)
+- **Discord**: [Join our community](https://discord.gg/tVpCjYQqSV)
+- **GitHub**: [Report issues](https://github.com/ntua-unit-of-control-and-informatics/jaqpot-mcp-server/issues)
+- **Email**: [jaqpot@jaqpot.org](mailto:jaqpot@jaqpot.org)
+
+export default function MDXPage({children}) {
+    return <MdxLayout metadata={metadata}>{children}</MdxLayout>
+}
