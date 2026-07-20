@@ -16,10 +16,10 @@ export default function Contact() {
         just want to chat, feel free to reach out at any time.
       </p>
       <Link
-        href="mailto:upci.ntua@gmail.com"
+        href="mailto:euclia@euclia.io"
         className="text-blue-600 underline transition hover:text-blue-800"
       >
-        📧 upci.ntua [at] gmail.com
+        📧 euclia [at] euclia.io
       </Link>
     </div>
   );

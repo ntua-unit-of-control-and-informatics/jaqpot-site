@@ -79,6 +79,43 @@ export default async function Home() {
           to upload your own model
         </p>
         <div
+          className="mx-auto mt-10 animate-fade-up text-center opacity-0"
+          style={{ animationDelay: '0.28s', animationFillMode: 'forwards' }}
+        >
+          <p className="text-lg font-semibold text-gray-900">
+            Jaqpot is a cloud-based platform operated by{' '}
+            <a
+              href="https://www.euclia.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Euclia
+            </a>
+          </p>
+          <p className="mt-1 text-sm text-gray-500">
+            with scientific support from the{' '}
+            <a
+              href="https://www.chemeng.ntua.gr/labs/control_lab/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Unit of Process Control and Informatics
+            </a>{' '}
+            at the{' '}
+            <a
+              href="https://www.ntua.gr/en/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              National Technical University of Athens
+            </a>
+            .
+          </p>
+        </div>
+        <div
           className="mx-auto mt-12 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
         >

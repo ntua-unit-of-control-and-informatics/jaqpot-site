@@ -94,7 +94,7 @@ export default function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    href="https://www.linkedin.com/in/upci-ntua-15794b194/"
+                    href="https://www.linkedin.com/company/euclia"
                     className="text-gray-500 hover:underline "
                   >
                     LinkedIn
@@ -175,7 +175,7 @@ export default function Footer() {
               <span className="sr-only">GitHub account</span>
             </a>
             <a
-              href="https://www.linkedin.com/in/upci-ntua-15794b194/"
+              href="https://www.linkedin.com/company/euclia"
               className="ms-5 text-gray-500 hover:text-gray-900 "
             >
               <svg
