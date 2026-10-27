@@ -116,9 +116,12 @@ export default function Footer() {
               </h2>
               <ul className="font-medium text-gray-500 ">
                 <li className="mb-4">
-                  <a href="#" className="text-gray-500 hover:underline">
+                  <Link
+                    href="/privacy-policy"
+                    className="text-gray-500 hover:underline"
+                  >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="text-gray-500 hover:underline">
